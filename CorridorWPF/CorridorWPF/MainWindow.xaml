@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CorridorWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="571.13" Width="1046.339">
+        Title="MainWindow" Height="571.13" Width="918.201">
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5" Margin="0,5,0,-5">
+                    <DataGrid x:Name="dataGrid" Margin="10,10,299,10" SelectionChanged="dataGrid_SelectionChanged" AlternationCount="-6"/>
+                </Grid>
             </TabItem>
             <TabItem Header="TabItem">
                 <Grid Background="#FFE5E5E5"/>
@@ -27,5 +29,6 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
+        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="669,95,0,0"/>
     </Grid>
 </Window>

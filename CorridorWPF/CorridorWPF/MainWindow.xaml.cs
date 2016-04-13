@@ -24,5 +24,10 @@ namespace CorridorWPF
         {
             InitializeComponent();
         }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
