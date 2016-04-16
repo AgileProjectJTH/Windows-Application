@@ -8,27 +8,69 @@
         Title="MainWindow" Height="571.13" Width="918.201">
     <Grid>
         <TabControl x:Name="tabControl">
-            <TabItem Header="TabItem">
+            <TabItem Header="Teachers Scedule">
                 <Grid Background="#FFE5E5E5" Margin="0,5,0,-5">
-                    <DataGrid x:Name="dataGrid" Margin="10,10,299,10" SelectionChanged="dataGrid_SelectionChanged" AlternationCount="-6"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="#FF07DE42" HorizontalAlignment="Right" Width="325" CornerRadius="60">
+                        <Button x:Name="button" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Background="#FFF32E2E" Foreground="White" BorderBrush="#FF0D1393"/>
+                    </Border>
+                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="You are available" Margin="0,46,88,423" FontSize="25.333" FontWeight="Bold" HorizontalAlignment="Right" Width="202"/>
+                    <ComboBox x:Name="comboBox" VerticalAlignment="Bottom" Margin="0,0,130,271" HorizontalAlignment="Right" Width="124" SelectedIndex="0">
+                        <ComboBoxItem Content="Select time" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="00:10" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="00:20" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="00:30" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="00:40" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="00:50" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="01:00" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="01:30" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="02:00" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="03:00" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="04:00" HorizontalAlignment="Left" Width="122"/>
+                        <ComboBoxItem Content="All day" HorizontalAlignment="Left" Width="122"/>
+                    </ComboBox>
+                    <Button x:Name="button1" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="#FF07DE42"/>
+                    <ListBox x:Name="listBox" Margin="10,10,385,21" SelectionChanged="listBox_SelectionChanged"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Others Schedule">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="506" Margin="10,10,0,0" Height="492"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Staff TV">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGrid_Copy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
+                    <DataGrid x:Name="dataGrid_Copy1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
+                    <Button x:Name="button2" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
+                    <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
+                        <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
+                        <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
+                        <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
+                        <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Student TV">
+                <Grid Background="#FFE5E5E5">
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="dataGrid_Copy2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
+                        <DataGrid x:Name="dataGrid_Copy3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
+                        <Button x:Name="button3" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
+                        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
+                            <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
+                            <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
+                            <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
+                            <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
+                        </ComboBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Admin Page">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Login/logout">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Calendar HorizontalAlignment="Left" VerticalAlignment="Top" Margin="669,95,0,0"/>
     </Grid>
 </Window>
