@@ -10,10 +10,10 @@
         <TabControl x:Name="tabControl">
             <TabItem Header="Teachers Scedule">
                 <Grid Background="#FFE5E5E5" Margin="0,5,0,-5">
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="#FF07DE42" HorizontalAlignment="Right" Width="325" CornerRadius="60">
-                        <Button x:Name="button" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Background="#FFF32E2E" Foreground="White" BorderBrush="#FF0D1393"/>
+                    <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LimeGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60">
+                        <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Red"/>
                     </Border>
-                    <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="You are available" Margin="0,46,88,423" FontSize="25.333" FontWeight="Bold" HorizontalAlignment="Right" Width="202"/>
+                    <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,423" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
                     <ComboBox x:Name="comboBox" VerticalAlignment="Bottom" Margin="0,0,130,271" HorizontalAlignment="Right" Width="124" SelectedIndex="0">
                         <ComboBoxItem Content="Select time" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:10" HorizontalAlignment="Left" Width="122"/>
@@ -28,7 +28,7 @@
                         <ComboBoxItem Content="04:00" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="All day" HorizontalAlignment="Left" Width="122"/>
                     </ComboBox>
-                    <Button x:Name="button1" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="#FF07DE42"/>
+                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen"/>
                     <ListBox x:Name="listBox" Margin="10,10,385,21" SelectionChanged="listBox_SelectionChanged"/>
                 </Grid>
             </TabItem>
@@ -66,7 +66,15 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Admin Page">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <ListBox x:Name="listBox1" Margin="33,73,576,10"/>
+                    <ListBox x:Name="listBox1_Copy" Margin="0,73,168,10" HorizontalAlignment="Right" Width="295"/>
+                    <ComboBox x:Name="comboBox3" Margin="33,39,576,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBox" Height="23" Margin="0,39,168,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="295"/>
+                    <Button x:Name="button4" Content="→" HorizontalAlignment="Right" Margin="0,171,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.RowSpan="2"/>
+                    <Button x:Name="button4_Copy" Content="←" HorizontalAlignment="Right" Margin="0,245,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48"/>
+                    <Button x:Name="button5" Content="Add new account" HorizontalAlignment="Left" Margin="786,39,0,0" VerticalAlignment="Top" Width="108" Height="23"/>
+                </Grid>
             </TabItem>
             <TabItem Header="Login/logout">
                 <Grid Background="#FFE5E5E5"/>

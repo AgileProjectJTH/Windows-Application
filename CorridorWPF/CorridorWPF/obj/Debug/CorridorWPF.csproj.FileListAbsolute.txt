@@ -13,3 +13,17 @@ F:\SourceTreeProjects\WindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\Corri
 F:\SourceTreeProjects\WindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csproj.GenerateResource.Cache
 F:\SourceTreeProjects\WindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.exe
 F:\SourceTreeProjects\WindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.pdb
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.exe.config
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.exe
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.pdb
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csprojResolveAssemblyReference.cache
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\MainWindow.g.cs
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\App.g.cs
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF_MarkupCompile.cache
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF_MarkupCompile.lref
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\MainWindow.baml
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.g.resources
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.Properties.Resources.resources
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csproj.GenerateResource.Cache
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.exe
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.pdb

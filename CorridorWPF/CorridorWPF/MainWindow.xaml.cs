@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace CorridorWPF
 {
     /// <summary>
@@ -33,6 +34,43 @@ namespace CorridorWPF
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btn_toggleAvailable_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if button is green
+            if (btn_toggleAvailable.Background == Brushes.LimeGreen)
+            {
+                // Set Toggle Available button color and change content
+                btn_toggleAvailable.Background = Brushes.Red;
+                btn_toggleAvailable.Content = "Unavailable";
+
+                // Set "Set time" button color
+                btn_setTime.Background = Brushes.LimeGreen;
+
+                // Set background color
+                bdr_availability.Background = Brushes.LimeGreen;
+
+                // Change status text
+                txt_Availability.Text = "You are available";
+
+
+            }
+            else
+            {
+                // Set Toggle Available button color and change content
+                btn_toggleAvailable.Background = Brushes.LimeGreen;
+                btn_toggleAvailable.Content = "Available";
+
+                // Set "Set time" button color
+                btn_setTime.Background = Brushes.Red;
+
+                // Set background color
+                bdr_availability.Background = Brushes.Red;
+
+                // Change status text
+                txt_Availability.Text = "You are unavailable";
+            }
         }
     }
 }
