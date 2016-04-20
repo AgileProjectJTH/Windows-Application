@@ -14,7 +14,7 @@
                         <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Red"/>
                     </Border>
                     <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,423" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
-                    <ComboBox x:Name="comboBox" VerticalAlignment="Bottom" Margin="0,0,130,271" HorizontalAlignment="Right" Width="124" SelectedIndex="0">
+                    <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,130,271" HorizontalAlignment="Right" Width="124" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
                         <ComboBoxItem Content="Select time" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:10" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:20" HorizontalAlignment="Left" Width="122"/>
@@ -27,8 +27,10 @@
                         <ComboBoxItem Content="03:00" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="04:00" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="All day" HorizontalAlignment="Left" Width="122"/>
+
+
                     </ComboBox>
-                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen"/>
+                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False"/>
                     <ListBox x:Name="listBox" Margin="10,10,385,21" SelectionChanged="listBox_SelectionChanged"/>
                 </Grid>
             </TabItem>

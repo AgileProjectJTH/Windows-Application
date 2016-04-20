@@ -72,5 +72,15 @@ namespace CorridorWPF
                 txt_Availability.Text = "You are unavailable";
             }
         }
+
+        private void btn_setTime_Click(object sender, RoutedEventArgs e) //When the setTime button is clicked
+        {
+            btn_setTime.IsEnabled = false; //setTime button is disabled
+        }
+
+        private void cb_selectTime_DropDownClosed(object sender, EventArgs e) //When the combobox closes AKA an item has been chosen from the time list
+        {
+            btn_setTime.IsEnabled = true; //setTime button is enabled
+        }
     }
 }
