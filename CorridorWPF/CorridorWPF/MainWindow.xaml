@@ -41,10 +41,10 @@
             </TabItem>
             <TabItem Header="Staff TV">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGrid_Copy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
+                    <DataGrid x:Name="dGrid_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
                     <DataGrid x:Name="dataGrid_Copy1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
-                    <Button x:Name="button2" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
-                    <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
+                    <Button x:Name="btn_updateStaffTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
+                    <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
                         <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
                         <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
                         <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
@@ -55,10 +55,10 @@
             <TabItem Header="Student TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGrid_Copy2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
+                        <DataGrid x:Name="dGrid_studentCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
                         <DataGrid x:Name="dataGrid_Copy3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
-                        <Button x:Name="button3" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
-                        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
+                        <Button x:Name="btn_updateStudentTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
+                        <ComboBox x:Name="cb_studentCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
                             <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
                             <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
                             <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
@@ -69,13 +69,17 @@
             </TabItem>
             <TabItem Header="Admin Page">
                 <Grid Background="#FFE5E5E5">
-                    <ListBox x:Name="listBox1" Margin="33,73,576,10"/>
-                    <ListBox x:Name="listBox1_Copy" Margin="0,73,168,10" HorizontalAlignment="Right" Width="295"/>
-                    <ComboBox x:Name="comboBox3" Margin="33,39,576,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBox" Height="23" Margin="0,39,168,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="295"/>
-                    <Button x:Name="button4" Content="→" HorizontalAlignment="Right" Margin="0,171,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.RowSpan="2"/>
-                    <Button x:Name="button4_Copy" Content="←" HorizontalAlignment="Right" Margin="0,245,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48"/>
-                    <Button x:Name="btn_addNewAccount" Content="Add new account" HorizontalAlignment="Left" Margin="786,39,0,0" VerticalAlignment="Top" Width="108" Height="23" Click="btn_addNewAccount_Click"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="869*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="listBox1" Margin="33,73,576,10" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="listBox1_Copy" Margin="0,73,168,10" HorizontalAlignment="Right" Width="295" Grid.Column="1"/>
+                    <ComboBox x:Name="comboBox3" Margin="33,39,576,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox" Height="23" Margin="0,39,168,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="295" Grid.Column="1"/>
+                    <Button x:Name="button4" Content="→" HorizontalAlignment="Right" Margin="0,171,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.Column="1"/>
+                    <Button x:Name="button4_Copy" Content="←" HorizontalAlignment="Right" Margin="0,245,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48" Grid.Column="1"/>
+                    <Button x:Name="btn_addNewAccount" Content="Add new account" HorizontalAlignment="Left" Margin="751,39,0,0" VerticalAlignment="Top" Width="108" Height="23" Click="btn_addNewAccount_Click" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">
