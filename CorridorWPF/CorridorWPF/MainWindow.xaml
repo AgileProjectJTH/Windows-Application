@@ -75,7 +75,7 @@
                     <TextBox x:Name="textBox" Height="23" Margin="0,39,168,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="295"/>
                     <Button x:Name="button4" Content="→" HorizontalAlignment="Right" Margin="0,171,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.RowSpan="2"/>
                     <Button x:Name="button4_Copy" Content="←" HorizontalAlignment="Right" Margin="0,245,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48"/>
-                    <Button x:Name="button5" Content="Add new account" HorizontalAlignment="Left" Margin="786,39,0,0" VerticalAlignment="Top" Width="108" Height="23"/>
+                    <Button x:Name="btn_addNewAccount" Content="Add new account" HorizontalAlignment="Left" Margin="786,39,0,0" VerticalAlignment="Top" Width="108" Height="23" Click="btn_addNewAccount_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">

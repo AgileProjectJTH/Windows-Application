@@ -11,3 +11,4 @@ D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.Properties.R
 D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csproj.GenerateResource.Cache
 D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.exe
 D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.pdb
+D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csprojResolveAssemblyReference.cache

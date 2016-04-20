@@ -82,5 +82,11 @@ namespace CorridorWPF
         {
             btn_setTime.IsEnabled = true; //setTime button is enabled
         }
+
+        private void btn_addNewAccount_Click(object sender, RoutedEventArgs e)
+        {
+            AddNewAccount AddNewAccountWindow = new AddNewAccount();
+            AddNewAccountWindow.Show();
+        }
     }
 }
