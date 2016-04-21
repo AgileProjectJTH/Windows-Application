@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,5 +89,59 @@ namespace CorridorWPF
             AddNewAccount AddNewAccountWindow = new AddNewAccount();
             AddNewAccountWindow.Show();
         }
+
+        private void dGrid_teacherSchedule_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void btn_updateTeacherSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+
+            DataGridTextColumn cEmpty = new DataGridTextColumn();
+            cEmpty.Header = "";
+            cEmpty.Binding = new Binding("empty");
+            cEmpty.Width = (dGrid_teacherSchedule.Width / 10);
+            dGrid_teacherSchedule.Columns.Add(cEmpty);
+
+            for (int ii = 0; ii < 5; ii++)
+            {
+                DataGridTextColumn c1 = new DataGridTextColumn();
+                c1.Header = weekDays[ii];
+                c1.Binding = new Binding(weekDays[ii]);
+                c1.Width = (dGrid_teacherSchedule.Width/5);
+                dGrid_teacherSchedule.Columns.Add(c1);
+
+                string föreläsning = "Objektorienterad piss";
+                string sal = "E5540";
+                dGrid_teacherSchedule.Items.Add(new Item() { Monday = föreläsning, Tuesday = föreläsning, Wednesday = föreläsning, Thursday = föreläsning, Friday = föreläsning });
+
+
+            }
+            
+
+            
+
+
+
+        }
+
+        
+
+        public class Item
+        {
+            public string Monday { get; set; }
+            public string Tuesday { get; set; }
+            public string Wednesday { get; set; }
+            public string Thursday { get; set; }
+            public string Friday { get; set; }
+
+
+
+        }
+
+
+
     }
 }

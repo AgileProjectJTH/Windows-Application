@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CorridorWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="571.13" Width="918.201">
+        Title="MainWindow" Height="580.13" Width="1045.201">
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Teachers Scedule">
                 <Grid Background="#FFE5E5E5" Margin="0,5,0,-5">
-                    <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LimeGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="131*"/>
+                        <RowDefinition Height="125*"/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LimeGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60" Grid.RowSpan="2">
                         <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Red"/>
                     </Border>
-                    <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,423" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
-                    <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,130,271" HorizontalAlignment="Right" Width="124" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
+                    <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,173" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
+                    <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,130,21" HorizontalAlignment="Right" Width="124" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
                         <ComboBoxItem Content="Select time" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:10" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:20" HorizontalAlignment="Left" Width="122"/>
@@ -30,8 +34,14 @@
 
 
                     </ComboBox>
-                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False"/>
-                    <ListBox x:Name="listBox" Margin="10,10,385,21" SelectionChanged="listBox_SelectionChanged"/>
+                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False" Grid.Row="1"/>
+
+
+
+                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="662" />
+
+
+
                 </Grid>
             </TabItem>
             <TabItem Header="Others Schedule">
@@ -86,5 +96,6 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
+        <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="598,468,0,0" Click="btn_updateTeacherSchedule_Click"/>
     </Grid>
 </Window>
