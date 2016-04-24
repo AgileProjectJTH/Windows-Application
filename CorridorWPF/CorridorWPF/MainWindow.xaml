@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CorridorWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="580.13" Width="1045.201">
+        Title="MainWindow" Height="660.534" Width="1288.448" ResizeMode="NoResize">
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Teachers Scedule">
@@ -38,11 +38,12 @@
 
 
 
-                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="662" />
-
+                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" />
+                    
 
 
                 </Grid>
+                
             </TabItem>
             <TabItem Header="Others Schedule">
                 <Grid Background="#FFE5E5E5">
@@ -96,6 +97,6 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="598,468,0,0" Click="btn_updateTeacherSchedule_Click"/>
+        <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="956,566,0,0" Click="btn_updateTeacherSchedule_Click"/>
     </Grid>
 </Window>

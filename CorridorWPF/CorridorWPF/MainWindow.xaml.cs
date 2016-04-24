@@ -99,28 +99,35 @@ namespace CorridorWPF
         {
             string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
-            DataGridTextColumn cEmpty = new DataGridTextColumn();
-            cEmpty.Header = "";
-            cEmpty.Binding = new Binding("empty");
-            cEmpty.Width = (dGrid_teacherSchedule.Width / 10);
-            dGrid_teacherSchedule.Columns.Add(cEmpty);
 
-            for (int ii = 0; ii < 5; ii++)
+            for (int ii = 0; ii < 10; ii++)
             {
+                string föreläsning = "Objektorienterad piss";
+                string sal = "E5540";
+                string newRow = "\n";
+                string beginTime = (ii + 5).ToString();
+                string endTime = ((ii + 5) + 2).ToString();
+
                 DataGridTextColumn c1 = new DataGridTextColumn();
-                c1.Header = weekDays[ii];
-                c1.Binding = new Binding(weekDays[ii]);
+                c1.Header = weekDays[ii%5];
+                c1.Binding = new Binding(weekDays[ii%5]);
                 c1.Width = (dGrid_teacherSchedule.Width/5);
                 dGrid_teacherSchedule.Columns.Add(c1);
 
-                string föreläsning = "Objektorienterad piss";
-                string sal = "E5540";
-                dGrid_teacherSchedule.Items.Add(new Item() { Monday = föreläsning, Tuesday = föreläsning, Wednesday = föreläsning, Thursday = föreläsning, Friday = föreläsning });
 
+                
+                dGrid_teacherSchedule.Items.Add(new WeekDays() { Monday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                                                             Tuesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                                                             Wednesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                                                             Thursday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                                                             Friday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime});
+                
+                
 
+              
             }
             
-
+            
             
 
 
@@ -129,18 +136,14 @@ namespace CorridorWPF
 
         
 
-        public class Item
+        public class WeekDays
         {
             public string Monday { get; set; }
             public string Tuesday { get; set; }
             public string Wednesday { get; set; }
             public string Thursday { get; set; }
             public string Friday { get; set; }
-
-
-
         }
-
 
 
     }
