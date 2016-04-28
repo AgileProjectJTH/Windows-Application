@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:CorridorWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="660.534" Width="1288.448" ResizeMode="NoResize">
+
+    <Window.Resources>
+        <local:NameToBrushConverter x:Key="NameToBrushConverter"/>
+    </Window.Resources>
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Teachers Scedule">
@@ -35,19 +39,32 @@
 
                     </ComboBox>
                     <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False" Grid.Row="1"/>
-
-
-
-                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" />
                     
+                    
+
+                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" >
+                        <DataGridTextColumn Binding="{Binding Name}">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Background" Value="{Binding Name, Converter={StaticResource NameToBrushConverter}}"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+
+                    </DataGrid>
+
+                    
+                    
+                    <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="1034,219,0,0" Click="btn_updateTeacherSchedule_Click" Grid.Row="1" Height="43"/>
+
 
 
                 </Grid>
-                
+
             </TabItem>
             <TabItem Header="Others Schedule">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="506" Margin="10,10,0,0" Height="492"/>
+                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Staff TV">
@@ -97,6 +114,5 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="956,566,0,0" Click="btn_updateTeacherSchedule_Click"/>
     </Grid>
 </Window>

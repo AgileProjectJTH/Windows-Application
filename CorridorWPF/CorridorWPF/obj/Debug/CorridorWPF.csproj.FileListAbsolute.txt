@@ -45,3 +45,4 @@ C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Deb
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csproj.GenerateResource.Cache
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.exe
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.pdb
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs

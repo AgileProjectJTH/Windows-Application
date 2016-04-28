@@ -17,11 +17,35 @@ using System.Windows.Shapes;
 
 namespace CorridorWPF
 {
+
+    public class NameToBrushConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string input = value as string;
+            switch (input)
+            {
+                case "John":
+                    return Brushes.LightGreen;
+                default:
+                    return Brushes.LightGreen;
+                    //return DependencyProperty.UnsetValue;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotSupportedException();
+        }
+    }
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -55,7 +79,6 @@ namespace CorridorWPF
                 // Change status text
                 txt_Availability.Text = "You are available";
 
-
             }
             else
             {
@@ -73,6 +96,7 @@ namespace CorridorWPF
                 txt_Availability.Text = "You are unavailable";
             }
         }
+
 
         private void btn_setTime_Click(object sender, RoutedEventArgs e) //When the setTime button is clicked
         {
@@ -97,54 +121,100 @@ namespace CorridorWPF
 
         private void btn_updateTeacherSchedule_Click(object sender, RoutedEventArgs e)
         {
+            ScheduleTemplate schTemplate = new ScheduleTemplate(dGrid_teacherSchedule);
+            schTemplate.generateHeader();
+
+            schTemplate.generateDays(10);
+
+          
+                
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
+
+    public class ScheduleTemplate
+    {
+        DataGrid dGrid;
+
+        public ScheduleTemplate(DataGrid _dGrid)
+        {
+            dGrid = _dGrid;
+        }
+
+        /// <summary>
+        /// Generate headers for a data grid, only the five first days are generated
+        /// </summary>
+        public void generateHeader() 
+        {
+            clearGrid();
+
             string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
-
-            for (int ii = 0; ii < 10; ii++)
+            for (int ii = 0; ii < 5; ii++)
             {
-                string föreläsning = "Objektorienterad piss";
-                string sal = "E5540";
-                string newRow = "\n";
-                string beginTime = (ii + 5).ToString();
-                string endTime = ((ii + 5) + 2).ToString();
-
-                DataGridTextColumn c1 = new DataGridTextColumn();
-                c1.Header = weekDays[ii%5];
-                c1.Binding = new Binding(weekDays[ii%5]);
-                c1.Width = (dGrid_teacherSchedule.Width/5);
-                dGrid_teacherSchedule.Columns.Add(c1);
-
-
-                
-                dGrid_teacherSchedule.Items.Add(new WeekDays() { Monday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                                                             Tuesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                                                             Wednesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                                                             Thursday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                                                             Friday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime});
-                
-                
-
-              
+                DataGridTextColumn gridColumn = new DataGridTextColumn();
+                gridColumn.Header = weekDays[ii];
+                gridColumn.Binding = new Binding(weekDays[ii]);
+                gridColumn.Width = (dGrid.Width / 5);
+                dGrid.Columns.Add(gridColumn);
             }
-            
-            
-            
-
-
-
-        }
-
         
 
-        public class WeekDays
-        {
-            public string Monday { get; set; }
-            public string Tuesday { get; set; }
-            public string Wednesday { get; set; }
-            public string Thursday { get; set; }
-            public string Friday { get; set; }
         }
+
+        /// <summary>
+        /// Generate events in the first five days of the week
+        /// int ammountEvents = ammount of events that is to be added
+        /// </summary>
+        public void generateDays(int ammountEvents)
+        {         
+            string föreläsning = "Objektorienterad piss";
+            string sal = "E5540";
+            string newRow = "\n";
+            string beginTime = (5).ToString();
+            string endTime = ((5) + 2).ToString();
+            for (int ii = 0; ii < ammountEvents + 1; ii++)
+            {
+                
+                dGrid.Items.Add(new WeekDays()
+                {                 
+                    Monday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                    Tuesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                    Wednesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                    Thursday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
+                    Friday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime
+                });
+            }            
+             
+        }
+
+        public void clearGrid()
+        {
+            dGrid.Items.Clear();
+            dGrid.Columns.Clear();
+            dGrid.ItemsSource = null;
+            dGrid.Items.Refresh();
+        }
+
+
 
 
     }
+
+    public class WeekDays
+    {
+        public string Monday { get; set; }
+        public string Tuesday { get; set; }
+        public string Wednesday { get; set; }
+        public string Thursday { get; set; }
+        public string Friday { get; set; }
+    }
+
+
+
+
 }
