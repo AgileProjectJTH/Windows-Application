@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="660.534" Width="1288.448" ResizeMode="NoResize">
 
-    <Window.Resources>
-        <local:NameToBrushConverter x:Key="NameToBrushConverter"/>
-    </Window.Resources>
+
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Teachers Scedule">
@@ -43,13 +41,7 @@
                     
 
                     <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" >
-                        <DataGridTextColumn Binding="{Binding Name}">
-                            <DataGridTextColumn.ElementStyle>
-                                <Style TargetType="{x:Type TextBlock}">
-                                    <Setter Property="Background" Value="{Binding Name, Converter={StaticResource NameToBrushConverter}}"/>
-                                </Style>
-                            </DataGridTextColumn.ElementStyle>
-                        </DataGridTextColumn>
+
 
                     </DataGrid>
 

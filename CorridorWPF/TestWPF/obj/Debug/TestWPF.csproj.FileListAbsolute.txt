@@ -12,3 +12,17 @@ D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csproj.Gener
 D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.exe
 D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.pdb
 D:\Github\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csprojResolveAssemblyReference.cache
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\bin\Debug\TestWPF.exe.config
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\bin\Debug\TestWPF.exe
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\bin\Debug\TestWPF.pdb
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csprojResolveAssemblyReference.cache
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\MainWindow.g.cs
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\App.g.cs
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF_MarkupCompile.cache
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF_MarkupCompile.lref
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\MainWindow.baml
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.g.resources
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.Properties.Resources.resources
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csproj.GenerateResource.Cache
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.exe
+C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.pdb
