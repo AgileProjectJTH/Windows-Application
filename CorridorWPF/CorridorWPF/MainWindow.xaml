@@ -37,16 +37,16 @@
 
                     </ComboBox>
                     <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False" Grid.Row="1"/>
-                    
-                    
+
+
 
                     <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" >
 
 
                     </DataGrid>
 
-                    
-                    
+
+
                     <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="1034,219,0,0" Click="btn_updateTeacherSchedule_Click" Grid.Row="1" Height="43"/>
 
 
@@ -61,15 +61,16 @@
             </TabItem>
             <TabItem Header="Staff TV">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dGrid_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="587" Margin="10,48,0,0" Height="454"/>
-                    <DataGrid x:Name="dataGrid_Copy1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
-                    <Button x:Name="btn_updateStaffTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33"/>
-                    <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
-                        <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
-                        <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
-                        <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
-                        <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
-                    </ComboBox>
+                    <Grid Background="#FFE5E5E5">
+                        <DataGrid x:Name="dataGrid_sCopy3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
+                        <Button x:Name="btn_supdateStaffTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33" Click="btn_supdateStaffTv_Click"/>
+                        <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
+                            <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
+                            <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
+                            <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
+                            <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
+                        </ComboBox>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Student TV">
@@ -106,5 +107,12 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
+        <ListView x:Name="lstv_staffTv" HorizontalAlignment="Left" Height="452" Margin="19,74,0,0" VerticalAlignment="Top" Width="579">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

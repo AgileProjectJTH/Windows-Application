@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,16 +20,19 @@ namespace CorridorWPF
     class TvViewStaff
     {
 
-        ListBox listbox;
+        ListView listView;
 
-        TvViewStaff(ListBox _listbox)
+        TvViewStaff(ListView _listView)
         {
-            ListBox listbox = _listbox;
+            ListView listView = _listView;
         }
 
         public void createView()
         {
-            
+            string staffName = "Göran Andersson";
+            bool available = true;
+
+
         }
     }
 
@@ -36,4 +40,6 @@ namespace CorridorWPF
     {
 
     }
+
+
 }

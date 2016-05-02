@@ -136,6 +136,40 @@ namespace CorridorWPF
         {
 
         }
+
+
+
+        private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
+        {
+
+            
+            lstv_staffTv.Items.Add("Anders Göransson");
+            
+           
+        }
+    }
+
+    public class SubListView : ListView
+    {
+        protected override void
+            PrepareContainerForItemOverride(DependencyObject element,
+            object item)
+        {
+            base.PrepareContainerForItemOverride(element, item);
+            if (View is GridView)
+            {
+                int index = ItemContainerGenerator.IndexFromContainer(element);
+                ListViewItem lvi = element as ListViewItem;
+                if (index % 2 == 0)
+                {
+                    lvi.Background = Brushes.LightBlue;
+                }
+                else
+                {
+                    lvi.Background = Brushes.Beige;
+                }
+            }
+        }
     }
 
 
