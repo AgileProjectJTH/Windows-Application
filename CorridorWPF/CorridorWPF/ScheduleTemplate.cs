@@ -30,6 +30,17 @@ namespace CorridorWPF
         /// </summary>
         public void generateHeader()
         {
+            //Mockup
+            //-----------------------
+            string roomNr = "E2420";
+            string date = "2016-04-25";
+            //Models.Staffs staffs = new Models.Staffs(Repository.ScheduleRepository.getSchedule(roomNr, date));
+            string Json = Repository.ScheduleRepository.getSchedule(roomNr, date);
+            Models.Staffs staffs = new Models.Staffs(Json);
+            //-----------------------
+
+
+
             clearGrid();
 
             string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
