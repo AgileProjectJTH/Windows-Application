@@ -14,7 +14,7 @@ namespace CorridorWPF.Models
 
         /// <summary>
         /// Constructor
-        /// Creates an Staff object with scedules out of inc Json string
+        /// Creates an StaffName object with scedules out of inc Json string
         /// </summary>
         /// <param name="JsonStaff">JToken</param>
         public Staff(JToken JsonStaff)

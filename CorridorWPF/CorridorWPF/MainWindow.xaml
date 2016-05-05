@@ -62,14 +62,24 @@
             <TabItem Header="Staff TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dataGrid_sCopy3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="602,48,0,0" Height="454"/>
-                        <Button x:Name="btn_supdateStaffTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="682,10,0,0" Height="33" Click="btn_supdateStaffTv_Click"/>
+                        <DataGrid x:Name="dataGrid_sCopy3" Margin="0,48,34,10" HorizontalAlignment="Right" Width="292"/>
+                        <Button x:Name="btn_supdateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,7,8,0" Click="btn_supdateStaffTv_Click" Height="33" VerticalAlignment="Top"/>
                         <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
                             <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
                             <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
                             <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
                             <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
                         </ComboBox>
+                        <DataGrid x:Name="dGrid_staff" 
+                                  Margin="0,48,331,8" 
+                                  IsEnabled="False" 
+                                  Height="546" 
+                                  FontSize="16" 
+                                  FontFamily="Georgia Pro Black" 
+                                  FontWeight="Bold"                                  
+                                  ScrollViewer.CanContentScroll="False" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" Width="933"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -107,12 +117,5 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <ListView x:Name="lstv_staffTv" HorizontalAlignment="Left" Height="452" Margin="19,74,0,0" VerticalAlignment="Top" Width="579">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
     </Grid>
 </Window>

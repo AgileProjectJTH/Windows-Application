@@ -142,35 +142,25 @@ namespace CorridorWPF
         private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
         {
 
-            
-            lstv_staffTv.Items.Add("Anders Göransson");
-            
-           
-        }
-    }
+            TvViewStaff TvView = new TvViewStaff(dGrid_staff);
 
-    public class SubListView : ListView
-    {
-        protected override void
-            PrepareContainerForItemOverride(DependencyObject element,
-            object item)
-        {
-            base.PrepareContainerForItemOverride(element, item);
-            if (View is GridView)
+            TvView.createHeaders();
+            for (int ii = 0; ii < 2; ii++)
             {
-                int index = ItemContainerGenerator.IndexFromContainer(element);
-                ListViewItem lvi = element as ListViewItem;
-                if (index % 2 == 0)
-                {
-                    lvi.Background = Brushes.LightBlue;
-                }
-                else
-                {
-                    lvi.Background = Brushes.Beige;
-                }
+                TvView.addStaff("Göran Andersson", true);
+
+                TvView.addStaff("Anna Skog", false);
+
+                TvView.addStaff("Johan Carlsson", false);
+
+                TvView.addStaff("Margareta Andersson", true);
             }
+
+
+
         }
     }
 
+    
 
 }

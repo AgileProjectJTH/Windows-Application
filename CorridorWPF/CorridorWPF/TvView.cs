@@ -20,26 +20,96 @@ namespace CorridorWPF
     class TvViewStaff
     {
 
-        ListView listView;
+        DataGrid dataGrid;
 
-        TvViewStaff(ListView _listView)
+        public TvViewStaff(DataGrid _dataGrid)
         {
-            ListView listView = _listView;
+             dataGrid = _dataGrid;
         }
 
-        public void createView()
+        /// <summary>
+        /// Creates headers for the TV view
+        /// </summary>
+        public void createHeaders()
         {
-            string staffName = "Göran Andersson";
-            bool available = true;
+            clearGrid();
 
+            string[] TvHeaders = new string[2] { "Staff", "Availability" };
 
+            for (int ii = 0; ii < 2; ii++)
+            {
+                DataGridTextColumn gridColumn = new DataGridTextColumn();
+                gridColumn.Header = TvHeaders[ii];
+                gridColumn.Binding = new Binding(TvHeaders[ii]);
+                gridColumn.Width = (dataGrid.Width / 2);
+                dataGrid.Columns.Add(gridColumn);
+            }
         }
+
+        /// <summary>
+        /// Adds a new Staff member
+        /// </summary>
+        /// <param name="staffName"></param>
+        /// <param name="availability"></param>
+        public void addStaff(string staffName, bool availability)
+        {
+            TVStaff staff = new TVStaff();
+            DataGridRow newRow = new DataGridRow();
+
+            staff.Staff = staffName;
+            
+            if (availability)
+            {
+                staff.Availability = "Available";
+                newRow.Background = Brushes.LimeGreen;
+            }
+            else
+            {
+                staff.Availability = "Unavailable";
+                newRow.Background = Brushes.Red;
+            }
+
+            newRow.Item = staff;
+            dataGrid.Items.Add(newRow);
+
+            updateRowHeight();
+        }
+
+        /// <summary>
+        /// Updates the height of each row
+        /// </summary>
+        private void updateRowHeight()
+        {
+            dataGrid.MinRowHeight = ((dataGrid.Height / dataGrid.Items.Count) - 5);
+        }
+
+
+        /// <summary>
+        /// Clears the content in the Data Grid
+        /// </summary>
+        public void clearGrid()
+        {
+            dataGrid.Items.Clear();
+            dataGrid.Columns.Clear();
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Refresh();
+        }
+
     }
 
     class TvViewStudens
     {
 
+
+
     }
 
-
+    /// <summary>
+    /// Staff member class
+    /// </summary>
+    public class TVStaff
+    {
+        public string Staff { get; set; }
+        public string Availability { get; set; }
+    }
 }

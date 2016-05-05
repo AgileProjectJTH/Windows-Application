@@ -22,7 +22,7 @@ namespace CorridorWPF.Repository
             using (var client = new HttpClient())
             {
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:50052/Api/schedule?fromDateAndTime=2016-04-25 14:44:08&toDateAndTime=2016-04-28 14:44:08");
-                            //"Adress till vårat API ex http://localhost:50052/Api/" + "controller namn (Staff i denna class kan ju vara lämpligt" + "?" 
+                            //"Adress till vårat API ex http://localhost:50052/Api/" + "controller namn (StaffName i denna class kan ju vara lämpligt" + "?" 
                             // + "variabler" +"ex" +"fromDateAndTime=2016-04-25 14:44:08&toDateAndTime=2016-04-28 14:44:08" 
 
                 httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
