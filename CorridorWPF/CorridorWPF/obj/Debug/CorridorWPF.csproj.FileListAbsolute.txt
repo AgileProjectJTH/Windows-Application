@@ -45,7 +45,6 @@ C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Deb
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csproj.GenerateResource.Cache
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.exe
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.pdb
-D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Bjorn\Source\Repos\Windows-Application2\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.exe.config
 C:\Users\Bjorn\Source\Repos\Windows-Application2\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csprojResolveAssemblyReference.cache
 C:\Users\Bjorn\Source\Repos\Windows-Application2\CorridorWPF\CorridorWPF\obj\Debug\AddNewAccount.g.cs
@@ -66,3 +65,4 @@ C:\Users\Bjorn\Source\Repos\Windows-Application2\CorridorWPF\CorridorWPF\obj\Deb
 C:\Users\Bjorn\Source\Repos\Windows-Application2\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.pdb
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\Newtonsoft.Json.dll
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\Newtonsoft.Json.xml
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\Newtonsoft.Json.xml

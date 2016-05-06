@@ -142,20 +142,53 @@ namespace CorridorWPF
         private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
         {
 
-            TvViewStaff TvView = new TvViewStaff(dGrid_staff);
+            TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
 
-            TvView.createHeaders();
+            tvViewStf.createHeaders();
             for (int ii = 0; ii < 2; ii++)
             {
-                TvView.addStaff("Göran Andersson", true);
+                tvViewStf.addStaff("Göran Andersson", true);
 
-                TvView.addStaff("Anna Skog", false);
+                tvViewStf.addStaff("Anna Skog", false);
 
-                TvView.addStaff("Johan Carlsson", false);
+                tvViewStf.addStaff("Johan Carlsson", false);
 
-                TvView.addStaff("Margareta Andersson", true);
+                tvViewStf.addStaff("Margareta Andersson", true);
             }
 
+            TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
+
+            tvViewStfNote.createHeader();
+
+            tvViewStfNote.addNote("In his office");
+            //for (int ii = 0; ii < 2; ii++)
+            //{
+            //    tvViewStfNote.addNote("In his office");
+
+            //    //tvViewStfNote.addNote("Anna Skog", "Away for lunch");
+
+            //    //tvViewStfNote.addNote("Johan Carlsson", "Home for sick child");
+
+            //    //tvViewStfNote.addNote("Margareta Andersson", "");
+            //}
+
+        }
+
+        private void btn_updateStudentTv_Click(object sender, RoutedEventArgs e)
+        {
+            TvViewStudents tvViewStud = new TvViewStudents(dGrid_Student);
+
+            tvViewStud.createHeaders();
+            for (int ii = 0; ii < 2; ii++)
+            {
+                tvViewStud.addStaff("Göran Andersson", true);
+
+                tvViewStud.addStaff("Anna Skog", false);
+
+                tvViewStud.addStaff("Johan Carlsson", false);
+
+                tvViewStud.addStaff("Margareta Andersson", true);
+            }
 
 
         }
