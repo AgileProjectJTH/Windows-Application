@@ -17,6 +17,9 @@ using System.Windows.Shapes;
 
 namespace CorridorWPF
 {
+    /// <summary>
+    /// This class is related to TvViewStaff class, this is for the datagrid next to it which should contain notes related to a staff
+    /// </summary>
     class TvViewStaffNotes
     {
         DataGrid dataGrid;
@@ -24,7 +27,9 @@ namespace CorridorWPF
         {
             dataGrid = _dataGrid;
         }
-
+        /// <summary>
+        /// Creates a header which contains the string "Notes"
+        /// </summary>
         public void createHeader()
         {
             clearGrid();
@@ -36,7 +41,9 @@ namespace CorridorWPF
             dataGrid.Columns.Add(gridColumn);
 
         }
-
+        /// <summary>
+        /// Clears the datagrid
+        /// </summary>
         public void clearGrid()
         {
             dataGrid.Items.Clear();
@@ -44,7 +51,10 @@ namespace CorridorWPF
             dataGrid.ItemsSource = null;
             dataGrid.Items.Refresh();
         }
-
+        /// <summary>
+        /// Adds a string note to the datagrid
+        /// </summary>
+        /// <param name="note"></param>
         public void addNote(string note)
         {
             TVStaffNote staffNote = new TVStaffNote();
@@ -54,9 +64,11 @@ namespace CorridorWPF
 
             newRow.Item = staffNote;
             dataGrid.Items.Add(newRow);
-            //updateRowHeight();
+            //updateRowHeight(); //Something doesn't work with this function, it creates exception: "minHeight cannot have this value : ***" kinda
         }
-
+        /// <summary>
+        /// Updates the row height in realation to how many rows there are, should fill the datagrid evenly
+        /// </summary>
         private void updateRowHeight()
         {
             dataGrid.MinRowHeight = ((dataGrid.Height / dataGrid.Items.Count) - 5);

@@ -143,34 +143,25 @@ namespace CorridorWPF
         {
 
             TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
+            TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
 
             tvViewStf.createHeaders();
+            tvViewStfNote.createHeader();
             for (int ii = 0; ii < 2; ii++)
             {
                 tvViewStf.addStaff("Göran Andersson", true);
+                tvViewStfNote.addNote("In his office");
 
                 tvViewStf.addStaff("Anna Skog", false);
+                tvViewStfNote.addNote("At lunch");
 
                 tvViewStf.addStaff("Johan Carlsson", false);
+                tvViewStfNote.addNote("At lecture");
 
                 tvViewStf.addStaff("Margareta Andersson", true);
+                tvViewStfNote.addNote("In her office");
             }
 
-            TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
-
-            tvViewStfNote.createHeader();
-
-            tvViewStfNote.addNote("In his office");
-            //for (int ii = 0; ii < 2; ii++)
-            //{
-            //    tvViewStfNote.addNote("In his office");
-
-            //    //tvViewStfNote.addNote("Anna Skog", "Away for lunch");
-
-            //    //tvViewStfNote.addNote("Johan Carlsson", "Home for sick child");
-
-            //    //tvViewStfNote.addNote("Margareta Andersson", "");
-            //}
 
         }
 
