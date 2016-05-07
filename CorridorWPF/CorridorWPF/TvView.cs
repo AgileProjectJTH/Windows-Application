@@ -64,7 +64,7 @@ namespace CorridorWPF
 
             newRow.Item = staffNote;
             dataGrid.Items.Add(newRow);
-            //updateRowHeight(); //Something doesn't work with this function, it creates exception: "minHeight cannot have this value : ***" kinda
+            updateRowHeight(); //Something doesn't work with this function, it creates exception: "minHeight cannot have this value : ***" kinda
         }
         /// <summary>
         /// Updates the row height in realation to how many rows there are, should fill the datagrid evenly
