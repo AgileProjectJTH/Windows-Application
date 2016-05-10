@@ -43,7 +43,7 @@ namespace CorridorWPF
 
             clearGrid();
 
-            string[] weekDays = new string[1] { "Monday"/*, "Tuesday", "Wednesday", "Thursday", "Friday"*/ };
+            string[] weekDays = new string[2] { "Monday", "Tuesday" /*"Wednesday", "Thursday", "Friday"*/ };
 
             for (int ii = 0; ii < weekDays.Length; ii++)
             {
@@ -61,35 +61,31 @@ namespace CorridorWPF
         /// Generate events in the first five days of the week
         /// int ammountEvents = ammount of events that is to be added
         /// </summary>
-        public void generateDays(int ammountEvents)
+        public void generateDays()
         {
             string föreläsning = "Objektorienterad piss";
             string sal = "E5540";
             string nyRad = "\n";
             string beginTime = (5).ToString();
             string endTime = ((5) + 2).ToString();
-            string Monday = "Hej";
 
             DataGridCell newCell = new DataGridCell();
             DataGridRow newRow = new DataGridRow();
             WeekDays newDay = new WeekDays();
 
 
-            newDay.Monday = "Måndag data";//föreläsning + nyRad + sal + nyRad + beginTime + ":" + endTime;
+            newDay.Monday = föreläsning + nyRad + sal + nyRad + beginTime + ":" + endTime;
             newDay.Tuesday = "Tisdag data";
 
-            newCell.Content = newDay.Monday;//newDay.Monday;
+            //newCell.Content = newDay.Monday;//newDay.Monday;
             //newCell.Background = Brushes.Red;
-            newRow.Item = newDay; //newCell;
-            
 
-            dGrid.Items.Add(newRow);
+            //newRow.Item = newCell;
+          
+            //dGrid.Items.Add(newRow);
 
+            dGrid.Items.Add(new WeekDays { Monday = newDay.Monday, Tuesday = newDay.Tuesday}); //Adds all the row days data
 
-            //for (int ii = 0; ii < ammountEvents + 1; ii++)
-            //{
-            //    dGrid.Items.Add(newCell);
-            //}
 
         }
 

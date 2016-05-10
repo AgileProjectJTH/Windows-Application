@@ -125,7 +125,7 @@ namespace CorridorWPF
             ScheduleTemplate schTemplate = new ScheduleTemplate(dGrid_teacherSchedule);
             schTemplate.generateHeader();
 
-            schTemplate.generateDays(2);
+            schTemplate.generateDays();
             
 
           
