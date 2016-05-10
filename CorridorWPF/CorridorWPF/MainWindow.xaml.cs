@@ -125,7 +125,7 @@ namespace CorridorWPF
             ScheduleTemplate schTemplate = new ScheduleTemplate(dGrid_teacherSchedule);
             schTemplate.generateHeader();
 
-            schTemplate.generateDays(10);
+            schTemplate.generateDays(2);
             
 
           
@@ -142,7 +142,10 @@ namespace CorridorWPF
         private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
         {
 
+            //TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
+
             TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
+
             TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
 
             tvViewStf.createHeaders();
@@ -160,6 +163,7 @@ namespace CorridorWPF
 
                 tvViewStf.addStaff("Margareta Andersson", true);
                 tvViewStfNote.addNote("In her office");
+
             }
 
 

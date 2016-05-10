@@ -62,7 +62,16 @@
             <TabItem Header="Staff TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dGrid_staffNotes" Margin="0,49,32,9" HorizontalAlignment="Right" Width="294" IsEnabled="False" FontSize="16" FontFamily="Georgia Pro Black" FontWeight="Bold" Height="546"/>
+                        <DataGrid x:Name="dGrid_staffNotes" 
+                                  Margin="0,49,32,9" 
+                                  HorizontalAlignment="Right" Width="294" 
+                                  IsEnabled="False" 
+                                  FontSize="16" 
+                                  FontFamily="Georgia Pro Black" 
+                                  FontWeight="Bold" 
+                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  Height="546"/>
                         <Button x:Name="btn_supdateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,11,32,0" Click="btn_supdateStaffTv_Click" Height="33" VerticalAlignment="Top"/>
                         <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
                             <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
@@ -79,7 +88,9 @@
                                   FontWeight="Bold"                                  
                                   ScrollViewer.CanContentScroll="False" 
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right" Width="935"/>
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                                  HorizontalAlignment="Right" 
+                                  Width="935"/>
                     </Grid>
                 </Grid>
             </TabItem>

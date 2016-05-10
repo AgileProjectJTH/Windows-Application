@@ -60,11 +60,12 @@ namespace CorridorWPF
             TVStaffNote staffNote = new TVStaffNote();
             DataGridRow newRow = new DataGridRow();
 
-            staffNote.Note = note;
+            staffNote.Notes = note;
 
             newRow.Item = staffNote;
             dataGrid.Items.Add(newRow);
-            updateRowHeight(); //Something doesn't work with this function, it creates exception: "minHeight cannot have this value : ***" kinda
+            updateRowHeight();
+
         }
         /// <summary>
         /// Updates the row height in realation to how many rows there are, should fill the datagrid evenly
@@ -251,7 +252,7 @@ namespace CorridorWPF
 
     public class TVStaffNote
     {
-        public string Note { get; set; }
+        public string Notes { get; set; }
     }
         
         

@@ -43,9 +43,9 @@ namespace CorridorWPF
 
             clearGrid();
 
-            string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+            string[] weekDays = new string[1] { "Monday"/*, "Tuesday", "Wednesday", "Thursday", "Friday"*/ };
 
-            for (int ii = 0; ii < 5; ii++)
+            for (int ii = 0; ii < weekDays.Length; ii++)
             {
                 DataGridTextColumn gridColumn = new DataGridTextColumn();
                 gridColumn.Header = weekDays[ii];
@@ -65,21 +65,31 @@ namespace CorridorWPF
         {
             string föreläsning = "Objektorienterad piss";
             string sal = "E5540";
-            string newRow = "\n";
+            string nyRad = "\n";
             string beginTime = (5).ToString();
             string endTime = ((5) + 2).ToString();
-            for (int ii = 0; ii < ammountEvents + 1; ii++)
-            {
+            string Monday = "Hej";
 
-                dGrid.Items.Add(new WeekDays()
-                {
-                    Monday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                    Tuesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                    Wednesday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                    Thursday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime,
-                    Friday = föreläsning + newRow + sal + newRow + beginTime + "-" + endTime
-                });
-            }
+            DataGridCell newCell = new DataGridCell();
+            DataGridRow newRow = new DataGridRow();
+            WeekDays newDay = new WeekDays();
+
+
+            newDay.Monday = "Måndag data";//föreläsning + nyRad + sal + nyRad + beginTime + ":" + endTime;
+            newDay.Tuesday = "Tisdag data";
+
+            newCell.Content = newDay.Monday;//newDay.Monday;
+            //newCell.Background = Brushes.Red;
+            newRow.Item = newDay; //newCell;
+            
+
+            dGrid.Items.Add(newRow);
+
+
+            //for (int ii = 0; ii < ammountEvents + 1; ii++)
+            //{
+            //    dGrid.Items.Add(newCell);
+            //}
 
         }
 
@@ -100,8 +110,8 @@ namespace CorridorWPF
     {
         public string Monday { get; set; }
         public string Tuesday { get; set; }
-        public string Wednesday { get; set; }
-        public string Thursday { get; set; }
-        public string Friday { get; set; }
+        //public string Wednesday { get; set; }
+        //public string Thursday { get; set; }
+        //public string Friday { get; set; }
     }
 }
