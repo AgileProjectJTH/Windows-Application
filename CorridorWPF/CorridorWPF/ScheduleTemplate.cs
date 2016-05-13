@@ -33,13 +33,20 @@ namespace CorridorWPF
             //Mockup
             //-----------------------
             string roomNr = "E2420";
-            string date = "2016-04-25";
+            string date = "2016-04-29";
             //Models.Staffs staffs = new Models.Staffs(Repository.ScheduleRepository.getSchedule(roomNr, date));
             string Json = Repository.ScheduleRepository.getSchedule(roomNr, date);
             Models.Staffs staffs = new Models.Staffs(Json);
+
+            List<Models.Schedule> ordnatSchedule = staffs.staffs[0].schedules.OrderBy(x=>x.from).ToList();
+
+            //Models.Schedule theSchedule = new Models.Schedule(Json);
+
+            
+
             //-----------------------
-
-
+            
+           
 
             clearGrid();
 
