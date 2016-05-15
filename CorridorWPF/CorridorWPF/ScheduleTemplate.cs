@@ -32,13 +32,13 @@ namespace CorridorWPF
         {
             //Mockup
             //-----------------------
-            string roomNr = "E2420";
-            string date = "2016-04-29";
+            //string roomNr = "E2420";
+            //string date = "2016-04-29";
             //Models.Staffs staffs = new Models.Staffs(Repository.ScheduleRepository.getSchedule(roomNr, date));
-            string Json = Repository.ScheduleRepository.getSchedule(roomNr, date);
-            Models.Staffs staffs = new Models.Staffs(Json);
+            //string Json = Repository.ScheduleRepository.getSchedule(roomNr, date);
+            //Models.Staffs staffs = new Models.Staffs(Json);
 
-            List<Models.Schedule> ordnatSchedule = staffs.staffs[0].schedules.OrderBy(x=>x.from).ToList();
+            //List<Models.Schedule> ordnatSchedule = staffs.staffs[0].schedules.OrderBy(x=>x.from).ToList();
 
             //Models.Schedule theSchedule = new Models.Schedule(Json);
 
@@ -50,7 +50,7 @@ namespace CorridorWPF
 
             clearGrid();
 
-            string[] weekDays = new string[2] { "Monday", "Tuesday" /*"Wednesday", "Thursday", "Friday"*/ };
+            string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
             for (int ii = 0; ii < weekDays.Length; ii++)
             {
@@ -70,28 +70,46 @@ namespace CorridorWPF
         /// </summary>
         public void generateDays()
         {
-            string föreläsning = "Objektorienterad piss";
-            string sal = "E5540";
-            string nyRad = "\n";
-            string beginTime = (5).ToString();
-            string endTime = ((5) + 2).ToString();
+            // TEST!
+            string roomNumber = "E2420";
+            string date = "2016-04-28";
 
-            DataGridCell newCell = new DataGridCell();
-            DataGridRow newRow = new DataGridRow();
+            string newRow = "\n";
+
             WeekDays newDay = new WeekDays();
 
+            string Json = Repository.ScheduleRepository.getSchedule(roomNumber, date);
+            Models.Staffs staffs = new Models.Staffs(Json);
 
-            newDay.Monday = föreläsning + nyRad + sal + nyRad + beginTime + ":" + endTime;
-            newDay.Tuesday = "Tisdag data";
+            // Orders the list by event start times
+            List<Models.Schedule> orderdSchedule = staffs.staffs[0].schedules.OrderBy(x => x.from).ToList();
 
-            //newCell.Content = newDay.Monday;//newDay.Monday;
-            //newCell.Background = Brushes.Red;
 
-            //newRow.Item = newCell;
-          
-            //dGrid.Items.Add(newRow);
+            if (orderdSchedule != null)
+            {
+                for (int ii = 0; ii < orderdSchedule.Count; ii++)
+                {
+                    newDay.Monday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
+                    newDay.Tuesday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
+                    newDay.Wednesday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
+                    newDay.Thursday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
+                    newDay.Friday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
 
-            dGrid.Items.Add(new WeekDays { Monday = newDay.Monday, Tuesday = newDay.Tuesday}); //Adds all the row days data
+
+
+                    dGrid.Items.Add(new WeekDays
+                    {
+                        Monday = newDay.Monday,
+                        Tuesday = newDay.Tuesday,
+                        Wednesday = newDay.Wednesday,
+                        Thursday = newDay.Thursday,
+                        Friday = newDay.Friday
+                    }); //Adds all the row days data
+                }
+            }
+
+
+
 
 
         }
@@ -113,8 +131,8 @@ namespace CorridorWPF
     {
         public string Monday { get; set; }
         public string Tuesday { get; set; }
-        //public string Wednesday { get; set; }
-        //public string Thursday { get; set; }
-        //public string Friday { get; set; }
+        public string Wednesday { get; set; }
+        public string Thursday { get; set; }
+        public string Friday { get; set; }
     }
 }
