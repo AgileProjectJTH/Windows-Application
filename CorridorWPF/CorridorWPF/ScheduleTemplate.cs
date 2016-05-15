@@ -70,49 +70,54 @@ namespace CorridorWPF
         /// </summary>
         public void generateDays()
         {
-            // TEST!
+            // TEST! ************************
             string roomNumber = "E2420";
-            string date = "2016-04-28";
 
+            //*******************************
+
+            //Makes sure it is not weekend
+            if (DateTime.Now.DayOfWeek.ToString() != "Saturday" && DateTime.Now.DayOfWeek.ToString() != "Sunday")
+            {
+                for (int ii = 1 - (int)DateTime.Now.DayOfWeek; ii < 5; ii++)
+                {
+                    string Json = Repository.ScheduleRepository.getSchedule(roomNumber, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"));
+                    Models.Staffs staffs = new Models.Staffs(Json);
+
+                    // Orders the list by event start times
+                    List<Models.Schedule> orderdSchedule = staffs.staffs[0].schedules.OrderBy(x => x.from).ToList();
+
+                    generateEvent(orderdSchedule);
+                }
+            }       
+        }
+
+        private void generateEvent(List<Models.Schedule> schedule)
+        {
             string newRow = "\n";
-
             WeekDays newDay = new WeekDays();
 
-            string Json = Repository.ScheduleRepository.getSchedule(roomNumber, date);
-            Models.Staffs staffs = new Models.Staffs(Json);
-
-            // Orders the list by event start times
-            List<Models.Schedule> orderdSchedule = staffs.staffs[0].schedules.OrderBy(x => x.from).ToList();
-
-
-            if (orderdSchedule != null)
+            //Makes sure the schedule is not empty
+            if (schedule != null)
             {
-                for (int ii = 0; ii < orderdSchedule.Count; ii++)
+                newDay.Monday = schedule[0].moment + newRow + schedule[0].date + newRow + schedule[0].from + "-" + schedule[0].to + newRow + "Unavailable";
+                newDay.Tuesday = schedule[0].moment + newRow + schedule[0].date + newRow + schedule[0].from + "-" + schedule[0].to + newRow + "Unavailable";
+                newDay.Wednesday = schedule[0].moment + newRow + schedule[0].date + newRow + schedule[0].from + "-" + schedule[0].to + newRow + "Unavailable";
+                newDay.Thursday = schedule[0].moment + newRow + schedule[0].date + newRow + schedule[0].from + "-" + schedule[0].to + newRow + "Unavailable";
+                newDay.Friday = schedule[0].moment + newRow + schedule[0].date + newRow + schedule[0].from + "-" + schedule[0].to + newRow + "Unavailable";
+
+                dGrid.Items.Add(new WeekDays
                 {
-                    newDay.Monday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
-                    newDay.Tuesday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
-                    newDay.Wednesday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
-                    newDay.Thursday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
-                    newDay.Friday = orderdSchedule[ii].moment + newRow + orderdSchedule[ii].date + newRow + orderdSchedule[ii].from + "-" + orderdSchedule[ii].to + newRow + "Unavailable";
-
-
-
-                    dGrid.Items.Add(new WeekDays
-                    {
-                        Monday = newDay.Monday,
-                        Tuesday = newDay.Tuesday,
-                        Wednesday = newDay.Wednesday,
-                        Thursday = newDay.Thursday,
-                        Friday = newDay.Friday
-                    }); //Adds all the row days data
-                }
+                    Monday = newDay.Monday,
+                    Tuesday = newDay.Tuesday,
+                    Wednesday = newDay.Wednesday,
+                    Thursday = newDay.Thursday,
+                    Friday = newDay.Friday
+                }); //Adds all the row days data
             }
 
-
-
-
-
+            return ;
         }
+
 
         public void clearGrid()
         {
