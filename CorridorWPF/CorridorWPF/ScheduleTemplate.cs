@@ -41,9 +41,6 @@ namespace CorridorWPF
             //List<Models.Schedule> ordnatSchedule = staffs.staffs[0].schedules.OrderBy(x=>x.from).ToList();
 
             //Models.Schedule theSchedule = new Models.Schedule(Json);
-
-            
-
             //-----------------------
             
            
@@ -65,20 +62,19 @@ namespace CorridorWPF
         }
 
         /// <summary>
-        /// Generate events in the first five days of the week
+        /// Generates the days that will be used to extract events
         /// int ammountEvents = ammount of events that is to be added
         /// </summary>
         public void generateDays()
         {
-            // TEST! ************************
-            string roomNumber = "E2420";
+
+            string roomNumber = "E3415";
             List<Models.Schedule>[] weekSchedules = new List<Models.Schedule>[5];
             int index = 0;
-            int dayOfWeek = (int)DateTime.Now.AddDays(1).DayOfWeek;
-            //*******************************
+            int dayOfWeek = (int)DateTime.Now.DayOfWeek;
 
             //Makes sure it is not weekend
-            if (/*DateTime.Now.DayOfWeek.ToString() != "Saturday" && DateTime.Now.DayOfWeek.ToString() != "Sunday"*/true)
+            if (DateTime.Now.DayOfWeek.ToString() != "Saturday" && DateTime.Now.DayOfWeek.ToString() != "Sunday")
             {
                 for (int ii = 1 - dayOfWeek; ii < 6 - dayOfWeek; ii++)
                 {
@@ -88,77 +84,85 @@ namespace CorridorWPF
                     // Orders the list by event start times
                     List<Models.Schedule> orderdSchedule = staffs.staffs[0].schedules.OrderBy(x => x.from).ToList();
 
-                    weekSchedules[index] = orderdSchedule;
+                    weekSchedules[index++] = orderdSchedule;
 
-                    index++;
                 }
                 generateEvents(weekSchedules);
             }       
         }
 
+        /// <summary>
+        /// Generates events for each day ranging from monday to friday
+        /// </summary>
+        /// <param name="schedule"></param>
         private void generateEvents(List<Models.Schedule>[] schedule)
         {
             string newRow = "\n";
             WeekDays newDay = new WeekDays();
 
-            //Makes sure the schedule is not empty
-            if (schedule[0].Count != 0)
+            for (int ii = 0; ii < countMaxEvents(schedule); ii++)
             {
-                newDay.Monday = schedule[0][0].moment + newRow + schedule[0][0].date + newRow + schedule[0][0].from + "-" + schedule[0][0].to + newRow + "Unavailable";
-            }
-            else
-            {
-                newDay.Monday = "Available";
-            }
+                //Makes sure the schedule is not empty
+                if (schedule[0].Count != 0)
+                {
+                    newDay.Monday = schedule[0][ii].moment + newRow + schedule[0][ii].date + newRow + schedule[0][ii].from + "-" + schedule[0][ii].to + newRow + "Unavailable";
+                }
 
-            if (schedule[1].Count != 0)
-            {
-                newDay.Tuesday = schedule[1][0].moment + newRow + schedule[1][0].date + newRow + schedule[1][0].from + "-" + schedule[1][0].to + newRow + "Unavailable";
-            }
-            else
-            {
-                newDay.Tuesday = "Available";
-            }
+                if (schedule[1].Count != 0)
+                {
+                    newDay.Tuesday = schedule[1][ii].moment + newRow + schedule[1][ii].date + newRow + schedule[1][ii].from + "-" + schedule[1][ii].to + newRow + "Unavailable";
+                }
 
-            if (schedule[2].Count != 0)
-            {
-                newDay.Wednesday = schedule[2][0].moment + newRow + schedule[2][0].date + newRow + schedule[2][0].from + "-" + schedule[2][0].to + newRow + "Unavailable";
-            }
-            else
-            {
-                newDay.Wednesday = "Available";
-            }
+                if (schedule[2].Count != 0)
+                {
+                    newDay.Wednesday = schedule[2][ii].moment + newRow + schedule[2][ii].date + newRow + schedule[2][ii].from + "-" + schedule[2][ii].to + newRow + "Unavailable";
+                }
 
-            if (schedule[3].Count != 0)
-            {
-                newDay.Thursday = schedule[3][0].moment + newRow + schedule[3][0].date + newRow + schedule[3][0].from + "-" + schedule[3][0].to + newRow + "Unavailable";
-            }
-            else
-            {
-                newDay.Thursday = "Available";
-            }
+                if (schedule[3].Count != 0)
+                {
+                    newDay.Thursday = schedule[3][ii].moment + newRow + schedule[3][ii].date + newRow + schedule[3][ii].from + "-" + schedule[3][ii].to + newRow + "Unavailable";
+                }
 
-            if (schedule[4].Count != 0)
-            {
-                newDay.Friday = schedule[4][0].moment + newRow + schedule[4][0].date + newRow + schedule[4][0].from + "-" + schedule[4][0].to + newRow + "Unavailable";
-            }
-            else
-            {
-                newDay.Friday = "Available";
-            }
+                if (schedule[4].Count != 0)
+                {
+                    newDay.Friday = schedule[4][ii].moment + newRow + schedule[4][ii].date + newRow + schedule[4][ii].from + "-" + schedule[4][ii].to + newRow + "Unavailable";
+                }
 
-
-            dGrid.Items.Add(new WeekDays
+                dGrid.Items.Add(new WeekDays
                 {
                     Monday = newDay.Monday,
                     Tuesday = newDay.Tuesday,
                     Wednesday = newDay.Wednesday,
                     Thursday = newDay.Thursday,
                     Friday = newDay.Friday
-                }); //Adds all the row days data
+                }); //Adds all the row days data     
+            }
+                    
+        }
+            
+        /// <summary>
+        /// Returns the maximum ammount of events in the week 
+        /// </summary>
+        /// <param name="schedule"></param>
+        /// <returns></returns>
+        private int countMaxEvents(List<Models.Schedule>[] schedule)
+        {
+            int maxMomentDay = 0;
 
+            for (int ii = 0; ii < schedule.Count(); ii++)
+            {
+                if (schedule[ii].Count() > maxMomentDay)
+                {
+                    maxMomentDay = schedule[ii].Count();
+                }
+
+            }
+            return maxMomentDay;
         }
 
+        /// <summary>
+        /// Clears a datagrid
+        /// </summary>
         public void clearGrid()
         {
             dGrid.Items.Clear();
@@ -168,6 +172,9 @@ namespace CorridorWPF
         }
     }
 
+    /// <summary>
+    /// Represents the days that are to be displayed 
+    /// </summary>
     public class WeekDays
     {
         public string Monday { get; set; }
