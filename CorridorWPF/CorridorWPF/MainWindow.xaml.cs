@@ -46,6 +46,7 @@ namespace CorridorWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string token = "";
 
         public MainWindow()
         {
@@ -125,7 +126,7 @@ namespace CorridorWPF
             ScheduleTemplate schTemplate = new ScheduleTemplate(dGrid_teacherSchedule);
             schTemplate.generateHeader();
 
-            schTemplate.generateDays();
+            schTemplate.generateDays(token);
             
 
           
@@ -186,6 +187,11 @@ namespace CorridorWPF
             }
 
 
+        }
+
+        private void btn_token_Click(object sender, RoutedEventArgs e)
+        {
+            token = Repository.ScheduleRepository.getToken("", "");
         }
     }
 

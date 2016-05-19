@@ -21,7 +21,7 @@ namespace CorridorWPF.Repository
         {
             using (var client = new HttpClient())
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://roomandschedule.hj.se/api/Rooms/" + roomNr + "?date=" + date);
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://195.10.30.155/corridorAPI/api/schedule?dateAndTime=2016-03-25 15:00:00");// + roomNr + "?date=" + date);
                 httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
                 httpWebRequest.Accept = "application/json; charset=utf-8";
                 httpWebRequest.ContentType = "application/json; charset=utf-8";
