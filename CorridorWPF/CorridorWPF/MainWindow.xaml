@@ -48,6 +48,7 @@
 
 
                     <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="1034,219,0,0" Click="btn_updateTeacherSchedule_Click" Grid.Row="1" Height="43"/>
+                    <Button x:Name="btn_token" Content="Generate Token" HorizontalAlignment="Left" Margin="1153,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Height="43" Click="btn_token_Click"/>
 
 
 

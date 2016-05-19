@@ -65,7 +65,7 @@ namespace CorridorWPF
         /// Generates the days that will be used to extract events
         /// int ammountEvents = ammount of events that is to be added
         /// </summary>
-        public void generateDays()
+        public void generateDays(string token)
         {
 
             string roomNumber = "E3415";
@@ -78,7 +78,7 @@ namespace CorridorWPF
             {
                 for (int ii = 1 - dayOfWeek; ii < 6 - dayOfWeek; ii++)
                 {
-                    string Json = Repository.ScheduleRepository.getSchedule(roomNumber, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"));
+                    string Json = Repository.ScheduleRepository.getSchedule(roomNumber, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
                     Models.Staffs staffs = new Models.Staffs(Json);
 
                     // Orders the list by event start times
