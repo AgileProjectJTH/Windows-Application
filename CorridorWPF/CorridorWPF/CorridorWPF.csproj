@@ -63,9 +63,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Corridor.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Staffs.cs" />
+    <Compile Include="Repository\CorridorRepository.cs" />
     <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Repository\StaffRepository.cs" />
     <Compile Include="ScheduleTemplate.cs" />

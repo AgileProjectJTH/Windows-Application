@@ -23,5 +23,10 @@ namespace CorridorWPF
         {
             InitializeComponent();
         }
+
+        private void btn_AddUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

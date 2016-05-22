@@ -124,13 +124,9 @@ namespace CorridorWPF
         private void btn_updateTeacherSchedule_Click(object sender, RoutedEventArgs e)
         {
             ScheduleTemplate schTemplate = new ScheduleTemplate(dGrid_teacherSchedule);
-            schTemplate.generateHeader();
-
+            schTemplate.generateHeader();    
             schTemplate.generateDays(token);
-            
 
-          
-                
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -143,29 +139,34 @@ namespace CorridorWPF
         private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
         {
 
+            
+
+            //List<> Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
+            string Json = Repository.CorridorRepository.getCorridor();
+            //Models.Staffs staffs = new Models.Staffs(Json);
+
+
             //TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
 
-            TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
+            //TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
 
-            TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
+            //tvViewStf.createHeaders();
+            //tvViewStfNote.createHeader();
+            //for (int ii = 0; ii < 2; ii++)
+            //{
+            //    tvViewStf.addStaff("Göran Andersson", true);
+            //    tvViewStfNote.addNote("In his office");
 
-            tvViewStf.createHeaders();
-            tvViewStfNote.createHeader();
-            for (int ii = 0; ii < 2; ii++)
-            {
-                tvViewStf.addStaff("Göran Andersson", true);
-                tvViewStfNote.addNote("In his office");
+            //    tvViewStf.addStaff("Anna Skog", false);
+            //    tvViewStfNote.addNote("At lunch");
 
-                tvViewStf.addStaff("Anna Skog", false);
-                tvViewStfNote.addNote("At lunch");
+            //    tvViewStf.addStaff("Johan Carlsson", false);
+            //    tvViewStfNote.addNote("At lecture");
 
-                tvViewStf.addStaff("Johan Carlsson", false);
-                tvViewStfNote.addNote("At lecture");
+            //    tvViewStf.addStaff("Margareta Andersson", true);
+            //    tvViewStfNote.addNote("In her office");
 
-                tvViewStf.addStaff("Margareta Andersson", true);
-                tvViewStfNote.addNote("In her office");
-
-            }
+            //}
 
 
         }

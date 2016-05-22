@@ -68,26 +68,31 @@ namespace CorridorWPF
         public void generateDays(string token)
         {
 
-            string roomNumber = "E3415";
+            string time = "06:00:00";
             List<Models.Schedule>[] weekSchedules = new List<Models.Schedule>[5];
             int index = 0;
-            int dayOfWeek = (int)DateTime.Now.DayOfWeek;
+            int dayOfWeek = (int)DateTime.Now.AddDays(1).DayOfWeek;
 
             //Makes sure it is not weekend
             if (DateTime.Now.DayOfWeek.ToString() != "Saturday" && DateTime.Now.DayOfWeek.ToString() != "Sunday")
             {
-                for (int ii = 1 - dayOfWeek; ii < 6 - dayOfWeek; ii++)
+                try
                 {
-                    string Json = Repository.ScheduleRepository.getSchedule(roomNumber, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
-                    Models.Staffs staffs = new Models.Staffs(Json);
+                    for (int ii = 1 - dayOfWeek; ii < 6 - dayOfWeek; ii++)
+                    {
+                        string Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
+                        Models.Staffs staffs = new Models.Staffs(Json);
 
-                    // Orders the list by event start times
-                    List<Models.Schedule> orderdSchedule = staffs.staffs[0].schedules.OrderBy(x => x.from).ToList();
+                        // Orders the list by event start times
+                        List<Models.Schedule> orderdSchedule = staffs.staffs[0].schedules.OrderBy(x => x.from).ToList();
 
-                    weekSchedules[index++] = orderdSchedule;
+                        weekSchedules[index++] = orderdSchedule;
 
+                    }
+                    generateEvents(weekSchedules);
                 }
-                generateEvents(weekSchedules);
+                catch { }
+
             }       
         }
 

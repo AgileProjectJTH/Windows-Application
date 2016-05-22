@@ -1,0 +1,17 @@
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Release\CorridorWPF.exe.config
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Release\CorridorWPF.exe
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Release\CorridorWPF.pdb
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Release\Newtonsoft.Json.dll
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\bin\Release\Newtonsoft.Json.xml
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\AddNewAccount.g.cs
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\MainWindow.g.cs
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\App.g.cs
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF_MarkupCompile.cache
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF_MarkupCompile.lref
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\AddNewAccount.baml
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\MainWindow.baml
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF.g.resources
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF.Properties.Resources.resources
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF.csproj.GenerateResource.Cache
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF.exe
+D:\Github\Windows-Application\CorridorWPF\CorridorWPF\obj\Release\CorridorWPF.pdb

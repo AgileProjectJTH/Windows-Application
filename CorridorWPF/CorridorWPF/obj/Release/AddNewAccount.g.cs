@@ -41,46 +41,6 @@ namespace CorridorWPF {
     /// </summary>
     public partial class AddNewAccount : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
-        
-        #line 10 "..\..\AddNewAccount.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button btn_AddUser;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 11 "..\..\AddNewAccount.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox textBox;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 12 "..\..\AddNewAccount.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox textBox_Copy;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 13 "..\..\AddNewAccount.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label label;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 14 "..\..\AddNewAccount.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label label_Copy;
-        
-        #line default
-        #line hidden
-        
         private bool _contentLoaded;
         
         /// <summary>
@@ -109,30 +69,6 @@ namespace CorridorWPF {
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
         void System.Windows.Markup.IComponentConnector.Connect(int connectionId, object target) {
-            switch (connectionId)
-            {
-            case 1:
-            this.btn_AddUser = ((System.Windows.Controls.Button)(target));
-            
-            #line 10 "..\..\AddNewAccount.xaml"
-            this.btn_AddUser.Click += new System.Windows.RoutedEventHandler(this.btn_AddUser_Click);
-            
-            #line default
-            #line hidden
-            return;
-            case 2:
-            this.textBox = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 3:
-            this.textBox_Copy = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 4:
-            this.label = ((System.Windows.Controls.Label)(target));
-            return;
-            case 5:
-            this.label_Copy = ((System.Windows.Controls.Label)(target));
-            return;
-            }
             this._contentLoaded = true;
         }
     }

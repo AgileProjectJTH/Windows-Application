@@ -15,14 +15,19 @@ namespace CorridorWPF.Models
         /// <param name="json"></param>
         public Staffs(string json)
         {
-            JObject jStaff = JObject.Parse(json);
-            JArray jStaffArr = (JArray)jStaff["Staff"];
-            staffs = new List<Staff>();
-            for (int i = 0; i < jStaffArr.Count; i++)
+            try
             {
-                Staff staff = new Staff(jStaffArr[i]);
-                staffs.Add(staff);
+                JObject jStaff = JObject.Parse(json);
+                JArray jStaffArr = (JArray)jStaff["Staff"];
+                staffs = new List<Staff>();
+                for (int i = 0; i < jStaffArr.Count; i++)
+                {
+                    Staff staff = new Staff(jStaffArr[i]);
+                    staffs.Add(staff);
+                }
             }
+            catch { }
+
         }
 
         public List<Staff> staffs { get; set; }

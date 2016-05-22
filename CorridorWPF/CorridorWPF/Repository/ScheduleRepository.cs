@@ -17,15 +17,17 @@ namespace CorridorWPF.Repository
         /// <param name="roomNr">number of staffs room ex E2404</param>
         /// <param name="date">Date of witch day to get schedule, yyyy-mm-dd ex 2016-04-25</param>
         /// <returns>Returns a json string with the schedule for the staff with the roomNr and Date (date may be null)</returns>
-        public static string getSchedule(string roomNr, string date, string token)
+        public static string getSchedule(string time, string date, string token)
         {
+            token = "6_4QnDpsDB8Wsgn-1lN1Vx3NiQ8-RYV_GxVACV3mJCocsnaygdXK3sWGRG7AM10Iw0NSUAMDlLwP4VF54YDPqCsvfLSfTLrVdI-r2BFEHIwNBL6LMLu5zanRiW7fz57qroEuk13tjUGNUoNWdO4UWPpC90k10JzVe0n3R-3oZlc-YcBcL7NgfR0fTDqAJ1fSgnVblv7Jxs74oteqbbsYIiDOUQ19NXdZOaznyHDJSqA";
             using (var client = new HttpClient())
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://195.10.30.155/corridorAPI/api/schedule?dateAndTime=2016-03-25 15:00:00");// + roomNr + "?date=" + date);
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/schedule?dateAndTime=" + date+ " " + time);// + roomNr + "?date=" + date);
                 
                 httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
                 httpWebRequest.Accept = "application/json; charset=utf-8";
                 httpWebRequest.ContentType = "application/json; charset=utf-8";
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
 
                 var response = (HttpWebResponse)httpWebRequest.GetResponse();
                 string json;
@@ -33,7 +35,7 @@ namespace CorridorWPF.Repository
                 {
                     json = sr.ReadToEnd();
                 }
-
+                
                 return json;
             }
         }
@@ -42,25 +44,38 @@ namespace CorridorWPF.Repository
         {
             using (var client = new HttpClient())
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://195.10.30.155/corridorAPI/token");
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/CorridorAPI/token");
 
-                httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
-                //grant_type = password & username = " + userName + " & password = "+ password
-                byte[] buf = Encoding.UTF8.GetBytes("grant_type = password & username = " + userName + " & password = "+ password);
 
-                httpWebRequest.Accept = "application/token; charset=utf-8";
-                httpWebRequest.ContentType = "application/token; charset=utf-8";
-                httpWebRequest.GetRequestStream().Write(buf, 0, buf.Length);
+                var postData = "grant_type=password&username=" + userName + "&password=" + password;
+                
+            
+                var data = Encoding.ASCII.GetBytes(postData);
 
-                var response = (HttpWebResponse)httpWebRequest.GetResponse();
-                string token;
-                using (var sr = new StreamReader(response.GetResponseStream()))
+                httpWebRequest.Method = "POST";
+                httpWebRequest.ContentType = "application/x-www-form-urlencoded";
+                httpWebRequest.ContentLength = data.Length;
+
+                using (var stream = httpWebRequest.GetRequestStream())
                 {
-                    token = sr.ReadToEnd();
+                    stream.Write(data, 0, data.Length);
                 }
 
-                return token;
+                var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                string token = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+
+                return "";
             }
         }
+    }
+
+    class Token
+    {
+        string access_token;
+        string token_type;
+        string expires_in;
+
     }
 }
