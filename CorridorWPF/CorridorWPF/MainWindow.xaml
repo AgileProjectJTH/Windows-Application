@@ -73,11 +73,8 @@
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   Height="546"/>
                         <Button x:Name="btn_supdateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,11,32,0" Click="btn_supdateStaffTv_Click" Height="33" VerticalAlignment="Top"/>
-                        <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
-                            <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
-                            <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
-                            <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
-                            <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
+                        <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened">
+
                         </ComboBox>
                         <DataGrid x:Name="dGrid_staff" 
                                   Margin="0,49,331,9" 
@@ -91,6 +88,7 @@
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   HorizontalAlignment="Right" 
                                   Width="935"/>
+                        <Button x:Name="btn_updateList" Content="Update Menu" HorizontalAlignment="Left" Margin="167,21,0,0" VerticalAlignment="Top" Width="87" Click="btn_updateList_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
@@ -118,10 +116,11 @@
                     <ListBox x:Name="listBox1" Margin="33,73,576,10" Grid.ColumnSpan="2"/>
                     <ListBox x:Name="listBox1_Copy" Margin="0,73,168,10" HorizontalAlignment="Right" Width="295" Grid.Column="1"/>
                     <ComboBox x:Name="comboBox3" Margin="33,39,576,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="textBox" Height="23" Margin="0,39,168,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" HorizontalAlignment="Right" Width="295" Grid.Column="1"/>
                     <Button x:Name="button4" Content="→" HorizontalAlignment="Right" Margin="0,171,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.Column="1"/>
                     <Button x:Name="button4_Copy" Content="←" HorizontalAlignment="Right" Margin="0,245,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48" Grid.Column="1"/>
-                    <Button x:Name="btn_addNewAccount" Content="Add new account" HorizontalAlignment="Left" Margin="751,39,0,0" VerticalAlignment="Top" Width="108" Height="23" Click="btn_addNewAccount_Click" Grid.Column="1"/>
+                    <Button x:Name="btn_addNewAccount" Content="Add new account" HorizontalAlignment="Left" Margin="764,39,0,0" VerticalAlignment="Top" Width="108" Height="23" Click="btn_addNewAccount_Click" Grid.Column="1"/>
+                    <Button x:Name="btn_AddCorridor" Content="Test add Corridor" Grid.Column="1" HorizontalAlignment="Left" Margin="1087,47,0,0" VerticalAlignment="Top" Width="98" Click="btn_AddCorridor_Click"/>
+                    <TextBox x:Name="txt_AddCorridor" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="1087,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">

@@ -6,62 +6,78 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft;
 
 namespace CorridorWPF.Repository
 {
     class CorridorRepository
     {
-        public static string getCorridor()
+
+        public static string getCorridor(string token)
         {
-            string token = "6_4QnDpsDB8Wsgn-1lN1Vx3NiQ8-RYV_GxVACV3mJCocsnaygdXK3sWGRG7AM10Iw0NSUAMDlLwP4VF54YDPqCsvfLSfTLrVdI-r2BFEHIwNBL6LMLu5zanRiW7fz57qroEuk13tjUGNUoNWdO4UWPpC90k10JzVe0n3R-3oZlc-YcBcL7NgfR0fTDqAJ1fSgnVblv7Jxs74oteqbbsYIiDOUQ19NXdZOaznyHDJSqA";
-            using (var client = new HttpClient())
+            try
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor"); //+ roomNr + "?date=" + date);
-
-                httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
-                httpWebRequest.Accept = "application/json; charset=utf-8";
-                httpWebRequest.ContentType = "application/json; charset=utf-8";
-                httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
-                var response = (HttpWebResponse)httpWebRequest.GetResponse();
-
-                string json;
-                using (var sr = new StreamReader(response.GetResponseStream()))
+                using (var client = new HttpClient())
                 {
-                    json = sr.ReadToEnd();
-                }
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor"); //+ roomNr + "?date=" + date);
 
-                return json;
+                    httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
+                    httpWebRequest.Accept = "application/json; charset=utf-8";
+                    httpWebRequest.ContentType = "application/json; charset=utf-8";
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                    string json;
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        json = sr.ReadToEnd();
+                    }
+
+                    return json;
+                }
             }
+            catch(Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+            }
+
         }
 
 
-        public static string addCorridor(string name)
+        public static string addCorridor(string name, string token)
         {
-            string token = "6_4QnDpsDB8Wsgn-1lN1Vx3NiQ8-RYV_GxVACV3mJCocsnaygdXK3sWGRG7AM10Iw0NSUAMDlLwP4VF54YDPqCsvfLSfTLrVdI-r2BFEHIwNBL6LMLu5zanRiW7fz57qroEuk13tjUGNUoNWdO4UWPpC90k10JzVe0n3R-3oZlc-YcBcL7NgfR0fTDqAJ1fSgnVblv7Jxs74oteqbbsYIiDOUQ19NXdZOaznyHDJSqA";
-            
-            using (var client = new HttpClient())
-            {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor?corridorName=" + name); //+ roomNr + "?date=" + date);
-
-                httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
-                httpWebRequest.Accept = "application/json; charset=utf-8";
-                httpWebRequest.ContentType = "application/json; charset=utf-8";
-                httpWebRequest.ContentLength = name.Length;
-                httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
-
-                var byteName = Encoding.ASCII.GetBytes(name);
-
-                using (var stream = httpWebRequest.GetRequestStream())
+            try {
+                using (var client = new HttpClient())
                 {
-                    stream.Write(byteName, 0, byteName.Length);
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor?corridorName=" + name);
+
+                    httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                    httpWebRequest.Accept = "application/json; charset=utf-8";
+                    httpWebRequest.ContentType = "application/json; charset=utf-8";
+                    httpWebRequest.ContentLength = name.Length;
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                    var byteName = Encoding.ASCII.GetBytes(name);
+
+                    using (var stream = httpWebRequest.GetRequestStream())
+                    {
+                        stream.Write(byteName, 0, byteName.Length);
+                    }
+
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                    var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                    return responseString;
                 }
-
-                var response = (HttpWebResponse)httpWebRequest.GetResponse();
-
-                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-                return responseString;
             }
+            catch (Exception e)
+            {          
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+            }
+
         }
     }
 }

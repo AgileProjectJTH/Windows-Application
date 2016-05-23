@@ -20,7 +20,6 @@ namespace CorridorWPF.Repository
         /// <returns>Returns a json string with the schedule for the staff with the roomNr and Date (date may be null)</returns>
         public static string getSchedule(string time, string date, string token)
         {
-            token = "6_4QnDpsDB8Wsgn-1lN1Vx3NiQ8-RYV_GxVACV3mJCocsnaygdXK3sWGRG7AM10Iw0NSUAMDlLwP4VF54YDPqCsvfLSfTLrVdI-r2BFEHIwNBL6LMLu5zanRiW7fz57qroEuk13tjUGNUoNWdO4UWPpC90k10JzVe0n3R-3oZlc-YcBcL7NgfR0fTDqAJ1fSgnVblv7Jxs74oteqbbsYIiDOUQ19NXdZOaznyHDJSqA";
             using (var client = new HttpClient())
             {
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/schedule?dateAndTime=" + date+ " " + time);// + roomNr + "?date=" + date);

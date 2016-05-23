@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -143,7 +145,7 @@ namespace CorridorWPF
 
             //List<> Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
             List<Models.Corridor> CorridorList = new List<Models.Corridor>();
-            string Json = Repository.CorridorRepository.getCorridor();
+            string Json = Repository.CorridorRepository.getCorridor(token);
 
             int stop = 1;
             //Models.Corridor corridor = new Models.Corridor(Json);
@@ -196,12 +198,55 @@ namespace CorridorWPF
         private void btn_token_Click(object sender, RoutedEventArgs e)
         {
             //token = Repository.ScheduleRepository.getToken("Boris", "password");
-            Repository.CorridorRepository.addCorridor("FredrikTest");
+            Repository.CorridorRepository.addCorridor("FredrikTest", token);
         }
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
             token = Repository.ScheduleRepository.getToken(txt_Username.Text.ToString(), txt_Password.Text.ToString());
+        }
+
+        private void btn_AddCorridor_Click(object sender, RoutedEventArgs e)
+        {
+            Repository.CorridorRepository.addCorridor(txt_AddCorridor.Text.ToString(), token);
+        }
+
+
+        private void cb_staffCorridors_DropDownOpened(object sender, EventArgs e)
+        {
+            //List<Models.Corridor> list = new List<Models.Corridor>();
+           
+            //string json = Repository.CorridorRepository.getCorridor(token);
+            //var j = JArray.Parse(json);
+            //int x = 0;
+
+            //for (int i = 0; i < j.Count(); i++)
+            //{
+            //    Models.Corridor corridor = JsonConvert.DeserializeObject<Models.Corridor>(j[i].ToString());
+            //    cb_staffCorridors.Items.Add(corridor.corridorName.ToString());
+            //}
+            
+
+        }
+
+        private void btn_updateList_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            { 
+                cb_staffCorridors.Items.Clear();
+
+                string json = Repository.CorridorRepository.getCorridor(token);
+                var j = JArray.Parse(json);
+
+
+                    for (int i = 0; i < j.Count(); i++)
+                    {
+                        Models.Corridor corridor = JsonConvert.DeserializeObject<Models.Corridor>(j[i].ToString());
+                        cb_staffCorridors.Items.Add(corridor.corridorName.ToString());
+                    }
+            }
+            catch { }
+
         }
     }
 
