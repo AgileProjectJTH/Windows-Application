@@ -142,7 +142,7 @@ namespace CorridorWPF
 
 
             //List<> Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
-            
+            List<Models.Corridor> CorridorList = new List<Models.Corridor>();
             string Json = Repository.CorridorRepository.getCorridor();
 
             int stop = 1;
