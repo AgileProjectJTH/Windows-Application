@@ -30,21 +30,6 @@ namespace CorridorWPF
         /// </summary>
         public void generateHeader()
         {
-            //Mockup
-            //-----------------------
-            //string roomNr = "E2420";
-            //string date = "2016-04-29";
-            //Models.Staffs staffs = new Models.Staffs(Repository.ScheduleRepository.getSchedule(roomNr, date));
-            //string Json = Repository.ScheduleRepository.getSchedule(roomNr, date);
-            //Models.Staffs staffs = new Models.Staffs(Json);
-
-            //List<Models.Schedule> ordnatSchedule = staffs.staffs[0].schedules.OrderBy(x=>x.from).ToList();
-
-            //Models.Schedule theSchedule = new Models.Schedule(Json);
-            //-----------------------
-            
-           
-
             clearGrid();
 
             string[] weekDays = new string[5] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
@@ -68,7 +53,7 @@ namespace CorridorWPF
         public void generateDays(string token)
         {
 
-            string time = "06:00:00";
+            string time = "07:00:00";
             List<Models.Schedule>[] weekSchedules = new List<Models.Schedule>[5];
             int index = 0;
             int dayOfWeek = (int)DateTime.Now.AddDays(1).DayOfWeek;
@@ -91,9 +76,13 @@ namespace CorridorWPF
                     }
                     generateEvents(weekSchedules);
                 }
-                catch { }
+                catch (Exception e)
+                {
+                    System.Windows.MessageBox.Show("Please logg in first");
+                    System.Windows.MessageBox.Show(e.ToString());
+                }
 
-            }       
+            }
         }
 
         /// <summary>

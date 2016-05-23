@@ -65,7 +65,6 @@
     </ApplicationDefinition>
     <Compile Include="CustomMapper\MapTo.cs" />
     <Compile Include="Models\Corridor.cs" />
-    <Compile Include="Models\Rooms.cs" />
     <Compile Include="Models\Schedule.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Models\Staffs.cs" />

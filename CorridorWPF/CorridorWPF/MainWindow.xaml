@@ -48,7 +48,6 @@
 
 
                     <Button x:Name="btn_updateTeacherSchedule" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="97" Margin="1034,219,0,0" Click="btn_updateTeacherSchedule_Click" Grid.Row="1" Height="43"/>
-                    <Button x:Name="btn_token" Content="Test" HorizontalAlignment="Left" Margin="1153,219,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Height="43" Click="btn_token_Click"/>
 
 
 
@@ -127,9 +126,9 @@
             </TabItem>
             <TabItem Header="Login/logout">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="529,256,0,0"/>
-                    <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="24" Margin="529,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
-                    <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="24" Margin="641,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
+                    <Button x:Name="btn_Login" Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="529,256,0,0" Click="btn_Login_Click"/>
+                    <TextBox x:Name="txt_Username" HorizontalAlignment="Left" Height="24" Margin="529,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
+                    <TextBox x:Name="txt_Password" HorizontalAlignment="Left" Height="24" Margin="641,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="107"/>
                     <Label x:Name="label" Content="Username" HorizontalAlignment="Left" Margin="529,188,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="label_Copy" Content="Password" HorizontalAlignment="Left" Margin="641,188,0,0" VerticalAlignment="Top"/>
                 </Grid>

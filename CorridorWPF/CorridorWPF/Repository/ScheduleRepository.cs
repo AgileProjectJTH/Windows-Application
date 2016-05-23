@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -40,42 +41,64 @@ namespace CorridorWPF.Repository
             }
         }
 
+        /// <summary>
+        /// Fetches a token for the sent username and password
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static string getToken(string userName, string password)
         {
-            using (var client = new HttpClient())
+            try
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/CorridorAPI/token");
-
-
-                var postData = "grant_type=password&username=" + userName + "&password=" + password;
-                
-            
-                var data = Encoding.ASCII.GetBytes(postData);
-
-                httpWebRequest.Method = "POST";
-                httpWebRequest.ContentType = "application/x-www-form-urlencoded";
-                httpWebRequest.ContentLength = data.Length;
-
-                using (var stream = httpWebRequest.GetRequestStream())
+                using (var client = new HttpClient())
                 {
-                    stream.Write(data, 0, data.Length);
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/CorridorAPI/token");
+
+
+                    var postData = "grant_type=password&username=" + userName + "&password=" + password;
+
+
+                    var data = Encoding.ASCII.GetBytes(postData);
+
+                    httpWebRequest.Method = "POST";
+                    httpWebRequest.ContentType = "application/x-www-form-urlencoded";
+                    httpWebRequest.ContentLength = data.Length;
+
+                    using (var stream = httpWebRequest.GetRequestStream())
+                    {
+                        stream.Write(data, 0, data.Length);
+                    }
+
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                    string json;
+
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        json = sr.ReadToEnd();
+                    }
+
+                    Token tok = JsonConvert.DeserializeObject<Token>(json);
+
+                    System.Windows.MessageBox.Show("Success!");
+
+                    return tok.access_token;
                 }
-
-                var response = (HttpWebResponse)httpWebRequest.GetResponse();
-
-                string token = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
-
-                return "";
             }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+            }
+
         }
     }
 
-    class Token
+    public class Token
     {
-        string access_token;
-        string token_type;
-        string expires_in;
-
+        public string access_token { get; set; }
+        public string token_type { get; set; }
+        public string expires_in { get; set; }
     }
 }

@@ -198,6 +198,11 @@ namespace CorridorWPF
             //token = Repository.ScheduleRepository.getToken("Boris", "password");
             Repository.CorridorRepository.addCorridor("FredrikTest");
         }
+
+        private void btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            token = Repository.ScheduleRepository.getToken(txt_Username.Text.ToString(), txt_Password.Text.ToString());
+        }
     }
 
     
