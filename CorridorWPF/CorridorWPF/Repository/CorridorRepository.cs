@@ -32,5 +32,34 @@ namespace CorridorWPF.Repository
                 return json;
             }
         }
+
+
+        public static string addCorridor(string name)
+        {
+            string token = "6_4QnDpsDB8Wsgn-1lN1Vx3NiQ8-RYV_GxVACV3mJCocsnaygdXK3sWGRG7AM10Iw0NSUAMDlLwP4VF54YDPqCsvfLSfTLrVdI-r2BFEHIwNBL6LMLu5zanRiW7fz57qroEuk13tjUGNUoNWdO4UWPpC90k10JzVe0n3R-3oZlc-YcBcL7NgfR0fTDqAJ1fSgnVblv7Jxs74oteqbbsYIiDOUQ19NXdZOaznyHDJSqA";
+            using (var client = new HttpClient())
+            {
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor?corridorName=" + name); //+ roomNr + "?date=" + date);
+
+                httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                httpWebRequest.Accept = "application/json; charset=utf-8";
+                httpWebRequest.ContentType = "application/json; charset=utf-8";
+                httpWebRequest.ContentLength = name.Length;
+                httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                var byteName = Encoding.ASCII.GetBytes(name);
+
+                using (var stream = httpWebRequest.GetRequestStream())
+                {
+                    stream.Write(byteName, 0, byteName.Length);
+                }
+
+                var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                return responseString;
+            }
+        }
     }
 }

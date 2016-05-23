@@ -139,13 +139,16 @@ namespace CorridorWPF
         private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
         {
 
-            
+
 
             //List<> Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
+            
             string Json = Repository.CorridorRepository.getCorridor();
-            //Models.Staffs staffs = new Models.Staffs(Json);
 
+            int stop = 1;
+            //Models.Corridor corridor = new Models.Corridor(Json);
 
+          
             //TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
 
             //TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
@@ -192,7 +195,8 @@ namespace CorridorWPF
 
         private void btn_token_Click(object sender, RoutedEventArgs e)
         {
-            token = Repository.ScheduleRepository.getToken("Boris", "password");
+            //token = Repository.ScheduleRepository.getToken("Boris", "password");
+            Repository.CorridorRepository.addCorridor("FredrikTest");
         }
     }
 
