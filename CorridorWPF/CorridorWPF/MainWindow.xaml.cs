@@ -105,6 +105,8 @@ namespace CorridorWPF
         private void btn_setTime_Click(object sender, RoutedEventArgs e) //When the setTime button is clicked
         {
             btn_setTime.IsEnabled = false; //setTime button is disabled
+
+
         }
 
         private void cb_selectTime_DropDownClosed(object sender, EventArgs e) //When the combobox closes AKA an item has been chosen from the time list
@@ -231,22 +233,52 @@ namespace CorridorWPF
 
         private void btn_updateList_Click(object sender, RoutedEventArgs e)
         {
+            updateCorridor(cb_staffCorridors);
+        }
+
+        private void btn_updateOtherCorridors_Click(object sender, RoutedEventArgs e)
+        {
+            updateCorridor(cb_otherCorridors);
+        }
+
+        private void updateCorridor(ComboBox box)
+        {
             try
-            { 
-                cb_staffCorridors.Items.Clear();
+            {
+                box.Items.Clear();
 
                 string json = Repository.CorridorRepository.getCorridor(token);
                 var j = JArray.Parse(json);
 
 
-                    for (int i = 0; i < j.Count(); i++)
-                    {
-                        Models.Corridor corridor = JsonConvert.DeserializeObject<Models.Corridor>(j[i].ToString());
-                        cb_staffCorridors.Items.Add(corridor.corridorName.ToString());
-                    }
+                for (int i = 0; i < j.Count(); i++)
+                {
+                    Models.Corridor corridor = JsonConvert.DeserializeObject<Models.Corridor>(j[i].ToString());
+
+                    box.Items.Add(corridor.corridorName.ToString() + "  ID:" + corridor.corridorId.ToString());        
+                }
             }
             catch { }
+        }
 
+        private void getTeachers(ComboBox box)
+        {
+            string data = box.Text.ToString();
+
+            int index = data.LastIndexOf("ID:") + "ID:".Length;
+
+            string corridorId = data.Substring(index);
+
+            string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
+            Models.Staffs staffs = new Models.Staffs(json);
+            staffs.staffs[0].firstname.ToString();
+
+
+        }
+
+        private void btn_updateOtherTeachers_Click(object sender, RoutedEventArgs e)
+        {
+            getTeachers(cb_otherCorridors);
         }
     }
 

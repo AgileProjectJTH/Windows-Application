@@ -19,7 +19,7 @@ namespace CorridorWPF.Repository
             {
                 using (var client = new HttpClient())
                 {
-                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor"); //+ roomNr + "?date=" + date);
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor");
 
                     httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
                     httpWebRequest.Accept = "application/json; charset=utf-8";
@@ -44,6 +44,36 @@ namespace CorridorWPF.Repository
 
         }
 
+        public static string GetCorridor(string corridorID, string token)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor?corridorId=" + corridorID);
+
+                    httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
+                    httpWebRequest.Accept = "application/json; charset=utf-8";
+                    httpWebRequest.ContentType = "application/json; charset=utf-8";
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                    string json;
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        json = sr.ReadToEnd();
+                    }
+
+                    return json;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+            }
+
+        }
 
         public static string addCorridor(string name, string token)
         {

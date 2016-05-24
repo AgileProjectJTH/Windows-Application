@@ -58,6 +58,10 @@
             <TabItem Header="Others Schedule">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557"/>
+                    <Button x:Name="btn_updateOtherCorridors" Content="Update Corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="1146,21,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherCorridors_Click"/>
+                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="953,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened"/>
+                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="953,113,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened"/>
+                    <Button x:Name="btn_updateOtherTeachers" Content="Update Teachers&#xD;&#xA;" HorizontalAlignment="Left" Margin="1146,113,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherTeachers_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Staff TV">
