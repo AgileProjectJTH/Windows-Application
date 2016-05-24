@@ -20,8 +20,9 @@
                         <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Red"/>
                     </Border>
                     <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,173" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
-                    <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,130,21" HorizontalAlignment="Right" Width="124" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
-                        <ComboBoxItem Content="Select time" HorizontalAlignment="Left" Width="122"/>
+                    <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,118,21" HorizontalAlignment="Right" Width="136" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
+                        <ComboBoxItem Content="Select time amount
+                                      " HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:10" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:20" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:30" HorizontalAlignment="Left" Width="122"/>

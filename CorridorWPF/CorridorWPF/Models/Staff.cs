@@ -20,12 +20,12 @@ namespace CorridorWPF.Models
         public Staff(JToken JsonStaff)
         {
             schedules = new List<Schedule>();
-            signature = (string)JsonStaff["Signature"];
-            firstname = (string)JsonStaff["Firstname"];
-            lastname = (string)JsonStaff["Lastname"];
-            mobile = (string)JsonStaff["Mobile"];
-            email = (string)JsonStaff["Mail"];
-            JArray jScheArr = (JArray)JsonStaff["Schedule"];
+            signature = (string)JsonStaff["signature"];
+            firstname = (string)JsonStaff["firstname"];
+            lastname = (string)JsonStaff["lastname"];
+            mobile = (string)JsonStaff["mobile"];
+            email = (string)JsonStaff["mail"];
+            JArray jScheArr = (JArray)JsonStaff["schedules"];
             for (int k = 0; k < jScheArr.Count; k++)
             {
                 Schedule s = new Schedule(jScheArr[k]);

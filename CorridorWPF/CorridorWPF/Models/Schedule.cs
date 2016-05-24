@@ -17,13 +17,13 @@ namespace CorridorWPF.Models
         /// <param name="JsonSchedule">JToken</param>
         public Schedule(JToken JsonSchedule)
         {
-            room = (string)JsonSchedule["Room"];
-            date = (string)JsonSchedule["Date"];
-            from = (string)JsonSchedule["From"];
-            to = (string)JsonSchedule["To"];
-            signatures = (string)JsonSchedule["Signatures"];
-            course = (string)JsonSchedule["Course"];
-            moment = (string)JsonSchedule["Moment"];
+            room = (string)JsonSchedule["room"];
+            date = (string)JsonSchedule["date"];
+            from = (string)JsonSchedule["from"];
+            to = (string)JsonSchedule["to"];
+            signatures = (string)JsonSchedule["signatures"];
+            course = (string)JsonSchedule["course"];
+            moment = (string)JsonSchedule["moment"];
         }
         /// <summary>
         /// Constructor

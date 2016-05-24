@@ -18,13 +18,14 @@ namespace CorridorWPF.Models
             try
             {
                 JObject jStaff = JObject.Parse(json);
-                JArray jStaffArr = (JArray)jStaff["Staff"];
+                JArray jStaffArr = (JArray)jStaff["staffModels"];
                 staffs = new List<Staff>();
                 for (int i = 0; i < jStaffArr.Count; i++)
                 {
                     Staff staff = new Staff(jStaffArr[i]);
                     staffs.Add(staff);
                 }
+                
             }
             catch { }
 

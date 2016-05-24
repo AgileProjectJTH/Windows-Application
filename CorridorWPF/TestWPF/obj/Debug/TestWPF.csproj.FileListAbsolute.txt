@@ -26,3 +26,16 @@ C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\T
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.csproj.GenerateResource.Cache
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.exe
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\TestWPF\obj\Debug\TestWPF.pdb
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\bin\Debug\TestWPF.exe.config
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\bin\Debug\TestWPF.exe
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\bin\Debug\TestWPF.pdb
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\MainWindow.g.cs
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\App.g.cs
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF_MarkupCompile.cache
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF_MarkupCompile.lref
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\MainWindow.baml
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF.g.resources
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF.Properties.Resources.resources
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF.csproj.GenerateResource.Cache
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF.exe
+D:\GitHubWindowsApplication\CorridorWPF\TestWPF\obj\Debug\TestWPF.pdb
