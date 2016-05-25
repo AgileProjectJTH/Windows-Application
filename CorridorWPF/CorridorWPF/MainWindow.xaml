@@ -41,10 +41,7 @@
 
 
 
-                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" SelectionChanged="dGrid_teacherSchedule_SelectionChanged" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" >
-
-
-                    </DataGrid>
+                    <DataGrid x:Name="dGrid_teacherSchedule" Margin="0,20,359,10" AutoGenerateColumns="False" Grid.RowSpan="2" SelectionMode="Single" SelectionUnit="Cell" HorizontalAlignment="Right" Width="905" IsReadOnly="True"/>
 
 
 
@@ -57,17 +54,26 @@
             </TabItem>
             <TabItem Header="Others Schedule">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557"/>
-                    <Button x:Name="btn_updateOtherCorridors" Content="Update Corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="1146,21,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherCorridors_Click"/>
-                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="953,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened"/>
-                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="953,113,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened"/>
-                    <Button x:Name="btn_updateOtherTeachers" Content="Update Teachers&#xD;&#xA;" HorizontalAlignment="Left" Margin="1146,113,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherTeachers_Click"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="51*"/>
+                        <ColumnDefinition Width="1225*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dGrid_otherSchedule" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557" Grid.ColumnSpan="2" IsReadOnly="True"/>
+                    <Button x:Name="btn_updateOtherCorridors" Content="Update Corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="1095,21,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherCorridors_Click" Grid.Column="1"/>
+                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="902,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.Column="1"/>
+                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="902,113,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.Column="1"/>
+                    <Button x:Name="btn_updateOtherTeachers" Content="Update Teachers&#xD;&#xA;" HorizontalAlignment="Left" Margin="1095,113,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherTeachers_Click" Grid.Column="1"/>
+                    <Button x:Name="btn_loadOtherCorridorTeacherSchedule" Content="Load Schedule" HorizontalAlignment="Left" Margin="902,529,0,0" VerticalAlignment="Top" Width="101" Height="38" Click="btn_loadOtherCorridorTeacherSchedule_Click" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Staff TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dGrid_staffNotes" 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="73*"/>
+                            <ColumnDefinition Width="246*"/>
+                        </Grid.ColumnDefinitions>
+                        <DataGrid x:Name="dGrid_staffTvNotes" 
                                   Margin="0,49,32,9" 
                                   HorizontalAlignment="Right" Width="294" 
                                   IsEnabled="False" 
@@ -76,12 +82,12 @@
                                   FontWeight="Bold" 
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  Height="546"/>
-                        <Button x:Name="btn_supdateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,11,32,0" Click="btn_supdateStaffTv_Click" Height="33" VerticalAlignment="Top"/>
+                                  Height="546" IsReadOnly="True" Grid.Column="1"/>
+                        <Button x:Name="btn_updateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,11,32,0" Height="33" VerticalAlignment="Top" Grid.Column="1" Click="btn_updateStaffTv_Click"/>
                         <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened">
 
                         </ComboBox>
-                        <DataGrid x:Name="dGrid_staff" 
+                        <DataGrid x:Name="dGrid_staffTv" 
                                   Margin="0,49,331,9" 
                                   IsEnabled="False" 
                                   Height="546" 
@@ -92,23 +98,20 @@
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   HorizontalAlignment="Right" 
-                                  Width="935"/>
-                        <Button x:Name="btn_updateList" Content="Update Menu" HorizontalAlignment="Left" Margin="167,21,0,0" VerticalAlignment="Top" Width="87" Click="btn_updateList_Click"/>
+                                  Width="935" Grid.ColumnSpan="2"/>
+                        <Button x:Name="btn_updateStaffTvList" Content="Update corridors" HorizontalAlignment="Left" Margin="167,21,0,0" VerticalAlignment="Top" Width="115" Click="btn_updateStaffTvList_Click" Height="23"/>
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Student TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dGrid_Student" HorizontalAlignment="Left" VerticalAlignment="Top" Width="944" Margin="10,48,0,0" Height="546"/>
-                        <DataGrid x:Name="dGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Width="292" Margin="959,48,0,0" Height="546"/>
+                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True"/>
                         <Button x:Name="btn_updateStudentTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="1108,10,0,0" Height="33" Click="btn_updateStudentTv_Click"/>
                         <ComboBox x:Name="cb_studentCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0">
-                            <ComboBoxItem Content="Corridor 1" HorizontalAlignment="Left" Width="150"/>
-                            <ComboBoxItem Content="Corridor 2" HorizontalAlignment="Left" Width="150"/>
-                            <ComboBoxItem Content="Corridor 3" HorizontalAlignment="Left" Width="150"/>
-                            <ComboBoxItem Content="Corridor 4" HorizontalAlignment="Left" Width="150"/>
+
                         </ComboBox>
+                        <Button x:Name="btn_updateStudentTvList" Content="Update corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="167,21,0,0" VerticalAlignment="Top" Width="108" Click="btn_updateStudentTvList_Click" Height="22"/>
                     </Grid>
                 </Grid>
             </TabItem>

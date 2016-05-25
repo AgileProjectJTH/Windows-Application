@@ -120,16 +120,12 @@ namespace CorridorWPF
             AddNewAccountWindow.Show();
         }
 
-        private void dGrid_teacherSchedule_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void btn_updateTeacherSchedule_Click(object sender, RoutedEventArgs e)
         {
             ScheduleTemplate schTemplate = new ScheduleTemplate(dGrid_teacherSchedule);
             schTemplate.generateHeader();    
-            schTemplate.generateDays(token);
+            schTemplate.generateDays(token, null);
 
         }
 
@@ -140,61 +136,49 @@ namespace CorridorWPF
 
 
 
-        private void btn_supdateStaffTv_Click(object sender, RoutedEventArgs e)
-        {
-
-
-
-            //List<> Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
-            List<Models.Corridor> CorridorList = new List<Models.Corridor>();
-            string Json = Repository.CorridorRepository.getCorridor(token);
-
-            int stop = 1;
-            //Models.Corridor corridor = new Models.Corridor(Json);
-
-          
-            //TvViewStaff tvViewStf = new TvViewStaff(dGrid_staff);
-
-            //TvViewStaffNotes tvViewStfNote = new TvViewStaffNotes(dGrid_staffNotes);
-
-            //tvViewStf.createHeaders();
-            //tvViewStfNote.createHeader();
-            //for (int ii = 0; ii < 2; ii++)
-            //{
-            //    tvViewStf.addStaff("Göran Andersson", true);
-            //    tvViewStfNote.addNote("In his office");
-
-            //    tvViewStf.addStaff("Anna Skog", false);
-            //    tvViewStfNote.addNote("At lunch");
-
-            //    tvViewStf.addStaff("Johan Carlsson", false);
-            //    tvViewStfNote.addNote("At lecture");
-
-            //    tvViewStf.addStaff("Margareta Andersson", true);
-            //    tvViewStfNote.addNote("In her office");
-
-            //}
-
-
-        }
 
         private void btn_updateStudentTv_Click(object sender, RoutedEventArgs e)
         {
-            TvViewStudents tvViewStud = new TvViewStudents(dGrid_Student);
-
-            tvViewStud.createHeaders();
-            for (int ii = 0; ii < 2; ii++)
+            try
             {
-                tvViewStud.addStaff("Göran Andersson", true);
+                TvViewStaff tvViewStd = new TvViewStaff(dGrid_StudentTv);
+                List<string> listName = new List<string>();
+                string data = cb_studentCorridors.Text.ToString();
 
-                tvViewStud.addStaff("Anna Skog", false);
+                int index = data.LastIndexOf("ID:") + "ID:".Length;
 
-                tvViewStud.addStaff("Johan Carlsson", false);
+                string corridorId = data.Substring(index);
 
-                tvViewStud.addStaff("Margareta Andersson", true);
+                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
+
+                Models.Staffs staffs = new Models.Staffs(json);
+
+                tvViewStd.createHeaders();
+                for (int i = 0; i < staffs.staffs.Count; i++)
+                {
+                    listName.Add(staffs.staffs[i].username.ToString());
+                }
+
+                for (int i = 0; i < listName.Count; i++)
+                {
+                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(listName[i], token);
+                    if (jsonn == "true")
+                    {
+                        tvViewStd.addStaff(listName[i].ToString(), true);
+                    }
+                    else
+                    {
+                        tvViewStd.addStaff(listName[i].ToString(), false);
+                    }
+
+                }
+
+
             }
-
-
+            catch(Exception ee)
+            {
+                System.Windows.MessageBox.Show(ee.ToString());
+            }
         }
 
         private void btn_token_Click(object sender, RoutedEventArgs e)
@@ -231,13 +215,11 @@ namespace CorridorWPF
 
         }
 
-        private void btn_updateList_Click(object sender, RoutedEventArgs e)
-        {
-            updateCorridor(cb_staffCorridors);
-        }
+
 
         private void btn_updateOtherCorridors_Click(object sender, RoutedEventArgs e)
         {
+            cb_otherCorridors.Items.Clear();
             updateCorridor(cb_otherCorridors);
         }
 
@@ -261,24 +243,107 @@ namespace CorridorWPF
             catch { }
         }
 
-        private void getTeachers(ComboBox box)
+        private void getTeachers(ComboBox CorridorBox, ComboBox TeacherBox)
         {
-            string data = box.Text.ToString();
+            try
+            {
+                string data = CorridorBox.Text.ToString();
 
-            int index = data.LastIndexOf("ID:") + "ID:".Length;
+                int index = data.LastIndexOf("ID:") + "ID:".Length;
 
-            string corridorId = data.Substring(index);
+                string corridorId = data.Substring(index);
 
-            string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
-            Models.Staffs staffs = new Models.Staffs(json);
-            staffs.staffs[0].firstname.ToString();
+                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
+                Models.Staffs staffs = new Models.Staffs(json);
+                for (int i = 0; i < staffs.staffs.Count; i++)
+                {
+                    TeacherBox.Items.Add(staffs.staffs[i].username.ToString());
+                }
 
+            }
+            catch(Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+
+            }
 
         }
 
+
         private void btn_updateOtherTeachers_Click(object sender, RoutedEventArgs e)
         {
-            getTeachers(cb_otherCorridors);
+            cb_otherTeachers.Items.Clear();
+            getTeachers(cb_otherCorridors,cb_otherTeachers);
+        }
+
+        private void btn_loadOtherCorridorTeacherSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            ScheduleTemplate sch = new ScheduleTemplate(dGrid_otherSchedule);
+            sch.generateHeader();
+            sch.generateDays(token, cb_otherTeachers.Text.ToString());
+        }
+
+        private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            dGrid_teacherSchedule.UnselectAll();
+        }
+
+        private void btn_updateStaffTvList_Click(object sender, RoutedEventArgs e)
+        {
+            cb_staffCorridors.Items.Clear();
+            updateCorridor(cb_staffCorridors);
+        }
+
+        private void btn_updateStaffTv_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                TvViewStaff tvViewStf = new TvViewStaff(dGrid_staffTv);
+                List<string> listName = new List<string>();
+                string data = cb_staffCorridors.Text.ToString();
+
+                int index = data.LastIndexOf("ID:") + "ID:".Length;
+
+                string corridorId = data.Substring(index);
+
+                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
+
+                Models.Staffs staffs = new Models.Staffs(json);
+
+                tvViewStf.createHeaders();
+                for (int i = 0; i < staffs.staffs.Count; i++)
+                {
+                    listName.Add(staffs.staffs[i].username.ToString());
+                }
+
+                for (int i = 0; i < listName.Count; i++)
+                {
+                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(listName[i], token);
+                    if (jsonn == "true")
+                    {
+                        tvViewStf.addStaff(listName[i].ToString(), true);
+                    }
+                    else
+                    {
+                        tvViewStf.addStaff(listName[i].ToString(), false);
+                    }
+                    
+                }
+
+            }
+            catch (Exception ee)
+            {
+                System.Windows.MessageBox.Show(ee.ToString());
+
+            }
+
+        }
+
+        private void btn_updateStudentTvList_Click(object sender, RoutedEventArgs e)
+        {
+            cb_studentCorridors.Items.Clear();
+            updateCorridor(cb_studentCorridors);
         }
     }
 

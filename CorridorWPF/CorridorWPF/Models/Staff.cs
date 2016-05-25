@@ -20,7 +20,7 @@ namespace CorridorWPF.Models
         public Staff(JToken JsonStaff)
         {
             schedules = new List<Schedule>();
-            signature = (string)JsonStaff["signature"];
+            username = (string)JsonStaff["username"];
             firstname = (string)JsonStaff["firstname"];
             lastname = (string)JsonStaff["lastname"];
             mobile = (string)JsonStaff["mobile"];
@@ -43,7 +43,7 @@ namespace CorridorWPF.Models
             return JsonConvert.SerializeObject(staff);
         }
 
-        public string signature { get; set; }
+        public string username { get; set; }
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string mobile { get; set; }

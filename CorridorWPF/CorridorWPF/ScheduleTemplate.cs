@@ -25,6 +25,8 @@ namespace CorridorWPF
             dGrid = _dGrid;
         }
 
+        
+
         /// <summary>
         /// Generate headers for a data grid, only the five first days are generated
         /// </summary>
@@ -50,7 +52,7 @@ namespace CorridorWPF
         /// Generates the days that will be used to extract events
         /// int ammountEvents = ammount of events that is to be added
         /// </summary>
-        public void generateDays(string token)
+        public void generateDays(string token, string username)
         {
 
             string time = "07:00:00";
@@ -65,7 +67,7 @@ namespace CorridorWPF
                 {
                     for (int ii = 1 - dayOfWeek; ii < 6 - dayOfWeek; ii++)
                     {
-                        string Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token);
+                        string Json = Repository.ScheduleRepository.getSchedule(time, DateTime.Now.AddDays(ii).ToString("yyy-MM-dd"), token, "http://193.10.30.155/corridorAPI/api/schedule?dateAndTime=", username);
                         Models.Staffs staffs = new Models.Staffs(Json);
 
                         // Orders the list by event start times

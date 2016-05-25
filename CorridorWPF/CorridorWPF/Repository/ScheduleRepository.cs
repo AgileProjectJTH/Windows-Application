@@ -18,11 +18,21 @@ namespace CorridorWPF.Repository
         /// <param name="roomNr">number of staffs room ex E2404</param>
         /// <param name="date">Date of witch day to get schedule, yyyy-mm-dd ex 2016-04-25</param>
         /// <returns>Returns a json string with the schedule for the staff with the roomNr and Date (date may be null)</returns>
-        public static string getSchedule(string time, string date, string token)
+        public static string getSchedule(string time, string date, string token, string adress, string username)
         {
             using (var client = new HttpClient())
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/schedule?dateAndTime=" + date+ " " + time);// + roomNr + "?date=" + date);
+                HttpWebRequest httpWebRequest;
+
+                if (username != null)
+                {
+                    httpWebRequest = (HttpWebRequest)WebRequest.Create(adress + date + " " + time + "&username=" + username);
+
+                }
+                else
+                {
+                    httpWebRequest = (HttpWebRequest)WebRequest.Create(adress + date + " " + time);
+                }
                 
                 httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
                 httpWebRequest.Accept = "application/json; charset=utf-8";
@@ -92,6 +102,29 @@ namespace CorridorWPF.Repository
             }
 
         }
+
+    //    public static string getTeacherSchedule(string dateAndTime, string username, string token, string adress)
+    //    {
+    //        using (var client = new HttpClient())
+    //        {
+
+    //            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/schedule?dateAndTime=" + dateAndTime + "?username=" + username);
+
+    //            httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
+    //            httpWebRequest.Accept = "application/json; charset=utf-8";
+    //            httpWebRequest.ContentType = "application/json; charset=utf-8";
+    //            httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+    //            var response = (HttpWebResponse)httpWebRequest.GetResponse();
+    //            string json;
+    //            using (var sr = new StreamReader(response.GetResponseStream()))
+    //            {
+    //                json = sr.ReadToEnd();
+    //            }
+
+    //            return json;
+    //        }
+    //    }
     }
 
     public class Token
