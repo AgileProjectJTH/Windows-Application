@@ -13,7 +13,7 @@ namespace CorridorWPF.Repository
     class CorridorRepository
     {
 
-        public static string getCorridor(string token)
+        public static string getAllCorridors(string token)
         {
             try
             {
@@ -108,6 +108,40 @@ namespace CorridorWPF.Repository
                 return null;
             }
 
+        }
+
+        public static string MoveUserToCorridor(string username, string corridorID, string token)
+        {
+            try
+            {             
+
+                using (var client = new HttpClient())
+                {
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor?newCorridorId=" + corridorID + "&username=" +username);
+                    
+                    httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                    httpWebRequest.Accept = "application/json; charset=utf-8";
+                    httpWebRequest.ContentType = "application/json; charset=utf-8";
+                    httpWebRequest.ContentLength = corridorID.Length + username.Length;
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                    string json;
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        json = sr.ReadToEnd();
+                    }
+
+                    return json;
+
+                }
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+            }
         }
     }
 }

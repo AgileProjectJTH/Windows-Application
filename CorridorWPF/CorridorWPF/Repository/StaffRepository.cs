@@ -6,6 +6,9 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace CorridorWPF.Repository
 {
@@ -107,5 +110,52 @@ namespace CorridorWPF.Repository
                 return null;
             }
         }
+
+        public static string AddNewUser(Models.User user, string token/*string firstname, string lastname, string username, string password, string email, string mobileNumber, string roomNumber, string isAdmin, string token*/)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    string json;
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/CorridorAPI/api/account/register");
+                    
+                    httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                    httpWebRequest.Accept = "application/json; charset=utf-8";
+                    httpWebRequest.ContentType = "application/json; charset=utf-8";
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                    using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        //string json = "{\"user\": \"test\"," +
+                        //                "\"password\":\"bla\"}";
+
+
+                        json = JsonConvert.SerializeObject(user);
+
+                        streamWriter.Write(json);
+                        streamWriter.Flush();
+                        streamWriter.Close();
+                    }
+
+                        var response = (HttpWebResponse)httpWebRequest.GetResponse();
+                    
+                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    {
+                        json = sr.ReadToEnd();
+                    }
+
+                    System.Windows.MessageBox.Show("User was added!");
+                    return json;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+            }
+        }
+
+        
     }
 }

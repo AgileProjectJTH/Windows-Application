@@ -56,14 +56,15 @@
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="51*"/>
-                        <ColumnDefinition Width="1225*"/>
+                        <ColumnDefinition Width="305*"/>
+                        <ColumnDefinition Width="920*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dGrid_otherSchedule" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557" Grid.ColumnSpan="2" IsReadOnly="True"/>
-                    <Button x:Name="btn_updateOtherCorridors" Content="Update Corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="1095,21,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherCorridors_Click" Grid.Column="1"/>
-                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="902,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.Column="1"/>
-                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="902,113,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.Column="1"/>
-                    <Button x:Name="btn_updateOtherTeachers" Content="Update Teachers&#xD;&#xA;" HorizontalAlignment="Left" Margin="1095,113,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherTeachers_Click" Grid.Column="1"/>
-                    <Button x:Name="btn_loadOtherCorridorTeacherSchedule" Content="Load Schedule" HorizontalAlignment="Left" Margin="902,529,0,0" VerticalAlignment="Top" Width="101" Height="38" Click="btn_loadOtherCorridorTeacherSchedule_Click" Grid.Column="1"/>
+                    <DataGrid x:Name="dGrid_otherSchedule" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557" Grid.ColumnSpan="3" IsReadOnly="True"/>
+                    <Button x:Name="btn_updateOtherCorridors" Content="Update Corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="790,21,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherCorridors_Click" Grid.Column="2"/>
+                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="597,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.Column="2" SelectionChanged="cb_otherCorridors_SelectionChanged"/>
+                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="597,113,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.Column="2"/>
+                    <Button x:Name="btn_updateOtherTeachers" Content="Update Teachers&#xD;&#xA;" HorizontalAlignment="Left" Margin="790,113,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherTeachers_Click" Grid.Column="2"/>
+                    <Button x:Name="btn_loadOtherCorridorTeacherSchedule" Content="Load Schedule" HorizontalAlignment="Left" Margin="597,529,0,0" VerticalAlignment="Top" Width="101" Height="38" Click="btn_loadOtherCorridorTeacherSchedule_Click" Grid.Column="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Staff TV">
@@ -121,14 +122,17 @@
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="869*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="listBox1" Margin="33,73,576,10" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="listBox1_Copy" Margin="0,73,168,10" HorizontalAlignment="Right" Width="295" Grid.Column="1"/>
-                    <ComboBox x:Name="comboBox3" Margin="33,39,576,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <Button x:Name="button4" Content="→" HorizontalAlignment="Right" Margin="0,171,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.Column="1"/>
-                    <Button x:Name="button4_Copy" Content="←" HorizontalAlignment="Right" Margin="0,245,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48" Grid.Column="1"/>
+                    <ListBox x:Name="list_teachersInCorridor" Margin="33,73,576,47" Grid.ColumnSpan="2"/>
+                    <ListBox x:Name="list_selectedTeachers" Margin="0,73,168,47" HorizontalAlignment="Right" Width="295" Grid.Column="1"/>
+                    <ComboBox x:Name="cb_teacherList" Margin="33,39,1006,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btn_removeTeacher" Content="→" HorizontalAlignment="Right" Margin="0,259,468,0" VerticalAlignment="Top" Width="103" Height="69" FontSize="48" Grid.Column="1" Click="btn_removeTeacher_Click"/>
+                    <Button x:Name="btn_addTeacher" Content="←" HorizontalAlignment="Right" Margin="0,184,468,0" VerticalAlignment="Top" Width="103" Height="70" FontSize="48" Grid.Column="1" Click="btn_addTeacher_Click"/>
                     <Button x:Name="btn_addNewAccount" Content="Add new account" HorizontalAlignment="Left" Margin="764,39,0,0" VerticalAlignment="Top" Width="108" Height="23" Click="btn_addNewAccount_Click" Grid.Column="1"/>
                     <Button x:Name="btn_AddCorridor" Content="Test add Corridor" Grid.Column="1" HorizontalAlignment="Left" Margin="1087,47,0,0" VerticalAlignment="Top" Width="98" Click="btn_AddCorridor_Click"/>
                     <TextBox x:Name="txt_AddCorridor" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="1087,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="btn_updateUsers" Content="Update" Grid.Column="1" HorizontalAlignment="Left" Margin="235,39,0,0" VerticalAlignment="Top" Width="75" Click="btn_updateUsers_Click"/>
+                    <Button x:Name="btn_updateTeacherList" Content="Update List" Grid.Column="1" HorizontalAlignment="Left" Margin="554,562,0,0" VerticalAlignment="Top" Width="97" Click="btn_updateTeacherList_Click" Height="32"/>
+                    <Button x:Name="btn_viewEntireStaff" Content="View entire staff" Grid.Column="1" HorizontalAlignment="Left" Margin="960,562,0,0" VerticalAlignment="Top" Width="99" Click="btn_viewEntireStaff_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">

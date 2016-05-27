@@ -116,8 +116,10 @@ namespace CorridorWPF
 
         private void btn_addNewAccount_Click(object sender, RoutedEventArgs e)
         {
-            AddNewAccount AddNewAccountWindow = new AddNewAccount();
+            AddNewAccount AddNewAccountWindow = new AddNewAccount(token);
             AddNewAccountWindow.Show();
+
+            updateCorridor(AddNewAccountWindow.cb_chooseCorridor);
         }
 
 
@@ -195,6 +197,7 @@ namespace CorridorWPF
         private void btn_AddCorridor_Click(object sender, RoutedEventArgs e)
         {
             Repository.CorridorRepository.addCorridor(txt_AddCorridor.Text.ToString(), token);
+            txt_AddCorridor.Clear();
         }
 
 
@@ -229,7 +232,7 @@ namespace CorridorWPF
             {
                 box.Items.Clear();
 
-                string json = Repository.CorridorRepository.getCorridor(token);
+                string json = Repository.CorridorRepository.getAllCorridors(token);
                 var j = JArray.Parse(json);
 
 
@@ -243,7 +246,7 @@ namespace CorridorWPF
             catch { }
         }
 
-        private void getTeachers(ComboBox CorridorBox, ComboBox TeacherBox)
+        private void getTeachersCombobox(ComboBox CorridorBox, ComboBox TeacherBox)
         {
             try
             {
@@ -269,11 +272,35 @@ namespace CorridorWPF
 
         }
 
+        
+        private void getTeachersList(ComboBox box,ListBox list)
+        {
+            try
+            {
+                string data = box.Text.ToString();
+
+                int index = data.LastIndexOf("ID:") + "ID:".Length;
+
+                string corridorId = data.Substring(index);
+
+                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
+                Models.Staffs staffs = new Models.Staffs(json);
+                for (int i = 0; i < staffs.staffs.Count; i++)
+                {
+                    list.Items.Add(staffs.staffs[i].username.ToString());
+                }
+
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+            }
+        }
 
         private void btn_updateOtherTeachers_Click(object sender, RoutedEventArgs e)
         {
             cb_otherTeachers.Items.Clear();
-            getTeachers(cb_otherCorridors,cb_otherTeachers);
+            getTeachersCombobox(cb_otherCorridors,cb_otherTeachers);
         }
 
         private void btn_loadOtherCorridorTeacherSchedule_Click(object sender, RoutedEventArgs e)
@@ -344,6 +371,37 @@ namespace CorridorWPF
         {
             cb_studentCorridors.Items.Clear();
             updateCorridor(cb_studentCorridors);
+        }
+
+        private void btn_updateUsers_Click(object sender, RoutedEventArgs e)
+        {
+            updateCorridor(cb_teacherList);
+        }
+
+
+        private void btn_updateTeacherList_Click(object sender, RoutedEventArgs e)
+        {
+            getTeachersList(cb_teacherList, list_teachersInCorridor);
+        }
+
+        private void btn_removeTeacher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_addTeacher_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_viewEntireStaff_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cb_otherCorridors_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            cb_otherTeachers.Items.Clear();
         }
     }
 

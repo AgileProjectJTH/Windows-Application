@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CorridorWPF"
         mc:Ignorable="d"
-        Title="AddNewAccount" Height="382" Width="445">
+        Title="AddNewAccount" Height="403" Width="445">
     <Grid Margin="0,0,2,-1">
-        <Button x:Name="btn_AddUser" Content="Add" HorizontalAlignment="Left" Margin="351,322,0,0" VerticalAlignment="Top" Width="74" Click="btn_AddUser_Click"/>
-        <TextBox x:Name="txt_AddUsername" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_AddUser" Content="Add" HorizontalAlignment="Left" Margin="328,317,0,0" VerticalAlignment="Top" Width="74" Click="btn_AddUser_Click" IsEnabled="False"/>
+        <TextBox x:Name="txt_AddFirstName" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txt_AddLastName" HorizontalAlignment="Left" Height="23" Margin="150,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="label" Content="First name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy" Content="Last name" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txt_AddUsername1" HorizontalAlignment="Left" Height="22" Margin="10,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txt_AddUsername" HorizontalAlignment="Left" Height="22" Margin="10,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txt_AddPassword" HorizontalAlignment="Left" Height="22" Margin="151,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"/>
         <TextBox x:Name="txt_AddConfirmPassword" HorizontalAlignment="Left" Height="22" Margin="285,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117"/>
         <TextBox x:Name="txt_AddEmail" HorizontalAlignment="Left" Height="22" Margin="10,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257"/>
@@ -25,6 +25,8 @@
         <Label x:Name="label_Copy5" Content="Mobile number" HorizontalAlignment="Left" Margin="10,189,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy6" Content="Room Number" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="chk_IsAdmin" Content="Admin" HorizontalAlignment="Left" Margin="150,268,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cb_chooseCorridor" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_chooseCorridor_SelectionChanged"/>
+        <Label x:Name="Corridor" Content="Corridor" HorizontalAlignment="Left" Margin="10,298,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
