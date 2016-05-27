@@ -125,8 +125,18 @@ namespace CorridorWPF.Repository
                     httpWebRequest.ContentLength = corridorID.Length + username.Length;
                     httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
 
-                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+                    string data = "newCorridorId=" + corridorID + "&username=" + username;
+                    var byteToSend = Encoding.ASCII.GetBytes(data);
 
+                    using (var stream = httpWebRequest.GetRequestStream())
+                    {
+                        stream.Write(byteToSend, 0, byteToSend.Length);
+                    }
+
+
+
+
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();     
                     string json;
                     using (var sr = new StreamReader(response.GetResponseStream()))
                     {
