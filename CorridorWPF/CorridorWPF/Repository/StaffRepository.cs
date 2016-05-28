@@ -121,7 +121,17 @@ namespace CorridorWPF.Repository
             }
         }
 
-
+        public static string setTeacherAvailability(Models.Schedule scheduleModel, bool avaliable ,string token)
+        {
+            if(avaliable)
+            {
+                return null;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// Adds new user to the database

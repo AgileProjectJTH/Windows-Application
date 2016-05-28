@@ -105,7 +105,9 @@ namespace CorridorWPF
         private void btn_setTime_Click(object sender, RoutedEventArgs e) //When the setTime button is clicked
         {
             btn_setTime.IsEnabled = false; //setTime button is disabled
+            Models.Schedule schedule;
 
+            //schedule.available = btn_toggleAvailable.;
 
         }
 
@@ -400,6 +402,19 @@ namespace CorridorWPF
                     int index = data.LastIndexOf("ID:") + "ID:".Length; //plucks out the ID        
                     string corridorId = data.Substring(index);
                     Repository.CorridorRepository.MoveUserToCorridor(user.UserName, corridorId, token); //Moves the user to the chosen corridor
+
+                    txt_AddConfirmPassword.Text = null;
+                    txt_AddCorridor.Text = null;
+                    txt_AddEmail.Text = null;
+                    txt_AddFirstName.Text = null;
+                    txt_AddLastName.Text = null;
+                    txt_AddMobileNumber.Text = null;
+                    txt_AddPassword.Text = null;
+                    txt_AddRoomNumber.Text = null;
+                    txt_AddUsername.Text = null;
+                    txt_Availability.Text = null;
+                    txt_Password.Text = null;
+                    txt_Username.Text = null;
                 }
 
 

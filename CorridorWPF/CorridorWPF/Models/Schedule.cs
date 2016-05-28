@@ -23,7 +23,7 @@ namespace CorridorWPF.Models
             to = (string)JsonSchedule["to"];
             signatures = (string)JsonSchedule["signatures"];
             course = (string)JsonSchedule["course"];
-            moment = (string)JsonSchedule["moment"];
+            moment = (string)JsonSchedule["moment"];           
         }
         /// <summary>
         /// Constructor
@@ -46,6 +46,7 @@ namespace CorridorWPF.Models
         public string signatures { get; set; }
         public string course { get; set; }
         public string moment { get; set; }
+        public bool available { get; set; }
     }
 }
 
