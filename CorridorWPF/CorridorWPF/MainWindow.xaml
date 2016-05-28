@@ -60,11 +60,11 @@
                         <ColumnDefinition Width="920*"/>
                     </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dGrid_otherSchedule" HorizontalAlignment="Left" VerticalAlignment="Top" Width="921" Margin="10,10,0,0" Height="557" Grid.ColumnSpan="3" IsReadOnly="True"/>
-                    <Button x:Name="btn_updateOtherCorridors" Content="Update Corridors&#xD;&#xA;" HorizontalAlignment="Left" Margin="790,21,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherCorridors_Click" Grid.Column="2"/>
-                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="597,21,0,0" SelectedIndex="0" Grid.Column="2"/>
-                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="597,113,0,0" SelectedIndex="0" Grid.Column="2"/>
-                    <Button x:Name="btn_updateOtherTeachers" Content="Update Teachers&#xD;&#xA;" HorizontalAlignment="Left" Margin="790,113,0,0" VerticalAlignment="Top" Width="99" Height="22" Click="btn_updateOtherTeachers_Click" Grid.Column="2"/>
+                    <ComboBox x:Name="cb_otherCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="597,42,0,0" SelectedIndex="0" Grid.Column="2" DropDownOpened="cb_otherCorridors_DropDownOpened" DropDownClosed="cb_otherCorridors_DropDownClosed" IsReadOnly="True" MouseLeave="cb_otherCorridors_MouseLeave"/>
+                    <ComboBox x:Name="cb_otherTeachers" HorizontalAlignment="Left" VerticalAlignment="Top" Width="188" Margin="597,113,0,0" SelectedIndex="0" Grid.Column="2" DropDownOpened="cb_otherTeachers_DropDownOpened" IsReadOnly="True" IsEnabled="False"/>
                     <Button x:Name="btn_loadOtherCorridorTeacherSchedule" Content="Load Schedule" HorizontalAlignment="Left" Margin="597,529,0,0" VerticalAlignment="Top" Width="101" Height="38" Click="btn_loadOtherCorridorTeacherSchedule_Click" Grid.Column="2"/>
+                    <Label x:Name="label2" Content="Choose corridor" Grid.Column="2" HorizontalAlignment="Left" Margin="597,11,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="label3" Content="Choose staff" Grid.Column="2" HorizontalAlignment="Left" Margin="597,82,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Staff TV">
@@ -113,7 +113,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Admin Page">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#FFE5E5E5" Height="604" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="869*"/>
@@ -147,8 +147,8 @@
 
                     </Grid>
                     <GroupBox x:Name="groupBox" Grid.Column="1" Header="Add new corridor" HorizontalAlignment="Left" Margin="782,446,0,0" VerticalAlignment="Top" Height="148" Width="189"/>
-                    <Button x:Name="btn_deleteCorridor" Content="Delete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="1022,562,0,0" Click="btn_deleteCorridor_Click"/>
-                    <ComboBox x:Name="cb_teacherListDelete" Margin="1022,523,78,0" VerticalAlignment="Top" DropDownOpened="cb_teacherListDelete_DropDownOpened" Grid.Column="1"/>
+                    <Button x:Name="btn_deleteCorridor" Content="Delete corridor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="93" Grid.Column="1" Margin="1022,562,0,0" Click="btn_deleteCorridor_Click"/>
+                    <ComboBox x:Name="cb_corridorListDelete" Margin="1022,523,78,0" VerticalAlignment="Top" DropDownOpened="cb_teacherListDelete_DropDownOpened" Grid.Column="1"/>
                     <Button x:Name="btn_deleteSelectedUser" Content="Delete selected user" HorizontalAlignment="Left" Margin="33,562,0,0" VerticalAlignment="Top" Width="117" Height="32" Grid.ColumnSpan="2" Click="btn_deleteSelectedUser_Click"/>
                 </Grid>
             </TabItem>

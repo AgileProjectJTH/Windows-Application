@@ -187,9 +187,10 @@ namespace CorridorWPF.Repository
             {
                 using (var client = new HttpClient())
                 {
-                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/User?username=");// + username);
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/User?username=" + username);// + username);
 
-                    httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                    httpWebRequest.Method = "DELETE";
+                    
                     httpWebRequest.Accept = "application/json; charset=utf-8";
                     httpWebRequest.ContentType = "application/json; charset=utf-8";
                     httpWebRequest.ContentLength = username.Length;
@@ -203,9 +204,7 @@ namespace CorridorWPF.Repository
                     }
 
                     var response = (HttpWebResponse)httpWebRequest.GetResponse();
-
                     var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
-
                     return responseString;
                 }
             }

@@ -202,11 +202,7 @@ namespace CorridorWPF
 
 
 
-        private void btn_updateOtherCorridors_Click(object sender, RoutedEventArgs e)
-        {
-            cb_otherCorridors.Items.Clear();
-            updateCorridor(cb_otherCorridors);
-        }
+
 
         private void updateCorridor(ComboBox box)
         {
@@ -279,17 +275,19 @@ namespace CorridorWPF
             }
         }
 
-        private void btn_updateOtherTeachers_Click(object sender, RoutedEventArgs e)
-        {
-            cb_otherTeachers.Items.Clear();
-            getTeachersCombobox(cb_otherCorridors,cb_otherTeachers);
-        }
 
         private void btn_loadOtherCorridorTeacherSchedule_Click(object sender, RoutedEventArgs e)
         {
-            ScheduleTemplate sch = new ScheduleTemplate(dGrid_otherSchedule);
-            sch.generateHeader();
-            sch.generateDays(token, cb_otherTeachers.Text.ToString());
+            if (cb_otherTeachers.Text == "")
+            {
+                System.Windows.MessageBox.Show("Please choose a staffmember");
+            }
+            else
+            {
+                ScheduleTemplate sch = new ScheduleTemplate(dGrid_otherSchedule);
+                sch.generateHeader();
+                sch.generateDays(token, cb_otherTeachers.Text.ToString());
+            }
         }
 
         private void Cell_DoubleClick(object sender, MouseButtonEventArgs e)
@@ -426,6 +424,7 @@ namespace CorridorWPF
         private void cb_teacherList_DropDownOpened(object sender, EventArgs e)
         {
             updateCorridor(cb_teacherList);
+            list_teachersInCorridor.Items.Clear();
         }
 
         private void cb_studentCorridors_DropDownOpened(object sender, EventArgs e)
@@ -436,28 +435,81 @@ namespace CorridorWPF
 
         private void btn_deleteSelectedUser_Click(object sender, RoutedEventArgs e)
         {
-            string user = list_teachersInCorridor.SelectedValue.ToString();
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure you want to delete this user?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                string user = list_teachersInCorridor.SelectedValue.ToString();
 
-            Repository.StaffRepository.deleteUser(user, token);
+                Repository.StaffRepository.deleteUser(user, token);
 
-            list_teachersInCorridor.Items.Clear();
-            getTeachersList(cb_teacherList, list_teachersInCorridor);
+                list_teachersInCorridor.Items.Clear();
+                getTeachersList(cb_teacherList, list_teachersInCorridor);
+            }
         }
 
         private void cb_teacherListDelete_DropDownOpened(object sender, EventArgs e)
         {
-            updateCorridor(cb_teacherListDelete);
+            updateCorridor(cb_corridorListDelete);
         }
 
         private void btn_deleteCorridor_Click(object sender, RoutedEventArgs e)
         {
-            List<string> staff = new List<string>();
-
-            staff = Repository.CorridorRepository.getStaffInCorridor(token, cb_teacherListDelete);
-
-            for (int i = 0; i < staff.Count; i++)
+            if (cb_corridorListDelete.Text.ToString() != "")
             {
-                Repository.StaffRepository.deleteUser(staff[i], token);
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure you want to delete this corridor? \n All users in it will also be deleted", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    List<string> staff = new List<string>();
+
+                    staff = Repository.CorridorRepository.getStaffInCorridor(token, cb_corridorListDelete);
+
+                    for (int i = 0; i < staff.Count; i++)
+                    {
+                        Repository.StaffRepository.deleteUser(staff[i], token);
+                    }
+
+
+                    string data = cb_corridorListDelete.Text.ToString();
+                    int index = data.LastIndexOf("ID:") + "ID:".Length; //plucks out the ID        
+                    string corridorId = data.Substring(index);
+                    Repository.CorridorRepository.deleteCorridor(corridorId, token);
+                }
+            }
+
+        }
+
+        private void cb_otherCorridors_DropDownOpened(object sender, EventArgs e)
+        {
+            cb_otherCorridors.Items.Clear();
+            updateCorridor(cb_otherCorridors);
+            cb_otherTeachers.IsEnabled = false;
+        }
+
+        private void cb_otherTeachers_DropDownOpened(object sender, EventArgs e)
+        {
+            cb_otherTeachers.Items.Clear();
+            getTeachersCombobox(cb_otherCorridors, cb_otherTeachers);
+            if(cb_otherTeachers.Items.Count == 0)
+            {
+                cb_otherTeachers.IsEnabled = false;
+            }
+        }
+
+        private void cb_otherCorridors_DropDownClosed(object sender, EventArgs e)
+        {
+            cb_otherTeachers.Items.Clear();
+
+        }
+
+        private void cb_otherCorridors_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (cb_otherCorridors.Text == "")
+            {
+                cb_otherTeachers.IsEnabled = false;
+            }
+            else
+            {
+                cb_otherTeachers.IsEnabled = true;
             }
         }
     }

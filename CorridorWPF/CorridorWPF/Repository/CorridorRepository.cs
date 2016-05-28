@@ -215,17 +215,17 @@ namespace CorridorWPF.Repository
                 {
                     HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Corridor?corridorId=" + corridorId);
 
-                    httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                    httpWebRequest.Method = "DELETE";//GET OR POST
                     httpWebRequest.Accept = "application/json; charset=utf-8";
                     httpWebRequest.ContentType = "application/json; charset=utf-8";
                     httpWebRequest.ContentLength = corridorId.Length;
                     httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
 
-                    var byteName = Encoding.ASCII.GetBytes(corridorId);
+                    var bytesToSend = Encoding.ASCII.GetBytes(corridorId);
 
                     using (var stream = httpWebRequest.GetRequestStream())
                     {
-                        stream.Write(byteName, 0, byteName.Length);
+                        stream.Write(bytesToSend, 0, bytesToSend.Length);
                     }
 
                     var response = (HttpWebResponse)httpWebRequest.GetResponse();
