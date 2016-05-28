@@ -105,6 +105,7 @@ namespace CorridorWPF
         private void btn_setTime_Click(object sender, RoutedEventArgs e) //When the setTime button is clicked
         {
             btn_setTime.IsEnabled = false; //setTime button is disabled
+            int worhtlessVariable = 0;
             Models.Schedule schedule;
 
             //schedule.available = btn_toggleAvailable.;
