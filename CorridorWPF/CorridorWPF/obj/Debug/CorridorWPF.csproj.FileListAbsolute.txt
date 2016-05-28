@@ -73,12 +73,10 @@ D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.pdb
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\bin\Debug\Newtonsoft.Json.dll
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\bin\Debug\Newtonsoft.Json.xml
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csprojResolveAssemblyReference.cache
-D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\AddNewAccount.g.cs
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\MainWindow.g.cs
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\App.g.cs
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF_MarkupCompile.cache
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF_MarkupCompile.lref
-D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\AddNewAccount.baml
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\MainWindow.baml
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.g.resources
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.Properties.Resources.resources

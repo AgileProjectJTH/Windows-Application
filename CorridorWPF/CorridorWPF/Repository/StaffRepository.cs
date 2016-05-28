@@ -42,6 +42,9 @@ namespace CorridorWPF.Repository
                 return json;
             }
         }
+
+
+
         /// <summary>
         /// Returns all staffs of a certain corridor
         /// </summary>
@@ -79,6 +82,13 @@ namespace CorridorWPF.Repository
 
         }
 
+
+        /// <summary>
+        /// Gets if staff is available
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static string GetTeacherAvailability(string username, string token)
         {
             try
@@ -111,7 +121,15 @@ namespace CorridorWPF.Repository
             }
         }
 
-        public static string AddNewUser(Models.User user, string token/*string firstname, string lastname, string username, string password, string email, string mobileNumber, string roomNumber, string isAdmin, string token*/)
+
+
+        /// <summary>
+        /// Adds new user to the database
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static string AddNewUser(Models.User user, string token)
         {
             try
             {
@@ -157,5 +175,46 @@ namespace CorridorWPF.Repository
         }
 
         
+        /// <summary>
+        /// Delete user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public static string deleteUser(string username, string token)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/User?username=");// + username);
+
+                    httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                    httpWebRequest.Accept = "application/json; charset=utf-8";
+                    httpWebRequest.ContentType = "application/json; charset=utf-8";
+                    httpWebRequest.ContentLength = username.Length;
+                    httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                    var byteName = Encoding.ASCII.GetBytes(username);
+
+                    using (var stream = httpWebRequest.GetRequestStream())
+                    {
+                        stream.Write(byteName, 0, byteName.Length);
+                    }
+
+                    var response = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                    var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+                    return responseString;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Windows.MessageBox.Show(e.ToString());
+                return null;
+                
+            }
+        }
     }
 }

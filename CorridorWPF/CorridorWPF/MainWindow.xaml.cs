@@ -114,13 +114,6 @@ namespace CorridorWPF
             btn_setTime.IsEnabled = true; //setTime button is enabled
         }
 
-        private void btn_addNewAccount_Click(object sender, RoutedEventArgs e)
-        {
-            AddNewAccount AddNewAccountWindow = new AddNewAccount(token);
-            AddNewAccountWindow.Show();
-
-            updateCorridor(AddNewAccountWindow.cb_chooseCorridor);
-        }
 
 
         private void btn_updateTeacherSchedule_Click(object sender, RoutedEventArgs e)
@@ -203,19 +196,8 @@ namespace CorridorWPF
 
         private void cb_staffCorridors_DropDownOpened(object sender, EventArgs e)
         {
-            //List<Models.Corridor> list = new List<Models.Corridor>();
-           
-            //string json = Repository.CorridorRepository.getCorridor(token);
-            //var j = JArray.Parse(json);
-            //int x = 0;
-
-            //for (int i = 0; i < j.Count(); i++)
-            //{
-            //    Models.Corridor corridor = JsonConvert.DeserializeObject<Models.Corridor>(j[i].ToString());
-            //    cb_staffCorridors.Items.Add(corridor.corridorName.ToString());
-            //}
-            
-
+            cb_staffCorridors.Items.Clear();
+            updateCorridor(cb_staffCorridors);
         }
 
 
@@ -381,27 +363,102 @@ namespace CorridorWPF
 
         private void btn_updateTeacherList_Click(object sender, RoutedEventArgs e)
         {
+            list_teachersInCorridor.Items.Clear();
             getTeachersList(cb_teacherList, list_teachersInCorridor);
         }
 
-        private void btn_removeTeacher_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_addTeacher_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_viewEntireStaff_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void cb_otherCorridors_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             cb_otherTeachers.Items.Clear();
+        }
+
+        private void btn_AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txt_AddPassword.ToString() != txt_AddConfirmPassword.ToString())
+                {
+                    System.Windows.MessageBox.Show("Password confirmation is invalid!");
+                }
+                else
+                {
+
+                    Models.User user = new Models.User();
+                    user.firstname = txt_AddFirstName.Text.ToString();
+                    user.lastname = txt_AddLastName.Text.ToString();
+                    user.UserName = txt_AddUsername.Text.ToString();
+                    user.email = txt_AddEmail.Text.ToString();
+                    user.roomNr = txt_AddRoomNumber.Text.ToString();
+                    user.Password = txt_AddPassword.Text.ToString();
+                    user.ConfirmPassword = txt_AddConfirmPassword.Text.ToString();
+                    user.mobile = txt_AddMobileNumber.Text.ToString();
+                    user.isAdmin = chk_IsAdmin.IsChecked.Value;
+
+
+                    string returnMessage = Repository.StaffRepository.AddNewUser(user, token); //Adds new user
+
+                    string data = cb_chooseCorridor.Text.ToString();
+                    int index = data.LastIndexOf("ID:") + "ID:".Length; //plucks out the ID        
+                    string corridorId = data.Substring(index);
+                    Repository.CorridorRepository.MoveUserToCorridor(user.UserName, corridorId, token); //Moves the user to the chosen corridor
+                }
+
+
+               
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void cb_chooseCorridor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btn_AddUser.IsEnabled = true;
+        }
+
+        private void cb_chooseCorridor_DropDownOpened(object sender, EventArgs e)
+        {
+            updateCorridor(cb_chooseCorridor);
+        }
+
+        private void cb_teacherList_DropDownOpened(object sender, EventArgs e)
+        {
+            updateCorridor(cb_teacherList);
+        }
+
+        private void cb_studentCorridors_DropDownOpened(object sender, EventArgs e)
+        {
+            cb_studentCorridors.Items.Clear();
+            updateCorridor(cb_studentCorridors);
+        }
+
+        private void btn_deleteSelectedUser_Click(object sender, RoutedEventArgs e)
+        {
+            string user = list_teachersInCorridor.SelectedValue.ToString();
+
+            Repository.StaffRepository.deleteUser(user, token);
+
+            list_teachersInCorridor.Items.Clear();
+            getTeachersList(cb_teacherList, list_teachersInCorridor);
+        }
+
+        private void cb_teacherListDelete_DropDownOpened(object sender, EventArgs e)
+        {
+            updateCorridor(cb_teacherListDelete);
+        }
+
+        private void btn_deleteCorridor_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> staff = new List<string>();
+
+            staff = Repository.CorridorRepository.getStaffInCorridor(token, cb_teacherListDelete);
+
+            for (int i = 0; i < staff.Count; i++)
+            {
+                Repository.StaffRepository.deleteUser(staff[i], token);
+            }
         }
     }
 
