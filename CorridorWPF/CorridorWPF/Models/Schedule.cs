@@ -48,5 +48,18 @@ namespace CorridorWPF.Models
         public string moment { get; set; }
         public bool available { get; set; }
     }
+
+
+    public class ScheduleModel
+    {
+
+        public string fromDateAndTime { get; set; }
+        public string toDateAndTime { get; set; } //if null API sets time for you
+        //roomnumber were staff will be
+        public string roomNr { get; set; } //null from apps
+        public string course { get; set; } //null from apps
+        public string scheduleInfo { get; set; } //null from apps
+        public bool available { get; set; }//True if you want to create a schedule that keeps you avaiable
+    }
 }
 

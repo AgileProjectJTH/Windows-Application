@@ -53,5 +53,6 @@ namespace CorridorWPF.Models
 
         public List<Schedule> schedules { get; set; }
     }
+
 }
 

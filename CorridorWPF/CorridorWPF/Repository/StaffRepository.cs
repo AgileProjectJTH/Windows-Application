@@ -121,16 +121,44 @@ namespace CorridorWPF.Repository
             }
         }
 
-        public static string setTeacherAvailability(Models.Schedule scheduleModel, bool avaliable ,string token)
+        public static string setTeacherAvailability(Models.ScheduleModel scheduleModel ,string token)
         {
-            if(avaliable)
-            {
-                return null;
-            }
-            else
-            {
-                return null;
-            }
+                try
+                {
+                    using (var client = new HttpClient())
+                    {
+                        string json;
+                        HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Schedule");
+
+                        httpWebRequest.Method = WebRequestMethods.Http.Post;//GET OR POST
+                        httpWebRequest.Accept = "application/json; charset=utf-8";
+                        httpWebRequest.ContentType = "application/json; charset=utf-8";
+                        httpWebRequest.Headers.Add("Authorization", "Bearer " + token);
+
+                        using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                        {
+
+                            json = JsonConvert.SerializeObject(scheduleModel);
+
+                            streamWriter.Write(json);
+                            streamWriter.Flush();
+                            streamWriter.Close();
+                        }
+
+                        var response = (HttpWebResponse)httpWebRequest.GetResponse();
+                        var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+                        System.Windows.MessageBox.Show("Time was set!");
+                        return responseString;
+
+                        
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.Windows.MessageBox.Show(e.ToString());
+                    return null;
+                }
+
         }
 
         /// <summary>

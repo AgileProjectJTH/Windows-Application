@@ -49,6 +49,7 @@ namespace CorridorWPF
     public partial class MainWindow : Window
     {
         public string token = "";
+        public bool isAvailable = true;
 
         public MainWindow()
         {
@@ -83,6 +84,9 @@ namespace CorridorWPF
                 // Change status text
                 txt_Availability.Text = "You are available";
 
+                // Sets the global variable to true
+                isAvailable = true;
+
             }
             else
             {
@@ -98,6 +102,9 @@ namespace CorridorWPF
 
                 // Change status text
                 txt_Availability.Text = "You are unavailable";
+
+                // Sets the global variable to false
+                isAvailable = false;
             }
         }
 
@@ -105,11 +112,16 @@ namespace CorridorWPF
         private void btn_setTime_Click(object sender, RoutedEventArgs e) //When the setTime button is clicked
         {
             btn_setTime.IsEnabled = false; //setTime button is disabled
-            int worhtlessVariable = 0;
-            Models.Schedule schedule;
+            DateTime dateAndTime = DateTime.Now; //Date and time right now
+            DateTime dateAndTimeExtendedTo = dateAndTime.Add(TimeSpan.Parse(cb_selectTime.Text.ToString())); //Creates new date and time extended with the time selected
 
-            //schedule.available = btn_toggleAvailable.;
+            Models.ScheduleModel scheduleModel = new Models.ScheduleModel(); //New model to send for the selected time a availablity
+            scheduleModel.available = isAvailable; 
+            scheduleModel.fromDateAndTime = dateAndTime.ToString("yyy-MM-dd HH:mm:ss"); //Todays date
+            scheduleModel.toDateAndTime = dateAndTimeExtendedTo.ToString("yyy-MM-dd HH:mm:ss"); //Time when select time has passed
 
+            Repository.StaffRepository.setTeacherAvailability(scheduleModel, token);
+            
         }
 
         private void cb_selectTime_DropDownClosed(object sender, EventArgs e) //When the combobox closes AKA an item has been chosen from the time list
