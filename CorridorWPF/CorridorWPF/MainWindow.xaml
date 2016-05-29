@@ -16,8 +16,8 @@
                         <RowDefinition Height="131*"/>
                         <RowDefinition Height="125*"/>
                     </Grid.RowDefinitions>
-                    <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LimeGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60" Grid.RowSpan="2">
-                        <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Red"/>
+                    <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LightGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60" Grid.RowSpan="2">
+                        <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Salmon"/>
                     </Border>
                     <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,173" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
                     <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,118,21" HorizontalAlignment="Right" Width="136" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
@@ -69,10 +69,16 @@
             </TabItem>
             <TabItem Header="Staff TV">
                 <Grid Background="#FFE5E5E5">
-                    <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="271*"/>
+                        <ColumnDefinition Width="34*"/>
+                        <ColumnDefinition Width="971*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Background="#FFE5E5E5" Grid.ColumnSpan="3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="73*"/>
-                            <ColumnDefinition Width="246*"/>
+                            <ColumnDefinition Width="25*"/>
+                            <ColumnDefinition Width="121*"/>
+                            <ColumnDefinition Width="492*"/>
                         </Grid.ColumnDefinitions>
                         <DataGrid x:Name="dGrid_staffTvNotes" 
                                   Margin="0,49,32,9" 
@@ -83,9 +89,9 @@
                                   FontWeight="Bold" 
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                                  Height="546" IsReadOnly="True" Grid.Column="1"/>
-                        <Button x:Name="btn_updateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,11,32,0" Height="33" VerticalAlignment="Top" Grid.Column="1" Click="btn_updateStaffTv_Click"/>
-                        <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened">
+                                  Height="546" IsReadOnly="True" Grid.Column="2"/>
+                        <Button x:Name="btn_updateStaffTv" Content="Update" HorizontalAlignment="Right" Width="143" Margin="0,11,32,0" Height="33" VerticalAlignment="Top" Grid.Column="2" Click="btn_updateStaffTv_Click"/>
+                        <ComboBox x:Name="cb_staffCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_staffCorridors_DropDownOpened" Grid.ColumnSpan="2">
 
                         </ComboBox>
                         <DataGrid x:Name="dGrid_staffTv" 
@@ -99,14 +105,14 @@
                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   HorizontalAlignment="Right" 
-                                  Width="935" Grid.ColumnSpan="2"/>
+                                  Width="935" Grid.ColumnSpan="3"/>
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Student TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True"/>
+                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True" FontFamily="Georgia Pro Black" FontWeight="Bold" FontSize="16"/>
                         <Button x:Name="btn_updateStudentTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="1108,10,0,0" Height="33" Click="btn_updateStudentTv_Click"/>
                         <ComboBox x:Name="cb_studentCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_studentCorridors_DropDownOpened"/>
                     </Grid>

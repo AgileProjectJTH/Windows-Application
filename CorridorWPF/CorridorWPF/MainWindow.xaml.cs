@@ -69,17 +69,18 @@ namespace CorridorWPF
         private void btn_toggleAvailable_Click(object sender, RoutedEventArgs e)
         {
             // Check if button is green
-            if (btn_toggleAvailable.Background == Brushes.LimeGreen)
+            if (btn_toggleAvailable.Background == Brushes.LightGreen)
             {
                 // Set Toggle Available button color and change content
-                btn_toggleAvailable.Background = Brushes.Red;
+                btn_toggleAvailable.Background = Brushes.Salmon;
                 btn_toggleAvailable.Content = "Unavailable";
 
                 // Set "Set time" button color
-                btn_setTime.Background = Brushes.LimeGreen;
+                btn_setTime.Background = Brushes.LightGreen;
 
                 // Set background color
-                bdr_availability.Background = Brushes.LimeGreen;
+                bdr_availability.Background = Brushes.LightGreen;
+                
 
                 // Change status text
                 txt_Availability.Text = "You are available";
@@ -91,14 +92,14 @@ namespace CorridorWPF
             else
             {
                 // Set Toggle Available button color and change content
-                btn_toggleAvailable.Background = Brushes.LimeGreen;
+                btn_toggleAvailable.Background = Brushes.LightGreen;
                 btn_toggleAvailable.Content = "Available";
 
                 // Set "Set time" button color
-                btn_setTime.Background = Brushes.Red;
+                btn_setTime.Background = Brushes.Salmon;
 
                 // Set background color
-                bdr_availability.Background = Brushes.Red;
+                bdr_availability.Background = Brushes.Salmon;
 
                 // Change status text
                 txt_Availability.Text = "You are unavailable";

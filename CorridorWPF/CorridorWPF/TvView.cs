@@ -121,12 +121,12 @@ namespace CorridorWPF
             if (availability)
             {
                 staff.Availability = "Available";
-                newRow.Background = Brushes.LimeGreen;
+                newRow.Background = Brushes.LightGreen;
             }
             else
             {
                 staff.Availability = "Unavailable";
-                newRow.Background = Brushes.Red;
+                newRow.Background = Brushes.Salmon;
             }
 
             newRow.Item = staff;
@@ -201,12 +201,12 @@ namespace CorridorWPF
             if (availability)
             {
                 staff.Availability = "Available";
-                newRow.Background = Brushes.LimeGreen;
+                newRow.Background = Brushes.LightGreen;
             }
             else
             {
                 staff.Availability = "Unavailable";
-                newRow.Background = Brushes.Red;
+                newRow.Background = Brushes.Salmon;
             }
 
             newRow.Item = staff;

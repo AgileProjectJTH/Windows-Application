@@ -80,7 +80,7 @@ namespace CorridorWPF
                 }
                 catch (Exception e)
                 {
-                    System.Windows.MessageBox.Show("Please logg in first");
+                    //System.Windows.MessageBox.Show("Please logg in first");
                     System.Windows.MessageBox.Show(e.ToString());
                 }
 
