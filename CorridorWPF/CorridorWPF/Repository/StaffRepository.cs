@@ -116,11 +116,19 @@ namespace CorridorWPF.Repository
             }
             catch (Exception e)
             {
-                System.Windows.MessageBox.Show(e.ToString());
+                //System.Windows.MessageBox.Show(e.ToString());
+                //throw;
                 return null;
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="scheduleModel"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static string setTeacherAvailability(Models.ScheduleModel scheduleModel ,string token)
         {
                 try
@@ -252,6 +260,37 @@ namespace CorridorWPF.Repository
                 return null;
                 
             }
+        }
+
+
+
+        public static void setAvailability(bool available)
+        {
+            //if (available)
+            //{
+            //    DateTime dateAndTime = DateTime.Now; //Date and time right now
+            //    DateTime dateAndTimeExtendedTo = dateAndTime.Add(TimeSpan.Parse(cb_selectTime.Text.ToString())); //Creates new date and time extended with the time selected
+
+            //    Models.ScheduleModel scheduleModel = new Models.ScheduleModel(); //New model to send for the selected time a availablity
+            //    scheduleModel.available = isAvailable;
+            //    scheduleModel.fromDateAndTime = dateAndTime.ToString("yyy-MM-dd HH:mm:ss"); //Todays date
+            //    scheduleModel.toDateAndTime = dateAndTimeExtendedTo.ToString("yyy-MM-dd HH:mm:ss"); //Time when select time has passed
+
+            //    Repository.StaffRepository.setTeacherAvailability(scheduleModel, token);
+            //}
+            //else
+            //{
+            //    DateTime dateAndTime = DateTime.Now; //Date and time right now
+            //    DateTime dateAndTimeExtendedTo = dateAndTime.Add(TimeSpan.Parse(cb_selectTime.Text.ToString())); //Creates new date and time extended with the time selected
+
+            //    Models.ScheduleModel scheduleModel = new Models.ScheduleModel(); //New model to send for the selected time a availablity
+            //    scheduleModel.available = isAvailable;
+            //    scheduleModel.fromDateAndTime = dateAndTime.ToString("yyy-MM-dd HH:mm:ss"); //Todays date
+            //    scheduleModel.toDateAndTime = dateAndTimeExtendedTo.ToString("yyy-MM-dd HH:mm:ss"); //Time when select time has passed
+
+            //    Repository.StaffRepository.setTeacherAvailability(scheduleModel, token);
+            //}
+
         }
     }
 }

@@ -33,12 +33,10 @@ C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\bin\Deb
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.exe
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\bin\Debug\CorridorWPF.pdb
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csprojResolveAssemblyReference.cache
-C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\AddNewAccount.g.cs
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\MainWindow.g.cs
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\App.g.cs
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF_MarkupCompile.cache
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF_MarkupCompile.lref
-C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\AddNewAccount.baml
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\MainWindow.baml
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.g.resources
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.Properties.Resources.resources

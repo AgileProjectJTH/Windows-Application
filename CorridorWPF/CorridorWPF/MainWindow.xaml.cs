@@ -21,7 +21,8 @@ using System.Windows.Shapes;
 namespace CorridorWPF
 {
 
-    public class NameToBrushConverter : IValueConverter
+
+public class NameToBrushConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -201,6 +202,44 @@ namespace CorridorWPF
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
             token = Repository.ScheduleRepository.getToken(txt_Username.Text.ToString(), txt_Password.Text.ToString());
+
+            if (Repository.StaffRepository.GetTeacherAvailability(txt_Username.Text.ToString(), token) == "true")
+            {
+                // Set Toggle Available button color and change content
+                btn_toggleAvailable.Background = Brushes.Salmon;
+                btn_toggleAvailable.Content = "Unavailable";
+
+                // Set "Set time" button color
+                btn_setTime.Background = Brushes.LightGreen;
+
+                // Set background color
+                bdr_availability.Background = Brushes.LightGreen;
+
+
+                // Change status text
+                txt_Availability.Text = "You are available";
+
+                // Sets the global variable to true
+                isAvailable = true;
+            }
+            else
+            {
+                // Set Toggle Available button color and change content
+                btn_toggleAvailable.Background = Brushes.LightGreen;
+                btn_toggleAvailable.Content = "Available";
+
+                // Set "Set time" button color
+                btn_setTime.Background = Brushes.Salmon;
+
+                // Set background color
+                bdr_availability.Background = Brushes.Salmon;
+
+                // Change status text
+                txt_Availability.Text = "You are unavailable";
+
+                // Sets the global variable to false
+                isAvailable = false;
+            }
         }
 
         private void btn_AddCorridor_Click(object sender, RoutedEventArgs e)
@@ -358,7 +397,6 @@ namespace CorridorWPF
             catch (Exception ee)
             {
                 System.Windows.MessageBox.Show(ee.ToString());
-
             }
 
         }
