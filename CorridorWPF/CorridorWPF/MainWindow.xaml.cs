@@ -531,6 +531,7 @@ public class NameToBrushConverter : IValueConverter
         {
             StudentTvFullscreen StudentFullWindow = new StudentTvFullscreen(cb_studentCorridors,token);
             StudentFullWindow.Show();
+            StudentFullWindow.intialScheduleLoad();
         }
     }
 

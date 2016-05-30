@@ -37,11 +37,15 @@ namespace CorridorWPF
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
             dispatcherTimer.Start();
-            Repository.ScheduleRepository.LoadTvView(dGridStudentTvFullscreen, cb_Box, token);
+            
 
         }
 
 
+        public void intialScheduleLoad()
+        {
+            Repository.ScheduleRepository.LoadTvView(dGridStudentTvFullscreen, cb_Box, token);
+        }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
