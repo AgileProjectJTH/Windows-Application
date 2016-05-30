@@ -157,6 +157,7 @@
                     <Button x:Name="btn_deleteCorridor" Content="Delete corridor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="93" Grid.Column="1" Margin="1022,562,0,0" Click="btn_deleteCorridor_Click"/>
                     <ComboBox x:Name="cb_corridorListDelete" Margin="1022,523,78,0" VerticalAlignment="Top" DropDownOpened="cb_teacherListDelete_DropDownOpened" Grid.Column="1"/>
                     <Button x:Name="btn_deleteSelectedUser" Content="Delete selected user" HorizontalAlignment="Left" Margin="33,562,0,0" VerticalAlignment="Top" Width="117" Height="32" Grid.ColumnSpan="2" Click="btn_deleteSelectedUser_Click"/>
+                    <GroupBox x:Name="groupBox1" Grid.Column="1" Header="Add New User" HorizontalAlignment="Left" Margin="782,62,0,0" VerticalAlignment="Top" Height="379" Width="435"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">

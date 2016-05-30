@@ -358,6 +358,10 @@ public class NameToBrushConverter : IValueConverter
                 {
                     System.Windows.MessageBox.Show("Password confirmation is invalid!");
                 }
+                else if(cb_chooseCorridor.Text.ToString() == "")
+                {
+                    System.Windows.MessageBox.Show("Please choose a corridor");
+                }
                 else
                 {
 
@@ -392,6 +396,7 @@ public class NameToBrushConverter : IValueConverter
                     txt_Availability.Text = null;
                     txt_Password.Text = null;
                     txt_Username.Text = null;
+                    cb_chooseCorridor.Items.Clear();
                 }
 
 
@@ -465,6 +470,7 @@ public class NameToBrushConverter : IValueConverter
                     int index = data.LastIndexOf("ID:") + "ID:".Length; //plucks out the ID        
                     string corridorId = data.Substring(index);
                     Repository.CorridorRepository.deleteCorridor(corridorId, token);
+                    cb_corridorListDelete.Items.Clear();
                 }
             }
 
