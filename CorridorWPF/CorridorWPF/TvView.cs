@@ -100,11 +100,12 @@ namespace CorridorWPF
                 DataGridTextColumn gridColumn = new DataGridTextColumn();
                 gridColumn.Header = TvHeaders[ii];
                 gridColumn.Binding = new Binding(TvHeaders[ii]);
-                gridColumn.Width = (dataGrid.Width / 2);
+                gridColumn.Width = (dataGrid.ActualWidth / 2);
                 dataGrid.Columns.Add(gridColumn);
             }
 
         }
+
 
         /// <summary>
         /// Adds a new Staff member
@@ -140,7 +141,7 @@ namespace CorridorWPF
         /// </summary>
         private void updateRowHeight()
         {
-            dataGrid.MinRowHeight = ((dataGrid.Height / dataGrid.Items.Count) - 5);
+            dataGrid.MinRowHeight = ((dataGrid.ActualHeight / dataGrid.Items.Count) - 5); //Changed dataGrid.Height to dataGrid.ActualHeight
         }
 
 

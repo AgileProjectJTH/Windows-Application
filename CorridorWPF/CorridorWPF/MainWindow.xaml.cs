@@ -51,6 +51,8 @@ public class NameToBrushConverter : IValueConverter
     {
         public string token = "";
         public bool isAvailable = true;
+        public bool fullScreen = false;
+        public double currentPosition = 0;
 
         public MainWindow()
         {
@@ -151,46 +153,7 @@ public class NameToBrushConverter : IValueConverter
 
         private void btn_updateStudentTv_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                TvViewStaff tvViewStd = new TvViewStaff(dGrid_StudentTv);
-                List<string> listName = new List<string>();
-                string data = cb_studentCorridors.Text.ToString();
-
-                int index = data.LastIndexOf("ID:") + "ID:".Length;
-
-                string corridorId = data.Substring(index);
-
-                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
-
-                Models.Staffs staffs = new Models.Staffs(json);
-
-                tvViewStd.createHeaders();
-                for (int i = 0; i < staffs.staffs.Count; i++)
-                {
-                    listName.Add(staffs.staffs[i].username.ToString());
-                }
-
-                for (int i = 0; i < listName.Count; i++)
-                {
-                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(listName[i], token);
-                    if (jsonn == "true")
-                    {
-                        tvViewStd.addStaff(listName[i].ToString(), true);
-                    }
-                    else
-                    {
-                        tvViewStd.addStaff(listName[i].ToString(), false);
-                    }
-
-                }
-
-
-            }
-            catch(Exception ee)
-            {
-                System.Windows.MessageBox.Show(ee.ToString());
-            }
+            Repository.ScheduleRepository.LoadTvView(dGrid_StudentTv,cb_studentCorridors, token);
         }
 
         private void btn_token_Click(object sender, RoutedEventArgs e)
@@ -359,45 +322,7 @@ public class NameToBrushConverter : IValueConverter
         private void btn_updateStaffTv_Click(object sender, RoutedEventArgs e)
         {
 
-            try
-            {
-                TvViewStaff tvViewStf = new TvViewStaff(dGrid_staffTv);
-                List<string> listName = new List<string>();
-                string data = cb_staffCorridors.Text.ToString();
-
-                int index = data.LastIndexOf("ID:") + "ID:".Length;
-
-                string corridorId = data.Substring(index);
-
-                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
-
-                Models.Staffs staffs = new Models.Staffs(json);
-
-                tvViewStf.createHeaders();
-                for (int i = 0; i < staffs.staffs.Count; i++)
-                {
-                    listName.Add(staffs.staffs[i].username.ToString());
-                }
-
-                for (int i = 0; i < listName.Count; i++)
-                {
-                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(listName[i], token);
-                    if (jsonn == "true")
-                    {
-                        tvViewStf.addStaff(listName[i].ToString(), true);
-                    }
-                    else
-                    {
-                        tvViewStf.addStaff(listName[i].ToString(), false);
-                    }
-                    
-                }
-
-            }
-            catch (Exception ee)
-            {
-                System.Windows.MessageBox.Show(ee.ToString());
-            }
+            Repository.ScheduleRepository.LoadTvView(dGrid_staffTv, cb_staffCorridors, token);
 
         }
 
@@ -578,6 +503,34 @@ public class NameToBrushConverter : IValueConverter
             {
                 cb_otherTeachers.IsEnabled = true;
             }
+        }
+
+        private void dGrid_StudentTv_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if(!fullScreen)
+            {
+                //DependencyObject parent = VisualTreeHelper.GetParent(dGrid_StudentTv);
+                studentCanvas.Children.Remove(dGrid_StudentTv);
+                this.WindowStyle = WindowStyle.None;
+                this.Content = dGrid_StudentTv;           
+                this.WindowState = WindowState.Maximized;
+                
+
+            }
+            else
+            {
+                this.Content = null;
+                studentCanvas.Children.Add(dGrid_StudentTv);
+                this.WindowStyle = WindowStyle.SingleBorderWindow;
+                this.WindowState = WindowState.Normal;
+            }
+            fullScreen = !fullScreen;
+        }
+
+        private void btn_studentTvFullscreen_Click(object sender, RoutedEventArgs e)
+        {
+            StudentTvFullscreen StudentFullWindow = new StudentTvFullscreen(cb_studentCorridors,token);
+            StudentFullWindow.Show();
         }
     }
 

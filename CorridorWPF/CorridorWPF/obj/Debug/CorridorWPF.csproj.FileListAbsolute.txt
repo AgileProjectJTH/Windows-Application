@@ -81,3 +81,5 @@ D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.Proper
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.csproj.GenerateResource.Cache
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.exe
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\CorridorWPF.pdb
+D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StudentTvFullscreen.g.cs
+D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StudentTvFullscreen.baml

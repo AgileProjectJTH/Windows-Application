@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace CorridorWPF.Repository
 {
@@ -102,6 +103,56 @@ namespace CorridorWPF.Repository
             }
 
         }
+
+        /// <summary>
+        /// Common function to load all tvViews
+        /// </summary>
+        /// <param name="dGrid"></param>
+        /// <param name="cb_Box"></param>
+        /// <param name="token"></param>
+        public static void LoadTvView(DataGrid dGrid, ComboBox cb_Box, string token)
+        {
+            try
+            {
+                TvViewStaff tvView = new TvViewStaff(dGrid);
+                List<string> listName = new List<string>();
+                string data = cb_Box.Text.ToString();
+
+                int index = data.LastIndexOf("ID:") + "ID:".Length;
+
+                string corridorId = data.Substring(index);
+
+                string json = Repository.StaffRepository.GetCorridorTeachers(corridorId, token);
+
+                Models.Staffs staffs = new Models.Staffs(json);
+
+                tvView.createHeaders();
+                for (int i = 0; i < staffs.staffs.Count; i++)
+                {
+                    listName.Add(staffs.staffs[i].username.ToString());
+                }
+
+                for (int i = 0; i < listName.Count; i++)
+                {
+                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(listName[i], token);
+                    if (jsonn == "true")
+                    {
+                        tvView.addStaff(listName[i].ToString(), true);
+                    }
+                    else
+                    {
+                        tvView.addStaff(listName[i].ToString(), false);
+                    }
+
+                }
+
+
+            }
+            catch (Exception ee)
+            {
+                System.Windows.MessageBox.Show(ee.ToString());
+            }
+        } 
 
     //    public static string getTeacherSchedule(string dateAndTime, string username, string token, string adress)
     //    {

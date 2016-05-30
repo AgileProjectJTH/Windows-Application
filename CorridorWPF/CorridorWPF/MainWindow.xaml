@@ -111,10 +111,11 @@
             </TabItem>
             <TabItem Header="Student TV">
                 <Grid Background="#FFE5E5E5">
-                    <Grid Background="#FFE5E5E5">
-                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True" FontFamily="Georgia Pro Black" FontWeight="Bold" FontSize="16"/>
+                    <Grid x:Name="studentCanvas" Background="#FFE5E5E5">
+                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True" FontFamily="Georgia Pro Black" FontWeight="Bold" FontSize="16" MouseLeftButtonUp="dGrid_StudentTv_MouseLeftButtonUp"/>
                         <Button x:Name="btn_updateStudentTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="1108,10,0,0" Height="33" Click="btn_updateStudentTv_Click"/>
                         <ComboBox x:Name="cb_studentCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_studentCorridors_DropDownOpened"/>
+                        <Button x:Name="btn_studentTvFullscreen" Content="Open Fullscreen" HorizontalAlignment="Left" Margin="996,10,0,0" VerticalAlignment="Top" Width="95" Height="33" Click="btn_studentTvFullscreen_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
