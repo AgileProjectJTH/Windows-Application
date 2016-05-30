@@ -283,7 +283,7 @@ public class NameToBrushConverter : IValueConverter
                 Models.Staffs staffs = new Models.Staffs(json);
                 for (int i = 0; i < staffs.staffs.Count; i++)
                 {
-                    list.Items.Add(staffs.staffs[i].username.ToString());
+                    list.Items.Add(staffs.staffs[i].firstname.ToString() + " " + staffs.staffs[i].lastname.ToString() + " Username: " + staffs.staffs[i].username.ToString());
                 }
 
             }
@@ -437,7 +437,11 @@ public class NameToBrushConverter : IValueConverter
             {
                 string user = list_teachersInCorridor.SelectedValue.ToString();
 
-                Repository.StaffRepository.deleteUser(user, token);
+                int index = user.LastIndexOf("Username: ") + "Username: ".Length;
+
+                string username = user.Substring(index);
+
+                Repository.StaffRepository.deleteUser(username, token);
 
                 list_teachersInCorridor.Items.Clear();
                 getTeachersList(cb_teacherList, list_teachersInCorridor);

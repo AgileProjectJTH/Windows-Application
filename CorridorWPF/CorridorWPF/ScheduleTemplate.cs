@@ -95,33 +95,39 @@ namespace CorridorWPF
         {
             string newRow = "\n";
             WeekDays newDay = new WeekDays();
+            int maxLen = countMaxEvents(schedule);
 
-            for (int ii = 0; ii < countMaxEvents(schedule); ii++)
+            for (int ii = 0; ii < maxLen; ii++)
             {
                 //Makes sure the schedule is not empty
                 if (schedule[0].Count != 0)
                 {
-                    newDay.Monday = schedule[0][ii].moment + newRow + schedule[0][ii].date + newRow + schedule[0][ii].from + "-" + schedule[0][ii].to + newRow;
+                    newDay.Monday = schedule[0][0].moment + newRow + schedule[0][0].date + newRow + schedule[0][0].from + "-" + schedule[0][0].to + newRow;
+                    schedule[0].RemoveAt(0);
                 }
 
                 if (schedule[1].Count != 0)
                 {
-                    newDay.Tuesday = schedule[1][ii].moment + newRow + schedule[1][ii].date + newRow + schedule[1][ii].from + "-" + schedule[1][ii].to + newRow;
+                    newDay.Tuesday = schedule[1][0].moment + newRow + schedule[1][0].date + newRow + schedule[1][0].from + "-" + schedule[1][0].to + newRow;
+                    schedule[1].RemoveAt(0);
                 }
 
                 if (schedule[2].Count != 0)
                 {
-                    newDay.Wednesday = schedule[2][ii].moment + newRow + schedule[2][ii].date + newRow + schedule[2][ii].from + "-" + schedule[2][ii].to + newRow;
+                    newDay.Wednesday = schedule[2][0].moment + newRow + schedule[2][0].date + newRow + schedule[2][0].from + "-" + schedule[2][0].to + newRow;
+                    schedule[2].RemoveAt(0);
                 }
 
                 if (schedule[3].Count != 0)
                 {
-                    newDay.Thursday = schedule[3][ii].moment + newRow + schedule[3][ii].date + newRow + schedule[3][ii].from + "-" + schedule[3][ii].to + newRow;
+                    newDay.Thursday = schedule[3][0].moment + newRow + schedule[3][0].date + newRow + schedule[3][0].from + "-" + schedule[3][0].to + newRow;
+                    schedule[3].RemoveAt(0);
                 }
 
                 if (schedule[4].Count != 0)
                 {
-                    newDay.Friday = schedule[4][ii].moment + newRow + schedule[4][ii].date + newRow + schedule[4][ii].from + "-" + schedule[4][ii].to + newRow;
+                    newDay.Friday = schedule[4][0].moment + newRow + schedule[4][0].date + newRow + schedule[4][0].from + "-" + schedule[4][0].to + newRow;
+                    schedule[4].RemoveAt(0);
                 }
 
                 dGrid.Items.Add(new WeekDays
@@ -131,11 +137,17 @@ namespace CorridorWPF
                     Wednesday = newDay.Wednesday,
                     Thursday = newDay.Thursday,
                     Friday = newDay.Friday
-                }); //Adds all the row days data     
+                }); //Adds all the row days data  
+
+                newDay.Monday = null;
+                newDay.Tuesday = null;
+                newDay.Wednesday = null;
+                newDay.Thursday = null;
+                newDay.Friday = null;
             }
-                    
+
         }
-            
+
         /// <summary>
         /// Returns the maximum ammount of events in the week 
         /// </summary>
