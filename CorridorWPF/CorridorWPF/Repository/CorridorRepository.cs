@@ -44,7 +44,8 @@ namespace CorridorWPF.Repository
             }
             catch(Exception e)
             {
-                System.Windows.MessageBox.Show(e.ToString());
+                System.Windows.MessageBox.Show("Something went wrong \nDo you miss admin privileges?");
+                //System.Windows.MessageBox.Show(e.ToString());
                 return null;
             }
 
