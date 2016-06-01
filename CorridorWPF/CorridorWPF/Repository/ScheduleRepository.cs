@@ -116,6 +116,7 @@ namespace CorridorWPF.Repository
             {
                 TvViewStaff tvView = new TvViewStaff(dGrid);
                 List<string> listName = new List<string>();
+                List<string> username = new List<string>();
                 string data = cb_Box.Text.ToString();
 
                 int index = data.LastIndexOf("ID:") + "ID:".Length;
@@ -129,12 +130,13 @@ namespace CorridorWPF.Repository
                 tvView.createHeaders();
                 for (int i = 0; i < staffs.staffs.Count; i++)
                 {
-                    listName.Add(staffs.staffs[i].username.ToString());
+                    listName.Add(staffs.staffs[i].firstname.ToString() + " " + staffs.staffs[i].lastname.ToString());
+                    username.Add(staffs.staffs[i].username.ToString());
                 }
 
                 for (int i = 0; i < listName.Count; i++)
                 {
-                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(listName[i], token);
+                    string jsonn = Repository.StaffRepository.GetTeacherAvailability(username[i], token);
                     if (jsonn == "true")
                     {
                         tvView.addStaff(listName[i].ToString(), true);

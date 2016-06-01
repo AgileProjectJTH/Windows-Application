@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -76,9 +76,6 @@
     <Compile Include="StaffTvFullscreen.xaml.cs">
       <DependentUpon>StaffTvFullscreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StaffTvView.xaml.cs">
-      <DependentUpon>StaffTvView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StudentTvFullscreen.xaml.cs">
       <DependentUpon>StudentTvFullscreen.xaml</DependentUpon>
     </Compile>
@@ -96,10 +93,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StaffTvFullscreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="StaffTvView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

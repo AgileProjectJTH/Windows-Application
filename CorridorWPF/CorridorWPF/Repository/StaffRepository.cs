@@ -97,7 +97,11 @@ namespace CorridorWPF.Repository
                 {
 
                  
-                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://193.10.30.155/corridorAPI/api/Staff?dateAndTime=" + DateTime.Now.ToString("yyy-MM-dd") + " " + DateTime.Now.ToString("hh:mm:ss") + "&username=" + username);
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create( "http://193.10.30.155/corridorAPI/api/Staff?dateAndTime=" + DateTime.Now.ToString("yyy-MM-dd") + " " + DateTime.Now.ToString("HH:mm:ss tt") + "&username=" + username);
+
+
+
+
 
                     httpWebRequest.Method = WebRequestMethods.Http.Get;//GET OR POST
                     httpWebRequest.Accept = "application/json; charset=utf-8";
@@ -116,20 +120,20 @@ namespace CorridorWPF.Repository
             }
             catch (Exception e)
             {
-                //System.Windows.MessageBox.Show(e.ToString());
+                System.Windows.MessageBox.Show(e.ToString());
                 //throw;
                 return null;
             }
         }
 
-
+        
         /// <summary>
         /// 
         /// </summary>
         /// <param name="scheduleModel"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public static string setTeacherAvailability(Models.ScheduleModel scheduleModel ,string token)
+        public static string setTeacherAvailability(Models.ScheduleModel scheduleModel, string token)
         {
                 try
                 {

@@ -20,8 +20,6 @@
                         <Button x:Name="btn_toggleAvailable" Content="Select Unavailable" Margin="40,89,42,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Salmon"/>
                     </Border>
                     <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,118,21" HorizontalAlignment="Right" Width="136" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
-                        <ComboBoxItem Content="Select time amount
-                                      " HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:10" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:20" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="00:30" HorizontalAlignment="Left" Width="122"/>
@@ -32,7 +30,6 @@
                         <ComboBoxItem Content="02:00" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="03:00" HorizontalAlignment="Left" Width="122"/>
                         <ComboBoxItem Content="04:00" HorizontalAlignment="Left" Width="122"/>
-                        <ComboBoxItem Content="All day" HorizontalAlignment="Left" Width="122"/>
 
 
                     </ComboBox>

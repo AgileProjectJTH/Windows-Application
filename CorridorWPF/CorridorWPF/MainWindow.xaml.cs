@@ -71,7 +71,7 @@ public class NameToBrushConverter : IValueConverter
 
         private void btn_toggleAvailable_Click(object sender, RoutedEventArgs e)
         {
-            // Check if button is green
+
             if (btn_toggleAvailable.Background == Brushes.LightGreen)
             {
                 // Set Toggle Available button color and change content
@@ -89,10 +89,11 @@ public class NameToBrushConverter : IValueConverter
 
                 // Sets the global variable to true
                 isAvailable = true;
-
+                // Check if button is green
             }
             else
             {
+
                 // Set Toggle Available button color and change content
                 btn_toggleAvailable.Background = Brushes.LightGreen;
                 btn_toggleAvailable.Content = "Select Available";
@@ -155,35 +156,13 @@ public class NameToBrushConverter : IValueConverter
             Repository.ScheduleRepository.LoadTvView(dGrid_StudentTv,cb_studentCorridors, token);
         }
 
-        private void btn_token_Click(object sender, RoutedEventArgs e)
-        {
-            //token = Repository.ScheduleRepository.getToken("Boris", "password");
-            Repository.CorridorRepository.addCorridor("FredrikTest", token);
-        }
+
 
         private void btn_Login_Click(object sender, RoutedEventArgs e)
         {
             token = Repository.ScheduleRepository.getToken(txt_Username.Text.ToString(), txt_Password.Text.ToString());
 
             if (Repository.StaffRepository.GetTeacherAvailability(txt_Username.Text.ToString(), token) == "true")
-            {
-                // Set Toggle Available button color and change content
-                btn_toggleAvailable.Background = Brushes.Salmon;
-                btn_toggleAvailable.Content = "Unavailable";
-
-                // Set "Set time" button color
-                btn_setTime.Background = Brushes.LightGreen;
-
-                // Set background color
-                bdr_availability.Background = Brushes.LightGreen;
-
-                // Content of set time button
-                btn_setTime.Content = "Set Time Available";
-
-                // Sets the global variable to true
-                isAvailable = true;
-            }
-            else
             {
                 // Set Toggle Available button color and change content
                 btn_toggleAvailable.Background = Brushes.LightGreen;
@@ -200,6 +179,25 @@ public class NameToBrushConverter : IValueConverter
 
                 // Sets the global variable to false
                 isAvailable = false;
+                
+            }
+            else
+            {
+                // Set Toggle Available button color and change content
+                btn_toggleAvailable.Background = Brushes.Salmon;
+                btn_toggleAvailable.Content = "Unavailable";
+
+                // Set "Set time" button color
+                btn_setTime.Background = Brushes.LightGreen;
+
+                // Set background color
+                bdr_availability.Background = Brushes.LightGreen;
+
+                // Content of set time button
+                btn_setTime.Content = "Set Time Available";
+
+                // Sets the global variable to true
+                isAvailable = true;
             }
         }
 
@@ -563,6 +561,11 @@ public class NameToBrushConverter : IValueConverter
             StaffTvFullscreen staffTVFullWindow = new StaffTvFullscreen(cb_staffCorridors, token);
             staffTVFullWindow.Show();
             staffTVFullWindow.intialScheduleLoad();
+        }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 
