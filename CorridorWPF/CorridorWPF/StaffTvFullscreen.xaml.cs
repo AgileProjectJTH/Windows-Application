@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace CorridorWPF
 {
@@ -21,14 +24,15 @@ namespace CorridorWPF
     {
         public string token = "";
         ComboBox cb_Box = new ComboBox();
+        string gridXaml = "";
 
-        public StaffTvFullscreen(ComboBox _cb_Box ,string _token)
+        public StaffTvFullscreen(ComboBox _cb_Box , string _gridXaml, string _token)
         {      
             InitializeComponent();
 
             cb_Box = _cb_Box;
             token = _token;
-            
+            gridXaml = _gridXaml;
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
@@ -45,6 +49,12 @@ namespace CorridorWPF
         public void intialScheduleLoad()
         {
             Repository.ScheduleRepository.LoadTvView(dGrid_staffTvFullscreen, cb_Box, token);
+            TVStaffNote rawNote = new TVStaffNote();
+            TVStaffNote note = new TVStaffNote();
+            var builder = new StringBuilder();
+            TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotesFullscreen);
+            staffNotes.createHeader();
+
             loadNotes();
 
         }
@@ -57,17 +67,22 @@ namespace CorridorWPF
 
         private void loadNotes()
         {
-            //Fetching data from a textbox
-            TVStaffNote rawNote = new TVStaffNote();
-            TVStaffNote note = new TVStaffNote();
-            var builder = new StringBuilder();
-            TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotesFullscreen);
-            staffNotes.createHeader();
+            StringReader stringReader = new StringReader(gridXaml);
+            XmlReader xmlReader = XmlReader.Create(stringReader);
+            //Grid newGrid = (Grid)XamlReader.Load(xmlReader);
+            dGrid_staffTvNotesFullscreen = (DataGrid)XamlReader.Load(xmlReader);
 
-            for (int i = 0; i < ((MainWindow)System.Windows.Application.Current.MainWindow).dGrid_staffTvNotes.Items.Count; i++)
-            {
-                //staffNotes.addNote(((MainWindow)System.Windows.Application.Current.MainWindow).dGrid_staffTvNotes.Items[i].ToString());
-            }
+            //Fetching data from a textbox
+            //TVStaffNote rawNote = new TVStaffNote();
+            //TVStaffNote note = new TVStaffNote();
+            //var builder = new StringBuilder();
+            //TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotesFullscreen);
+            //staffNotes.createHeader();
+
+            //for (int i = 0; i < ((MainWindow)System.Windows.Application.Current.MainWindow).dGrid_staffTvNotes.Items.Count; i++)
+            //{
+            //    //staffNotes.addNote(((MainWindow)System.Windows.Application.Current.MainWindow).dGrid_staffTvNotes.Items[i].ToString());
+            //}
 
             //rawNote.Notes = ((MainWindow)System.Windows.Application.Current.MainWindow).txtBox_notes.Text.ToString();
 

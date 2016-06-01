@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -558,7 +559,9 @@ public class NameToBrushConverter : IValueConverter
 
         private void btn_staffTvFullscreen_Click(object sender, RoutedEventArgs e)
         {
-            StaffTvFullscreen staffTVFullWindow = new StaffTvFullscreen(cb_staffCorridors, token);
+            string gridXaml = XamlWriter.Save(dGrid_staffTvNotes);
+
+            StaffTvFullscreen staffTVFullWindow = new StaffTvFullscreen(cb_staffCorridors, gridXaml, token);
             staffTVFullWindow.Show();
             staffTVFullWindow.intialScheduleLoad();
         }

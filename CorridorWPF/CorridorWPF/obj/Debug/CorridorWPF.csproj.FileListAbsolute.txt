@@ -85,8 +85,6 @@ D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StudentTvFullscree
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StudentTvFullscreen.baml
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\StudentTvFullscreen.g.cs
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\StudentTvFullscreen.baml
-D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StaffTvView.g.cs
-D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StaffTvView.baml
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StaffTvFullscreen.g.cs
 D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\StaffTvFullscreen.baml
 C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\StaffTvFullscreen.g.cs

@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\
+D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\
 CorridorWPF
 none
 false
 DEBUG;TRACE
-C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\App.xaml
+D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\App.xaml
 31383760349
 
-22-2062906153
-18135614750
+22-1114580156
+181421711818
 MainWindow.xaml;StaffTvFullscreen.xaml;StudentTvFullscreen.xaml;
 
 True
