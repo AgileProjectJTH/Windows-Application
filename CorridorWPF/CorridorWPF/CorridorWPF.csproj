@@ -73,6 +73,9 @@
     <Compile Include="Repository\ScheduleRepository.cs" />
     <Compile Include="Repository\StaffRepository.cs" />
     <Compile Include="ScheduleTemplate.cs" />
+    <Compile Include="StaffTvFullscreen.xaml.cs">
+      <DependentUpon>StaffTvFullscreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StaffTvView.xaml.cs">
       <DependentUpon>StaffTvView.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StaffTvFullscreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StaffTvView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

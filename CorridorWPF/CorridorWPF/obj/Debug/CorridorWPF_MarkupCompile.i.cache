@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\obj\Debug\
+D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\obj\Debug\
 CorridorWPF
 none
 false
 DEBUG;TRACE
-C:\Users\fredr_000\Documents\Windows-Application\CorridorWPF\CorridorWPF\App.xaml
-31742757936
+D:\GitHubWindowsApplication\CorridorWPF\CorridorWPF\App.xaml
+4-452954941
 
-22383774669
-18-1777288685
-MainWindow.xaml;StaffTvView.xaml;StudentTvFullscreen.xaml;
+231247105420
+182061203537
+MainWindow.xaml;StaffTvFullscreen.xaml;StaffTvView.xaml;StudentTvFullscreen.xaml;
 
-False
+True
 

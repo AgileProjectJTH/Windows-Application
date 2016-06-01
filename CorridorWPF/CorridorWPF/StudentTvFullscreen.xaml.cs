@@ -37,7 +37,7 @@ namespace CorridorWPF
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
             dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
             dispatcherTimer.Start();
-            
+            this.WindowState = WindowState.Maximized;
 
         }
 

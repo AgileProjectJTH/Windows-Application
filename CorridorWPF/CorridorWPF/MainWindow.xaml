@@ -17,7 +17,7 @@
                         <RowDefinition Height="125*"/>
                     </Grid.RowDefinitions>
                     <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LightGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60" Grid.RowSpan="2">
-                        <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Salmon"/>
+                        <Button x:Name="btn_toggleAvailable" Content="Select Unavailable" Margin="40,89,42,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Salmon"/>
                     </Border>
                     <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,118,21" HorizontalAlignment="Right" Width="136" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
                         <ComboBoxItem Content="Select time amount
@@ -66,7 +66,7 @@
                     <Label x:Name="label3" Content="Choose staff" Grid.Column="2" HorizontalAlignment="Left" Margin="597,82,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Staff TV">
+            <TabItem Header="Staff TV" Height="22" VerticalAlignment="Bottom">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="271*"/>
@@ -105,13 +105,14 @@
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                                   HorizontalAlignment="Right" 
                                   Width="935" Grid.ColumnSpan="3"/>
+                        <Button x:Name="btn_staffTvFullscreen" Content="Open Fullscreen" HorizontalAlignment="Left" Margin="658,11,0,0" VerticalAlignment="Top" Width="95" Height="34" Grid.Column="2" Click="btn_staffTvFullscreen_Click"/>
                     </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Student TV">
                 <Grid Background="#FFE5E5E5">
                     <Grid x:Name="studentCanvas" Background="#FFE5E5E5">
-                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True" FontFamily="Georgia Pro Black" FontWeight="Bold" FontSize="16" MouseLeftButtonUp="dGrid_StudentTv_MouseLeftButtonUp"/>
+                        <DataGrid x:Name="dGrid_StudentTv" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1241" Margin="10,48,0,0" Height="546" IsReadOnly="True" FontFamily="Georgia Pro Black" FontWeight="Bold" FontSize="16"/>
                         <Button x:Name="btn_updateStudentTv" Content="Update" HorizontalAlignment="Left" VerticalAlignment="Top" Width="143" Margin="1108,10,0,0" Height="33" Click="btn_updateStudentTv_Click"/>
                         <ComboBox x:Name="cb_studentCorridors" HorizontalAlignment="Left" VerticalAlignment="Top" Width="152" Margin="10,21,0,0" SelectedIndex="0" DropDownOpened="cb_studentCorridors_DropDownOpened"/>
                         <Button x:Name="btn_studentTvFullscreen" Content="Open Fullscreen" HorizontalAlignment="Left" Margin="996,10,0,0" VerticalAlignment="Top" Width="95" Height="33" Click="btn_studentTvFullscreen_Click"/>
@@ -159,7 +160,7 @@
                     <GroupBox x:Name="groupBox1" Grid.Column="1" Header="Add New User" HorizontalAlignment="Left" Margin="782,62,0,0" VerticalAlignment="Top" Height="379" Width="435"/>
                     <Button x:Name="btn_addNote" Content="Add Note " HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Grid.Column="1" Margin="623,246,0,0" Height="32" Click="btn_addNote_Click"/>
                     <Button x:Name="btn_clearNotes" Content="Clear Notes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Grid.Column="1" Margin="543,246,0,0" Height="32" Click="btn_clearNotes_Click"/>
-                    <TextBox x:Name="txtBox_notes" HorizontalAlignment="Left" Height="168" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Margin="543,73,0,0" Grid.Column="1"/>
+                    <TextBox x:Name="txtBox_notes" HorizontalAlignment="Left" Height="168" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Margin="543,73,0,0" Grid.Column="1" x:FieldModifier="public"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">

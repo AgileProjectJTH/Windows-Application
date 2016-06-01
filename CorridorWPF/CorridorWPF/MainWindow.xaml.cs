@@ -76,7 +76,7 @@ public class NameToBrushConverter : IValueConverter
             {
                 // Set Toggle Available button color and change content
                 btn_toggleAvailable.Background = Brushes.Salmon;
-                btn_toggleAvailable.Content = "Unavailable";
+                btn_toggleAvailable.Content = "Select Unavailable";
 
                 // Set "Set time" button color
                 btn_setTime.Background = Brushes.LightGreen;
@@ -95,7 +95,7 @@ public class NameToBrushConverter : IValueConverter
             {
                 // Set Toggle Available button color and change content
                 btn_toggleAvailable.Background = Brushes.LightGreen;
-                btn_toggleAvailable.Content = "Available";
+                btn_toggleAvailable.Content = "Select Available";
 
                 // Set "Set time" button color
                 btn_setTime.Background = Brushes.Salmon;
@@ -382,17 +382,17 @@ public class NameToBrushConverter : IValueConverter
                     string corridorId = data.Substring(index);
                     Repository.CorridorRepository.MoveUserToCorridor(user.UserName, corridorId, token); //Moves the user to the chosen corridor
 
-                    txt_AddConfirmPassword.Text = null;
-                    txt_AddCorridor.Text = null;
-                    txt_AddEmail.Text = null;
-                    txt_AddFirstName.Text = null;
-                    txt_AddLastName.Text = null;
-                    txt_AddMobileNumber.Text = null;
-                    txt_AddPassword.Text = null;
-                    txt_AddRoomNumber.Text = null;
-                    txt_AddUsername.Text = null;
-                    txt_Password.Text = null;
-                    txt_Username.Text = null;
+                    //txt_AddConfirmPassword.Text = null;
+                    //txt_AddCorridor.Text = null;
+                    //txt_AddEmail.Text = null;
+                    //txt_AddFirstName.Text = null;
+                    //txt_AddLastName.Text = null;
+                    //txt_AddMobileNumber.Text = null;
+                    //txt_AddPassword.Text = null;
+                    //txt_AddRoomNumber.Text = null;
+                    //txt_AddUsername.Text = null;
+                    //txt_Password.Text = null;
+                    //txt_Username.Text = null;
                     cb_chooseCorridor.Items.Clear();
                 }
 
@@ -512,33 +512,12 @@ public class NameToBrushConverter : IValueConverter
             }
         }
 
-        private void dGrid_StudentTv_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            if(!fullScreen)
-            {
-                //DependencyObject parent = VisualTreeHelper.GetParent(dGrid_StudentTv);
-                studentCanvas.Children.Remove(dGrid_StudentTv);
-                this.WindowStyle = WindowStyle.None;
-                this.Content = dGrid_StudentTv;           
-                this.WindowState = WindowState.Maximized;
-                
-
-            }
-            else
-            {
-                this.Content = null;
-                studentCanvas.Children.Add(dGrid_StudentTv);
-                this.WindowStyle = WindowStyle.SingleBorderWindow;
-                this.WindowState = WindowState.Normal;
-            }
-            fullScreen = !fullScreen;
-        }
 
         private void btn_studentTvFullscreen_Click(object sender, RoutedEventArgs e)
         {
-            StudentTvFullscreen StudentFullWindow = new StudentTvFullscreen(cb_studentCorridors,token);
-            StudentFullWindow.Show();
-            StudentFullWindow.intialScheduleLoad();
+            StudentTvFullscreen studentTVFullWindow = new StudentTvFullscreen(cb_studentCorridors,token);
+            studentTVFullWindow.Show();
+            studentTVFullWindow.intialScheduleLoad();
         }
 
         private void btn_addNote_Click(object sender, RoutedEventArgs e)
@@ -577,6 +556,13 @@ public class NameToBrushConverter : IValueConverter
             TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotes);
 
             staffNotes.clearGrid();
+        }
+
+        private void btn_staffTvFullscreen_Click(object sender, RoutedEventArgs e)
+        {
+            StaffTvFullscreen staffTVFullWindow = new StaffTvFullscreen(cb_staffCorridors, token);
+            staffTVFullWindow.Show();
+            staffTVFullWindow.intialScheduleLoad();
         }
     }
 
