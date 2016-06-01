@@ -19,7 +19,6 @@
                     <Border x:Name="bdr_availability" BorderBrush="Black" BorderThickness="1" Margin="0,10,29,109" Background="LightGreen" HorizontalAlignment="Right" Width="325" CornerRadius="60" Grid.RowSpan="2">
                         <Button x:Name="btn_toggleAvailable" Content="Unavailable" Margin="63,90,56,0" VerticalAlignment="Top" Height="67" BorderThickness="3" FontSize="26.667" FontWeight="Bold" Foreground="White" BorderBrush="#FF0D1393" Click="btn_toggleAvailable_Click" Background="Salmon"/>
                     </Border>
-                    <TextBlock x:Name="txt_Availability" TextWrapping="Wrap" Text="You are available" Margin="0,46,71,173" FontSize="22.667" FontWeight="Bold" HorizontalAlignment="Right" Width="219"/>
                     <ComboBox x:Name="cb_selectTime" VerticalAlignment="Bottom" Margin="0,0,118,21" HorizontalAlignment="Right" Width="136" SelectedIndex="0" DropDownClosed="cb_selectTime_DropDownClosed">
                         <ComboBoxItem Content="Select time amount
                                       " HorizontalAlignment="Left" Width="122"/>
@@ -37,7 +36,7 @@
 
 
                     </ComboBox>
-                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,130,195" HorizontalAlignment="Right" Width="124" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False" Grid.Row="1"/>
+                    <Button x:Name="btn_setTime" Content="Set Time" Margin="0,0,98,231" HorizontalAlignment="Right" Width="172" Height="43" VerticalAlignment="Bottom" FontSize="14.667" FontWeight="Bold" BorderThickness="4" BorderBrush="#FFE5E5E5" Background="LimeGreen" Click="btn_setTime_Click" IsEnabled="False" Grid.Row="1"/>
 
 
 
@@ -158,6 +157,9 @@
                     <ComboBox x:Name="cb_corridorListDelete" Margin="1022,523,78,0" VerticalAlignment="Top" DropDownOpened="cb_teacherListDelete_DropDownOpened" Grid.Column="1"/>
                     <Button x:Name="btn_deleteSelectedUser" Content="Delete selected user" HorizontalAlignment="Left" Margin="33,562,0,0" VerticalAlignment="Top" Width="117" Height="32" Grid.ColumnSpan="2" Click="btn_deleteSelectedUser_Click"/>
                     <GroupBox x:Name="groupBox1" Grid.Column="1" Header="Add New User" HorizontalAlignment="Left" Margin="782,62,0,0" VerticalAlignment="Top" Height="379" Width="435"/>
+                    <Button x:Name="btn_addNote" Content="Add Note " HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Grid.Column="1" Margin="623,246,0,0" Height="32" Click="btn_addNote_Click"/>
+                    <Button x:Name="btn_clearNotes" Content="Clear Notes" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Grid.Column="1" Margin="543,246,0,0" Height="32" Click="btn_clearNotes_Click"/>
+                    <TextBox x:Name="txtBox_notes" HorizontalAlignment="Left" Height="168" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Margin="543,73,0,0" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Login/logout">

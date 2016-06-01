@@ -83,10 +83,9 @@ public class NameToBrushConverter : IValueConverter
 
                 // Set background color
                 bdr_availability.Background = Brushes.LightGreen;
-                
 
-                // Change status text
-                txt_Availability.Text = "You are available";
+                // Content of set time button
+                btn_setTime.Content = "Set Time Available";
 
                 // Sets the global variable to true
                 isAvailable = true;
@@ -104,8 +103,8 @@ public class NameToBrushConverter : IValueConverter
                 // Set background color
                 bdr_availability.Background = Brushes.Salmon;
 
-                // Change status text
-                txt_Availability.Text = "You are unavailable";
+                // Content of set time button
+                btn_setTime.Content = "Set Time Unavailable";
 
                 // Sets the global variable to false
                 isAvailable = false;
@@ -178,9 +177,8 @@ public class NameToBrushConverter : IValueConverter
                 // Set background color
                 bdr_availability.Background = Brushes.LightGreen;
 
-
-                // Change status text
-                txt_Availability.Text = "You are available";
+                // Content of set time button
+                btn_setTime.Content = "Set Time Available";
 
                 // Sets the global variable to true
                 isAvailable = true;
@@ -197,8 +195,8 @@ public class NameToBrushConverter : IValueConverter
                 // Set background color
                 bdr_availability.Background = Brushes.Salmon;
 
-                // Change status text
-                txt_Availability.Text = "You are unavailable";
+                // Content of set time button
+                btn_setTime.Content = "Set Time Unavailable";
 
                 // Sets the global variable to false
                 isAvailable = false;
@@ -393,7 +391,6 @@ public class NameToBrushConverter : IValueConverter
                     txt_AddPassword.Text = null;
                     txt_AddRoomNumber.Text = null;
                     txt_AddUsername.Text = null;
-                    txt_Availability.Text = null;
                     txt_Password.Text = null;
                     txt_Username.Text = null;
                     cb_chooseCorridor.Items.Clear();
@@ -542,6 +539,44 @@ public class NameToBrushConverter : IValueConverter
             StudentTvFullscreen StudentFullWindow = new StudentTvFullscreen(cb_studentCorridors,token);
             StudentFullWindow.Show();
             StudentFullWindow.intialScheduleLoad();
+        }
+
+        private void btn_addNote_Click(object sender, RoutedEventArgs e)
+        {
+            TVStaffNote rawNote = new TVStaffNote();
+            TVStaffNote note = new TVStaffNote();
+            var builder = new StringBuilder();
+            TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotes);
+            staffNotes.createHeader();
+
+
+            rawNote.Notes = txtBox_notes.Text.ToString();
+
+            for (int i = 0; i < txtBox_notes.LineCount; i++)
+            {
+                builder.Append(txtBox_notes.GetLineText(i));
+                builder.Append(System.Environment.NewLine);
+            }
+
+
+            note.Notes = builder.ToString();
+
+            if (note.Notes != "")
+            {       
+                staffNotes.addNote(note.Notes);
+                txtBox_notes.Clear();
+            }
+            
+
+        }
+
+        private void btn_clearNotes_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotes);
+
+            staffNotes.clearGrid();
         }
     }
 

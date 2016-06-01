@@ -32,7 +32,7 @@ namespace CorridorWPF
         /// </summary>
         public void createHeader()
         {
-            clearGrid();
+            //clearGrid();
 
             DataGridTextColumn gridColumn = new DataGridTextColumn();
             gridColumn.Header = "Notes";
