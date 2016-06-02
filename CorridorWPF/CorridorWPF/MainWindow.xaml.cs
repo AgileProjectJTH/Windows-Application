@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -53,6 +54,7 @@ public class NameToBrushConverter : IValueConverter
         public bool isAvailable = true;
         public bool fullScreen = false;
         public double currentPosition = 0;
+        public List<string> notesList = new List<string>();
 
         public MainWindow()
         {
@@ -513,9 +515,16 @@ public class NameToBrushConverter : IValueConverter
 
         private void btn_studentTvFullscreen_Click(object sender, RoutedEventArgs e)
         {
-            StudentTvFullscreen studentTVFullWindow = new StudentTvFullscreen(cb_studentCorridors,token);
-            studentTVFullWindow.Show();
-            studentTVFullWindow.intialScheduleLoad();
+            try
+            {
+                StudentTvFullscreen studentTVFullWindow = new StudentTvFullscreen(cb_studentCorridors, token);
+                studentTVFullWindow.Show();
+                studentTVFullWindow.intialScheduleLoad();
+            }
+            catch (Exception)
+            {
+            }
+
         }
 
         private void btn_addNote_Click(object sender, RoutedEventArgs e)
@@ -537,9 +546,12 @@ public class NameToBrushConverter : IValueConverter
 
 
             note.Notes = builder.ToString();
+            
+            
 
             if (note.Notes != "")
-            {       
+            {
+                notesList.Add(builder.ToString());
                 staffNotes.addNote(note.Notes);
                 txtBox_notes.Clear();
             }
@@ -552,15 +564,22 @@ public class NameToBrushConverter : IValueConverter
 
 
             TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotes);
-
+            notesList.Clear();
             staffNotes.clearGrid();
         }
 
         private void btn_staffTvFullscreen_Click(object sender, RoutedEventArgs e)
         {
-            StaffTvFullscreen staffTVFullWindow = new StaffTvFullscreen(cb_staffCorridors, token);
-            staffTVFullWindow.Show();
-            staffTVFullWindow.intialScheduleLoad();
+            try
+            {
+                StaffTvFullscreen staffTVFullWindow = new StaffTvFullscreen(cb_staffCorridors, notesList, token);
+                staffTVFullWindow.Show();
+                staffTVFullWindow.intialScheduleLoad();
+            }
+            catch (Exception)
+            {
+            }
+
         }
 
         private void button_Click_1(object sender, RoutedEventArgs e)

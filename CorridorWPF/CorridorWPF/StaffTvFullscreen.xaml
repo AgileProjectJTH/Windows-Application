@@ -9,13 +9,12 @@
     <Grid Margin="0,0,2,0">
         <DataGrid x:Name="dGrid_staffTvFullscreen" IsReadOnly="True" FontFamily="Georgia Pro Black" FontWeight="Bold" FontSize="16" Margin="0,0,219,0"/>
         <DataGrid x:Name="dGrid_staffTvNotesFullscreen" 
-        	HorizontalAlignment="Right" Width="219" 
         	IsEnabled="False" 
         	FontSize="16" 
         	FontFamily="Georgia Pro Black" 
         	FontWeight="Bold" 
         	ScrollViewer.VerticalScrollBarVisibility="Disabled"
-        	ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True"/>
+        	ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" HorizontalAlignment="Right" Width="219" SelectionChanged="dGrid_staffTvNotesFullscreen_SelectionChanged"/>
 
     </Grid>
 </Window>

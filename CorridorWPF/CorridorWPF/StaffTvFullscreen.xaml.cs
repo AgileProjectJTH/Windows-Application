@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,11 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace CorridorWPF
 {
@@ -21,13 +24,15 @@ namespace CorridorWPF
     {
         public string token = "";
         ComboBox cb_Box = new ComboBox();
+        private List<string> notes = new List<string>();
 
-        public StaffTvFullscreen(ComboBox _cb_Box ,string _token)
+        public StaffTvFullscreen(ComboBox _cb_Box , List<string> _notes,string _token)
         {      
             InitializeComponent();
 
             cb_Box = _cb_Box;
             token = _token;
+            notes = _notes;
             
 
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
@@ -64,26 +69,18 @@ namespace CorridorWPF
             TvViewStaffNotes staffNotes = new TvViewStaffNotes(dGrid_staffTvNotesFullscreen);
             staffNotes.createHeader();
 
-            for (int i = 0; i < ((MainWindow)System.Windows.Application.Current.MainWindow).dGrid_staffTvNotes.Items.Count; i++)
+            for (int i = 0; i < notes.Count; i++)
             {
-                //staffNotes.addNote(((MainWindow)System.Windows.Application.Current.MainWindow).dGrid_staffTvNotes.Items[i].ToString());
+                staffNotes.addNote(notes[i]);
             }
+            
 
-            //rawNote.Notes = ((MainWindow)System.Windows.Application.Current.MainWindow).txtBox_notes.Text.ToString();
 
-            //for (int i = 0; i < ((MainWindow)System.Windows.Application.Current.MainWindow).txtBox_notes.LineCount; i++)
-            //{
-            //    builder.Append(((MainWindow)System.Windows.Application.Current.MainWindow).txtBox_notes.GetLineText(i));
-            //    builder.Append(System.Environment.NewLine);
-            //}
+        }
 
-            //note.Notes = builder.ToString();
+        private void dGrid_staffTvNotesFullscreen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-            //if (note.Notes != "")
-            //{
-            //    staffNotes.addNote(note.Notes);
-            //    ((MainWindow)System.Windows.Application.Current.MainWindow).txtBox_notes.Clear();
-            //}
         }
     }
 }

@@ -33,12 +33,19 @@ namespace CorridorWPF
         public void createHeader()
         {
             //clearGrid();
+            try
+            {
+                DataGridTextColumn gridColumn = new DataGridTextColumn();
+                gridColumn.Header = "Notes";
+                gridColumn.Binding = new Binding("Notes");
+                gridColumn.Width = dataGrid.Width;
+                dataGrid.Columns.Add(gridColumn);
+            }
+            catch (Exception)
+            {
 
-            DataGridTextColumn gridColumn = new DataGridTextColumn();
-            gridColumn.Header = "Notes";
-            gridColumn.Binding = new Binding("Notes");
-            gridColumn.Width = dataGrid.Width;
-            dataGrid.Columns.Add(gridColumn);
+               
+            }
 
         }
         /// <summary>
@@ -72,7 +79,7 @@ namespace CorridorWPF
         /// </summary>
         private void updateRowHeight()
         {
-            dataGrid.MinRowHeight = ((dataGrid.Height / dataGrid.Items.Count) - 5);
+            dataGrid.RowHeight = ((dataGrid.ActualHeight / dataGrid.Items.Count) - 5);
         }
     }
 
@@ -221,7 +228,7 @@ namespace CorridorWPF
         /// </summary>
         private void updateRowHeight()
         {
-            dataGrid.MinRowHeight = ((dataGrid.Height / dataGrid.Items.Count) - 5);
+            dataGrid.RowHeight = ((dataGrid.ActualHeight / dataGrid.Items.Count) - 5);
         }
 
 
